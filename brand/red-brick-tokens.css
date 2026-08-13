@@ -1,0 +1,33 @@
+/* Red Brick Lettings - digital brand tokens */
+:root {
+  --rb-brick: #A63D2F;
+  --rb-brick-dark: #70291F;
+  --rb-ink: #1D1B1A;
+  --rb-cream: #F7F2EA;
+  --rb-white: #FFFFFF;
+  --rb-stone: #716B64;
+  --rb-stone-light: #DDD5CB;
+  --rb-sand: #E8D7C6;
+  --rb-attention: #C76B21;
+  --rb-success: #2F6A54;
+  --rb-error: #9A2F2F;
+
+  --rb-font-sans: Inter, "Segoe UI", Arial, sans-serif;
+  --rb-font-display: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+  --rb-radius-sm: 8px;
+  --rb-radius-md: 12px;
+  --rb-radius-lg: 16px;
+  --rb-space-1: 8px;
+  --rb-space-2: 16px;
+  --rb-space-3: 24px;
+  --rb-space-4: 32px;
+  --rb-space-5: 48px;
+  --rb-space-6: 64px;
+  --rb-shadow: 0 12px 32px rgb(29 27 26 / 12%);
+}
+
+body { color: var(--rb-ink); background: var(--rb-cream); font-family: var(--rb-font-sans); font-size: 18px; line-height: 1.6; }
+h1, h2, h3 { color: var(--rb-ink); line-height: 1.12; letter-spacing: -0.02em; }
+.rb-button-primary { min-height: 48px; padding: 12px 20px; border-radius: var(--rb-radius-md); background: var(--rb-brick); color: var(--rb-white); font-weight: 700; }
+.rb-button-primary:hover { background: var(--rb-brick-dark); }
+.rb-focus:focus-visible { outline: 3px solid var(--rb-ink); outline-offset: 3px; }

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title desc">
+  <title id="title">Red Brick Lettings house mark</title>
+  <desc id="desc">Rounded square containing a continuous white roof and house line.</desc>
+  <rect width="100" height="100" rx="18" fill="#FFFFFF"/>
+  <path d="M18 62 L48 34 L68 52 L68 36 L79 36 L79 69 L88 78" fill="none" stroke="#A63D2F" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

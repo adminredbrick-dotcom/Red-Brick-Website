@@ -1,0 +1,26 @@
+You are building the production website for Red Brick Lettings.
+
+First, inspect every supplied file in this project, including CLAUDE.md, the brand assets, the master build brief, the approved website concept, the data examples and the acceptance criteria. Treat those files as the source of truth.
+
+This is a production website, not a moodboard and not a one-shot landing-page generation. Do not start by improvising the final visual design or installing packages.
+
+Begin with Phase 0 only:
+
+1. Inventory every supplied requirement and asset.
+2. Create a requirements-traceability checklist showing where each requirement will be implemented and how it will be verified.
+3. Propose the final sitemap, homepage order, responsive wireframe descriptions, component architecture, content models, data adapters, motion/loading strategy and delivery phases.
+4. Clearly separate confirmed facts, illustrative demo content, missing owner information and future integrations.
+5. Identify contradictions or genuine blockers. Ask only questions whose answers materially change Phase 1; otherwise use the recommended default in the brief and record the assumption.
+6. Do not invent business facts, testimonials, properties, prices, legal claims, market figures, crime figures, rent forecasts, contact details or service promises.
+
+At the end, report:
+
+- What you inspected
+- Your proposed architecture and visual direction
+- The requirements traceability checklist
+- Assumptions and unresolved decisions
+- Risks and mitigations
+- The exact Phase 1 implementation plan
+
+Wait for approval before Phase 1.
+

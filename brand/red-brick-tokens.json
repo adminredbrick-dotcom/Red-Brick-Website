@@ -1,0 +1,48 @@
+{
+  "name": "Red Brick Lettings",
+  "tagline": "Property cared for. People looked after.",
+  "colors": {
+    "brick": "#A63D2F",
+    "brickDark": "#70291F",
+    "ink": "#1D1B1A",
+    "cream": "#F7F2EA",
+    "white": "#FFFFFF",
+    "stone": "#716B64",
+    "stoneLight": "#DDD5CB",
+    "sand": "#E8D7C6",
+    "attention": "#C76B21",
+    "success": "#2F6A54",
+    "error": "#9A2F2F"
+  },
+  "typography": {
+    "body": "Inter, Segoe UI, Arial, sans-serif",
+    "display": "Roboto Condensed, Arial Narrow, Arial, sans-serif",
+    "bodyMinimumPx": 16,
+    "preferredBodyPx": 18,
+    "bodyLineHeight": 1.6,
+    "maximumLineLengthCharacters": 75
+  },
+  "radiiPx": {
+    "small": 8,
+    "medium": 12,
+    "large": 16
+  },
+  "spacingPx": [
+    8,
+    16,
+    24,
+    32,
+    48,
+    64,
+    80
+  ],
+  "primaryCta": {
+    "label": "Message us on WhatsApp",
+    "value": "07300 856675"
+  },
+  "channels": {
+    "facebook": "https://www.facebook.com/RedBrickPeterborough/",
+    "instagram": "https://www.instagram.com/red_brick_lettings/",
+    "website": "forthcoming"
+  }
+}

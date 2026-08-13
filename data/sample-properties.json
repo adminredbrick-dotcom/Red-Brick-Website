@@ -1,0 +1,162 @@
+{
+  "notice": "ILLUSTRATIVE DEMO DATA ONLY. None of these properties is a genuine Red Brick listing or currently available home.",
+  "properties": [
+    {
+      "id": "DEMO-RBL-001",
+      "slug": "illustrative-two-bedroom-fletton-home",
+      "demoOnly": true,
+      "status": "illustrative",
+      "featured": true,
+      "title": "Illustrative two-bedroom home",
+      "summary": "A fictional example used to demonstrate the property-search design.",
+      "description": "This is placeholder copy for design and testing. Replace it only with approved information about a real property.",
+      "location": {
+        "publicArea": "Fletton, Peterborough",
+        "outwardPostcode": "PE2",
+        "approximateLatitude": 52.56,
+        "approximateLongitude": -0.24,
+        "showExactLocation": false
+      },
+      "pricing": {
+        "rentPcm": 1100,
+        "deposit": 1269,
+        "holdingDeposit": 253,
+        "billsIncluded": false,
+        "councilTaxBand": "Demo"
+      },
+      "availability": {
+        "availableFrom": null,
+        "furnished": "unfurnished",
+        "viewingStatus": "illustrative-only"
+      },
+      "property": {
+        "type": "terraced-house",
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "receptionRooms": 1,
+        "sizeSqFt": null
+      },
+      "features": ["Private garden", "Two bedrooms", "Separate kitchen"],
+      "materialInformation": {
+        "epcRating": "Demo",
+        "parkingNote": "Illustrative content only",
+        "broadbandNote": "Check availability with providers for a real listing",
+        "mobileSignalNote": "Check availability with providers for a real listing"
+      },
+      "media": {
+        "coverImage": "/demo/property-placeholder-1.webp",
+        "coverAlt": "Illustrative property placeholder — not a real listing",
+        "gallery": []
+      },
+      "publishing": {
+        "label": "Illustrative example — not currently available",
+        "reviewedAt": null
+      }
+    },
+    {
+      "id": "DEMO-RBL-002",
+      "slug": "illustrative-three-bedroom-werrington-home",
+      "demoOnly": true,
+      "status": "illustrative",
+      "featured": false,
+      "title": "Illustrative three-bedroom home",
+      "summary": "A fictional family-home example for filters and map interactions.",
+      "description": "This record exists only to exercise components, filters and responsive layouts.",
+      "location": {
+        "publicArea": "Werrington, Peterborough",
+        "outwardPostcode": "PE4",
+        "approximateLatitude": 52.61,
+        "approximateLongitude": -0.26,
+        "showExactLocation": false
+      },
+      "pricing": {
+        "rentPcm": 1350,
+        "deposit": 1557,
+        "holdingDeposit": 311,
+        "billsIncluded": false,
+        "councilTaxBand": "Demo"
+      },
+      "availability": {
+        "availableFrom": null,
+        "furnished": "unfurnished",
+        "viewingStatus": "illustrative-only"
+      },
+      "property": {
+        "type": "semi-detached-house",
+        "bedrooms": 3,
+        "bathrooms": 1,
+        "receptionRooms": 2,
+        "sizeSqFt": null
+      },
+      "features": ["Garden", "Parking", "Two reception rooms"],
+      "materialInformation": {
+        "epcRating": "Demo",
+        "parkingNote": "Illustrative content only",
+        "broadbandNote": "Check availability with providers for a real listing",
+        "mobileSignalNote": "Check availability with providers for a real listing"
+      },
+      "media": {
+        "coverImage": "/demo/property-placeholder-2.webp",
+        "coverAlt": "Illustrative property placeholder — not a real listing",
+        "gallery": []
+      },
+      "publishing": {
+        "label": "Illustrative example — not currently available",
+        "reviewedAt": null
+      }
+    },
+    {
+      "id": "DEMO-RBL-003",
+      "slug": "illustrative-city-centre-apartment",
+      "demoOnly": true,
+      "status": "illustrative",
+      "featured": false,
+      "title": "Illustrative city apartment",
+      "summary": "A fictional apartment example for comparing property types.",
+      "description": "Do not publish this record as a genuine home. It is only a safe design fixture.",
+      "location": {
+        "publicArea": "Central Peterborough",
+        "outwardPostcode": "PE1",
+        "approximateLatitude": 52.57,
+        "approximateLongitude": -0.24,
+        "showExactLocation": false
+      },
+      "pricing": {
+        "rentPcm": 900,
+        "deposit": 1038,
+        "holdingDeposit": 207,
+        "billsIncluded": false,
+        "councilTaxBand": "Demo"
+      },
+      "availability": {
+        "availableFrom": null,
+        "furnished": "part-furnished",
+        "viewingStatus": "illustrative-only"
+      },
+      "property": {
+        "type": "apartment",
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "receptionRooms": 1,
+        "sizeSqFt": null
+      },
+      "features": ["One bedroom", "Open-plan living area", "Central location"],
+      "materialInformation": {
+        "epcRating": "Demo",
+        "parkingNote": "Illustrative content only",
+        "broadbandNote": "Check availability with providers for a real listing",
+        "mobileSignalNote": "Check availability with providers for a real listing"
+      },
+      "media": {
+        "coverImage": "/demo/property-placeholder-3.webp",
+        "coverAlt": "Illustrative property placeholder — not a real listing",
+        "gallery": []
+      },
+      "publishing": {
+        "label": "Illustrative example — not currently available",
+        "reviewedAt": null
+      }
+    }
+  ]
+}
+
