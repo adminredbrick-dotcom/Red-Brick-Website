@@ -1,0 +1,965 @@
+/*
+ * Candidate 05 — landing page styles.
+ *
+ * Mobile-first, CSS-module scoped. Every colour comes from the canonical
+ * --rb-* tokens (src/styles/tokens.css); no raw hex here. Type is Inter for
+ * reading, Roboto Condensed only for short display labels. Motion is a single
+ * CSS-only "settle" on the hero house plus 200ms hover/focus transitions; the
+ * global reduced-motion rule and the block at the end of this file remove it.
+ */
+
+/* ---------- Layout primitives ---------- */
+
+.wrap {
+  width: 100%;
+  max-width: 75rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.section {
+  padding-block: 3.5rem;
+}
+
+.sectionTint {
+  background-color: color-mix(in srgb, var(--rb-sand) 45%, var(--rb-cream));
+}
+
+.sectionWhite {
+  background-color: var(--rb-white);
+}
+
+.sectionCream {
+  background-color: var(--rb-cream);
+}
+
+.sectionDeep {
+  background-color: var(--rb-brick-dark);
+  color: var(--rb-cream);
+}
+
+.eyebrow {
+  font-family: var(--rb-font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rb-brick);
+}
+
+.sectionDeep .eyebrow {
+  color: var(--rb-sand);
+}
+
+/* Four-brick course — the candidate's small recurring motif. */
+.course {
+  display: block;
+  width: 7.375rem;
+  height: 0.375rem;
+  margin-top: 0.75rem;
+  border-radius: 999px;
+  background-image: linear-gradient(
+    90deg,
+    var(--rb-brick) 0 1.375rem,
+    transparent 1.375rem 1.875rem
+  );
+  background-size: 1.875rem 100%;
+  background-repeat: repeat-x;
+}
+
+.sectionDeep .course {
+  background-image: linear-gradient(
+    90deg,
+    var(--rb-sand) 0 1.375rem,
+    transparent 1.375rem 1.875rem
+  );
+}
+
+.h2 {
+  margin-top: 1rem;
+  font-size: clamp(1.875rem, 1.6vw + 1.35rem, 3rem);
+  max-width: 22ch;
+}
+
+.h3 {
+  font-size: 1.375rem;
+  line-height: 1.25;
+}
+
+.lead {
+  max-width: 62ch;
+  margin-top: 1.25rem;
+  font-size: 1.125rem;
+  color: var(--rb-stone);
+}
+
+.sectionTint .lead,
+.sectionTint .muted {
+  /* stone on the sand tint falls just below 4.5:1 — use ink there */
+  color: var(--rb-ink);
+}
+
+.measure {
+  max-width: 62ch;
+}
+
+.muted {
+  color: var(--rb-stone);
+}
+
+.stack > * + * {
+  margin-top: 1.25rem;
+}
+
+/* ---------- Actions ---------- */
+
+.button,
+.buttonOutline,
+.buttonLight,
+.quietLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.375rem;
+  border-radius: var(--rb-radius-md);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 200ms ease-out,
+    color 200ms ease-out,
+    border-color 200ms ease-out,
+    transform 200ms ease-out;
+}
+
+.button {
+  background-color: var(--rb-brick);
+  color: var(--rb-white);
+  border: 2px solid var(--rb-brick);
+}
+
+.button:hover {
+  background-color: var(--rb-brick-dark);
+  border-color: var(--rb-brick-dark);
+}
+
+.buttonOutline {
+  background-color: transparent;
+  color: var(--rb-ink);
+  border: 2px solid var(--rb-ink);
+}
+
+.buttonOutline:hover {
+  background-color: var(--rb-sand);
+}
+
+.buttonLight {
+  background-color: var(--rb-white);
+  color: var(--rb-ink);
+  border: 2px solid var(--rb-white);
+}
+
+.buttonLight:hover {
+  background-color: var(--rb-sand);
+  border-color: var(--rb-sand);
+}
+
+.buttonLarge {
+  min-height: 3.5rem;
+  padding-inline: 1.75rem;
+  font-size: 1.125rem;
+}
+
+.quietLink {
+  min-height: 2.75rem;
+  padding: 0.5rem 0.25rem;
+  color: var(--rb-brick);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+  text-decoration-thickness: 2px;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.quietLink:hover {
+  color: var(--rb-brick-dark);
+}
+
+.quietLink .arrow {
+  transition: transform 200ms ease-out;
+}
+
+.quietLink:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Beat 1: hero ---------- */
+
+.hero {
+  padding-block: 2.5rem 0;
+}
+
+.heroGrid {
+  display: grid;
+  gap: 2rem;
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+}
+
+.heroTitle {
+  margin-top: 1rem;
+  font-size: clamp(2.5rem, 3.4vw + 1.6rem, 5rem);
+  max-width: 12ch;
+}
+
+.heroSupporting {
+  margin-top: 1.5rem;
+  max-width: 55ch;
+  font-size: 1.125rem;
+  color: var(--rb-stone);
+}
+
+.choicePrompt {
+  margin-top: 2rem;
+  font-weight: 700;
+  color: var(--rb-ink);
+}
+
+.choices {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  list-style: none;
+  padding: 0;
+}
+
+.choices .button,
+.choices .buttonOutline {
+  width: 100%;
+}
+
+.heroArt {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.heroArt .house {
+  width: min(100%, 26rem);
+  height: auto;
+  max-height: 40vh;
+}
+
+.utility {
+  margin-top: 2.5rem;
+  border-top: 1px solid var(--rb-stone-light);
+  border-bottom: 1px solid var(--rb-stone-light);
+  background-color: var(--rb-white);
+}
+
+.utilityInner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-block: 1rem;
+}
+
+.utilityLabel {
+  font-family: var(--rb-font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rb-stone);
+  padding-block: 0.5rem;
+}
+
+.utilityList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Beat 2: introduction ---------- */
+
+.introGrid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+/* ---------- Beat 3: story placeholder ---------- */
+
+.storyFrame {
+  margin-top: 2rem;
+  border: 2px dashed var(--rb-stone-light);
+  border-radius: var(--rb-radius-lg);
+  background-color: var(--rb-white);
+  padding: 1.25rem;
+}
+
+.storyFrameLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  background-color: var(--rb-cream);
+  padding: 0.375rem 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--rb-ink);
+}
+
+.storyStage {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.storyArt {
+  display: flex;
+  justify-content: center;
+}
+
+.storyArt .house {
+  width: min(100%, 24rem);
+  height: auto;
+}
+
+.chapterRail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  counter-reset: chapter;
+}
+
+.chapterRail li {
+  counter-increment: chapter;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: var(--rb-radius-sm);
+  background-color: var(--rb-cream);
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+}
+
+.chapterRail li::before {
+  content: "0" counter(chapter);
+  font-family: var(--rb-font-display);
+  font-size: 0.9375rem;
+  letter-spacing: 0.06em;
+  color: var(--rb-brick);
+}
+
+/* ---------- Beat 4: paths ---------- */
+
+.pathGrid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.pathCard {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--rb-radius-lg);
+  background-color: var(--rb-white);
+  padding: 1.75rem;
+  box-shadow: var(--rb-shadow);
+  border-top: 6px solid var(--rb-brick);
+}
+
+.pathCardTenant {
+  border-top-color: var(--rb-ink);
+}
+
+.pathCard .h3 {
+  margin-top: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.pathCard p {
+  margin-top: 0.75rem;
+  color: var(--rb-stone);
+}
+
+.pathCard .eyebrow {
+  margin-top: 0;
+  color: var(--rb-brick);
+}
+
+.pathCardTenant .eyebrow {
+  color: var(--rb-ink);
+}
+
+.pathSteps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+
+.pathSteps li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--rb-font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rb-ink);
+}
+
+.pathSteps li + li::before {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 2px;
+  background-color: var(--rb-sand);
+}
+
+.pathCard .pathSteps {
+  margin-bottom: 1.5rem;
+}
+
+.pathCard .button,
+.pathCard .buttonOutline {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* ---------- Beat 5: services ---------- */
+
+.serviceGrid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+  list-style: none;
+  padding: 0;
+  counter-reset: service;
+}
+
+.serviceItem {
+  counter-increment: service;
+  border-radius: var(--rb-radius-lg);
+  background-color: var(--rb-cream);
+  padding: 1.5rem;
+  border: 1px solid var(--rb-stone-light);
+}
+
+.serviceItem::before {
+  content: "0" counter(service);
+  display: block;
+  font-family: var(--rb-font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--rb-brick);
+}
+
+.serviceItem .h3 {
+  margin-top: 0.75rem;
+}
+
+.serviceItem p {
+  margin-top: 0.5rem;
+  color: var(--rb-stone);
+}
+
+/* ---------- Beat 6: house journey ---------- */
+
+.journeyGrid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.journeyArt {
+  display: flex;
+  justify-content: center;
+}
+
+.journeyArt .house {
+  width: min(100%, 26rem);
+  height: auto;
+}
+
+.chapters {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  counter-reset: journey;
+}
+
+.chapter {
+  counter-increment: journey;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--rb-stone-light);
+}
+
+.chapter::before {
+  content: counter(journey);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 3px solid var(--rb-brick);
+  background-color: var(--rb-cream);
+  font-family: var(--rb-font-display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--rb-brick);
+}
+
+.chapterName {
+  font-family: var(--rb-font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rb-brick);
+}
+
+.chapter .h3 {
+  margin-top: 0.25rem;
+}
+
+.chapter p {
+  margin-top: 0.5rem;
+  color: var(--rb-stone);
+  max-width: 48ch;
+}
+
+.journeyClose {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rb-stone-light);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.journeyClose p {
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+/* ---------- Beat 7: local ---------- */
+
+.localGrid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.skyline {
+  width: 100%;
+  height: auto;
+  max-width: 45rem;
+}
+
+.factRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.factRow li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 2px solid var(--rb-brick);
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+  color: var(--rb-ink);
+  background-color: var(--rb-white);
+}
+
+/* ---------- Beat 8: maintenance ---------- */
+
+.steps {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+  counter-reset: step;
+}
+
+.step {
+  counter-increment: step;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: var(--rb-radius-md);
+  background-color: var(--rb-cream);
+  padding: 1rem 1.25rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.step::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--rb-font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--rb-brick);
+  line-height: 1;
+}
+
+.stepNote {
+  margin-top: 1.5rem;
+  color: var(--rb-stone);
+  max-width: 62ch;
+}
+
+/* ---------- Beat 9: trust ---------- */
+
+.trustList {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0 0;
+}
+
+.trustItem {
+  border-left: 4px solid var(--rb-brick);
+  padding-left: 1.25rem;
+}
+
+.trustItem dt {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.trustItem dd {
+  margin: 0.375rem 0 0;
+  color: var(--rb-stone);
+}
+
+.trustNote {
+  margin-top: 2rem;
+  max-width: 62ch;
+  color: var(--rb-stone);
+  font-size: 1rem;
+}
+
+/* ---------- Beat 10: closing ---------- */
+
+.closing {
+  padding-block: 4rem;
+}
+
+.closingGrid {
+  display: grid;
+  gap: 2rem;
+}
+
+.closingActions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.closingNumber {
+  font-size: 1.125rem;
+  color: var(--rb-cream);
+}
+
+.closingMeetings {
+  color: color-mix(in srgb, var(--rb-cream) 85%, var(--rb-brick-dark));
+}
+
+.sectionDeep .h2 {
+  color: var(--rb-cream);
+}
+
+.sectionDeep .lead {
+  color: color-mix(in srgb, var(--rb-cream) 88%, var(--rb-brick-dark));
+}
+
+/* ---------- House illustration ---------- */
+
+.house {
+  display: block;
+  overflow: visible;
+}
+
+.house g {
+  transform-box: fill-box;
+  transition: transform 200ms ease-out;
+}
+
+/* Hero: the layers arrive settled but a single, calm CSS settle expresses
+   "many parts, one home" on first paint. Reduced motion shows the end state. */
+.heroArt .houseRoof {
+  animation: settleFromAbove 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.heroArt .houseFoundation,
+.heroArt .houseGround {
+  animation: settleFromBelow 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.heroArt .houseOpenings {
+  animation: fadeIn 600ms ease-out 200ms both;
+}
+
+@keyframes settleFromAbove {
+  from {
+    transform: translateY(-14px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes settleFromBelow {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Exploded (static) — layers separated to show where the story will live. */
+.house[data-variant="exploded"] .houseRoof {
+  transform: translateY(-40px);
+}
+
+.house[data-variant="exploded"] .houseOpenings {
+  transform: translateY(-12px);
+}
+
+.house[data-variant="exploded"] .houseFoundation {
+  transform: translateY(20px);
+}
+
+.house[data-variant="exploded"] .houseGround {
+  transform: translateY(34px);
+}
+
+.houseGuides line {
+  stroke: var(--rb-stone-light);
+  stroke-width: 2;
+  stroke-dasharray: 6 8;
+}
+
+/* ---------- Breakpoints ---------- */
+
+@media (width >= 30rem) {
+  .choices {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .utilityInner {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+  }
+
+  .utilityList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+  }
+
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 48rem) {
+  .wrap {
+    padding-inline: 2rem;
+  }
+
+  .section {
+    padding-block: 5rem;
+  }
+
+  .hero {
+    padding-block: 4rem 0;
+  }
+
+  .heroGrid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .heroArt .house {
+    max-height: none;
+    width: 100%;
+  }
+
+  .storyStage {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .storyFrame {
+    padding: 2rem;
+  }
+
+  .introGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .introGrid .stack {
+    margin-top: 0.5rem;
+  }
+
+  .pathGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .pathCard {
+    padding: 2.25rem;
+  }
+
+  .serviceGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .localGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .steps {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.75rem;
+  }
+
+  .step {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -0.75rem;
+    width: 0.75rem;
+    height: 2px;
+    background-color: var(--rb-stone-light);
+  }
+
+  .trustList {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2.5rem;
+  }
+
+  .closingGrid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .closing {
+    padding-block: 5.5rem;
+  }
+}
+
+@media (width >= 64rem) {
+  .journeyGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* Sticky is bounded to this section only: the house holds while the four
+     chapters scroll past, then releases. */
+  .journeyArt {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+  }
+
+  .chapter {
+    padding: 2rem 0;
+  }
+
+  .trustList {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (width >= 80rem) {
+  .wrap {
+    padding-inline: 3rem;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .heroArt .houseRoof,
+  .heroArt .houseFoundation,
+  .heroArt .houseGround,
+  .heroArt .houseOpenings {
+    animation: none;
+  }
+
+  .house g,
+  .button,
+  .buttonOutline,
+  .buttonLight,
+  .quietLink,
+  .quietLink .arrow {
+    transition: none;
+  }
+}
