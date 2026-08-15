@@ -1,0 +1,701 @@
+/*
+ * Candidate 02 — landing page styles.
+ *
+ * Flat, single-purpose classes; every colour, radius, shadow and typeface is a
+ * brand token from src/styles/tokens.css. Display type is Roboto Condensed for
+ * short headings only; Inter carries everything else at 18px / 1.6.
+ *
+ * Surfaces, in page order: cream (hero, intro) → ink (story stage) → cream
+ * (paths) → white (services) → cream (house) → cream (local) → white
+ * (maintenance) → cream (facts) → deep brick (closing).
+ */
+
+/* ---------- shared type ---------- */
+
+.display {
+  font-family: var(--rb-font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.eyebrow {
+  font-family: var(--rb-font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rb-brick);
+}
+
+.eyebrowOnDark {
+  color: var(--rb-sand);
+}
+
+.h2 {
+  font-size: clamp(1.875rem, 1.25rem + 1.8vw, 3rem);
+  margin-top: 0.75rem;
+}
+
+.h2OnDark {
+  color: var(--rb-cream);
+}
+
+.lede {
+  margin-top: 1.25rem;
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--rb-stone);
+  max-width: 60ch;
+}
+
+.body {
+  max-width: 62ch;
+  color: var(--rb-ink);
+}
+
+.bodyMuted {
+  max-width: 62ch;
+  color: var(--rb-stone);
+}
+
+.flush {
+  margin-top: 0;
+}
+
+.stack > * + * {
+  margin-top: 1.25rem;
+}
+
+/* ---------- section rhythm ---------- */
+
+.section {
+  padding-block: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+.onWhite {
+  background: var(--rb-white);
+}
+
+.onCream {
+  background: var(--rb-cream);
+}
+
+/* Label column left, content right — the chapter form used for intro, local and facts. */
+.ledgerLayout {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (width >= 64rem) {
+  .ledgerLayout {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: 4rem;
+  }
+}
+
+/* ---------- buttons and links ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3.25rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--rb-radius-md);
+  background: var(--rb-brick);
+  color: var(--rb-white);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--rb-brick-dark);
+}
+
+.btnOutline {
+  background: transparent;
+  color: var(--rb-ink);
+  border: 2px solid var(--rb-ink);
+}
+
+.btnOutline:hover {
+  background: var(--rb-sand);
+}
+
+.btnLight {
+  background: var(--rb-white);
+  color: var(--rb-ink);
+}
+
+.btnLight:hover {
+  background: var(--rb-sand);
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-weight: 700;
+  color: var(--rb-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rb-brick);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+  transition: color 0.2s ease;
+}
+
+.textLink:hover {
+  color: var(--rb-brick);
+}
+
+/* ---------- 1. hero ---------- */
+
+.hero {
+  padding-block: clamp(3rem, 6vw, 6rem) clamp(3rem, 5vw, 5rem);
+}
+
+.heroGrid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (width >= 64rem) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: end;
+    gap: 3rem;
+  }
+}
+
+.h1 {
+  font-size: clamp(2.5rem, 1.75rem + 3.2vw, 4.5rem);
+  margin-top: 0.875rem;
+}
+
+.h1Line {
+  display: block;
+}
+
+.h1Property {
+  color: var(--rb-brick);
+}
+
+.heroSupporting {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.55;
+  color: var(--rb-stone);
+  max-width: 52ch;
+}
+
+.choices {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+@media (width >= 40rem) {
+  .choices {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.choice {
+  display: block;
+  position: relative;
+  padding: 1.5rem 3.5rem 1.5rem 1.5rem;
+  border-radius: var(--rb-radius-lg);
+  background: var(--rb-white);
+  color: var(--rb-ink);
+  text-decoration: none;
+  box-shadow: var(--rb-shadow);
+  border: 2px solid var(--rb-white);
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.choice:hover {
+  border-color: var(--rb-brick);
+  transform: translateY(-2px);
+}
+
+.choiceLabel {
+  display: block;
+  font-family: var(--rb-font-display);
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.choiceNext {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--rb-stone);
+}
+
+.choiceArrow {
+  position: absolute;
+  right: 1.25rem;
+  top: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--rb-brick);
+}
+
+.utility {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.75rem;
+  list-style: none;
+  padding: 0;
+}
+
+.heroFigure {
+  max-width: 20rem;
+  margin-inline: auto;
+}
+
+@media (width >= 64rem) {
+  .heroFigure {
+    max-width: none;
+    margin-inline: 0;
+  }
+}
+
+/* ---------- 3. story stage ---------- */
+
+.stage {
+  background: var(--rb-ink);
+  color: var(--rb-cream);
+}
+
+.stageGrid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (width >= 64rem) {
+  .stageGrid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: center;
+    gap: 4rem;
+  }
+}
+
+.stageBody {
+  margin-top: 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.55;
+  color: rgb(247 242 234 / 0.82);
+  max-width: 40ch;
+}
+
+.stageParts {
+  list-style: none;
+  padding: 0;
+  margin: 1.75rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
+.stagePart {
+  font-family: var(--rb-font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rb-sand);
+}
+
+/* The frame is deliberately a dashed placeholder — designed, but honest. */
+.stageFigure {
+  padding: clamp(1rem, 3vw, 2rem);
+  border-radius: var(--rb-radius-lg);
+  border: 1px dashed rgb(247 242 234 / 0.4);
+}
+
+.stageFigureArt {
+  max-width: 30rem;
+  margin-inline: auto;
+}
+
+.stageNote {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgb(247 242 234 / 0.2);
+}
+
+.stageNoteBody {
+  margin-top: 0.375rem;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgb(247 242 234 / 0.75);
+  max-width: 52ch;
+}
+
+/* ---------- 4. paths ---------- */
+
+.pathsGrid {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+@media (width >= 48rem) {
+  .pathsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+.path {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.pathTitle {
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+/* A path drawn as a path: one line, four stops. */
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  position: relative;
+  display: grid;
+  gap: 1.125rem;
+}
+
+.steps::before {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  width: 2px;
+  background: var(--rb-sand);
+}
+
+.step {
+  position: relative;
+  padding-left: 2.25rem;
+}
+
+.step::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  background: var(--rb-cream);
+  border: 3px solid var(--rb-brick);
+}
+
+.stepName {
+  display: block;
+  font-family: var(--rb-font-display);
+  font-weight: 700;
+  font-size: 1.375rem;
+  line-height: 1.1;
+}
+
+.stepLine {
+  display: block;
+  margin-top: 0.125rem;
+  color: var(--rb-stone);
+}
+
+.pathBody {
+  margin-top: 1.5rem;
+  color: var(--rb-stone);
+  max-width: 50ch;
+}
+
+.pathAction {
+  margin-top: 1.5rem;
+}
+
+/* ---------- 5. services ---------- */
+
+.servicesGrid {
+  list-style: none;
+  padding: 0;
+  margin: 2.5rem 0 0;
+  display: grid;
+  gap: 2rem;
+}
+
+@media (width >= 48rem) {
+  .servicesGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+}
+
+/* One brick course above each stage. */
+.service {
+  border-top: 4px solid var(--rb-brick);
+  padding-top: 1.25rem;
+}
+
+.serviceName {
+  font-family: var(--rb-font-display);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--rb-brick);
+}
+
+.serviceHeading {
+  margin-top: 0.75rem;
+  font-size: 1.375rem;
+  line-height: 1.2;
+}
+
+.servicesNote {
+  margin-top: 2rem;
+  color: var(--rb-stone);
+  max-width: 62ch;
+}
+
+/* ---------- 6. house ---------- */
+
+.houseGrid {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+@media (width >= 64rem) {
+  .houseGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 4rem;
+    align-items: start;
+  }
+}
+
+/* The finished house rests on warm ground; sticky within its own section only. */
+.houseFigure {
+  background: var(--rb-sand);
+  border-radius: var(--rb-radius-lg);
+  padding: clamp(1rem, 3vw, 2.5rem);
+}
+
+@media (width >= 64rem) {
+  .houseFigure {
+    position: sticky;
+    top: 2rem;
+  }
+}
+
+.chapters {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chapter {
+  padding: 1.375rem 0;
+  border-top: 1px solid var(--rb-stone-light);
+  display: grid;
+  gap: 0.25rem;
+}
+
+@media (width >= 40rem) {
+  .chapter {
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.chapter:last-child {
+  border-bottom: 1px solid var(--rb-stone-light);
+}
+
+.chapterName {
+  font-family: var(--rb-font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.chapterLine {
+  color: var(--rb-stone);
+}
+
+.finale {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (width >= 40rem) {
+  .finale {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.finaleItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.finaleLine {
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.4;
+}
+
+/* ---------- 7. local ---------- */
+
+.local {
+  padding-top: 0;
+}
+
+.street {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* ---------- 8. maintenance ---------- */
+
+.track {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (width >= 48rem) {
+  .track {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.trackStep {
+  border-top: 3px solid var(--rb-sand);
+  padding-top: 0.875rem;
+}
+
+.trackIndex {
+  font-family: var(--rb-font-display);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  letter-spacing: 0.08em;
+  color: var(--rb-brick);
+}
+
+.trackName {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--rb-font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.trackLine {
+  display: block;
+  margin-top: 0.375rem;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--rb-stone);
+}
+
+.trackAction {
+  margin-top: 2rem;
+}
+
+/* ---------- 9. facts ---------- */
+
+.ledger {
+  margin: 0;
+  display: grid;
+}
+
+@media (width >= 48rem) {
+  .ledger {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 3rem;
+  }
+}
+
+.ledgerRow {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.875rem 0;
+  border-top: 1px solid var(--rb-stone-light);
+}
+
+.ledgerTerm {
+  font-family: var(--rb-font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rb-stone);
+  padding-top: 0.2rem;
+}
+
+.ledgerDetail {
+  margin: 0;
+  font-weight: 700;
+}
+
+.factsNote {
+  margin-top: 1.5rem;
+  color: var(--rb-stone);
+  max-width: 60ch;
+}
+
+/* ---------- 10. closing ---------- */
+
+.closing {
+  background: var(--rb-brick-dark);
+  color: var(--rb-cream);
+}
+
+.closingBody {
+  margin-top: 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.55;
+  color: rgb(247 242 234 / 0.88);
+  max-width: 52ch;
+}
+
+.closingActions {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.75rem;
+}
+
+.closingMeta {
+  color: rgb(247 242 234 / 0.85);
+}
+
+.closingMeta > * + * {
+  margin-top: 0.25rem;
+}

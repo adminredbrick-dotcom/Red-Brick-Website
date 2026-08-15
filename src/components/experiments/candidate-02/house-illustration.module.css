@@ -1,0 +1,106 @@
+/* Candidate 02 — house illustration tones. Every value is a brand token. */
+
+.house {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.day {
+  --house-line: var(--rb-ink);
+  --house-wall: var(--rb-brick);
+  --house-mortar: rgb(112 41 31 / 0.55);
+  --house-roof: var(--rb-brick-dark);
+  --house-glow: var(--rb-cream);
+  --house-door: var(--rb-ink);
+  --house-knob: var(--rb-cream);
+  --house-interior: var(--rb-white);
+  --house-loft: var(--rb-white);
+  --house-slab: var(--rb-sand);
+  --house-thread: var(--rb-brick);
+  --house-axis: var(--rb-stone);
+}
+
+.night {
+  --house-line: var(--rb-cream);
+  --house-wall: var(--rb-brick);
+  --house-mortar: rgb(247 242 234 / 0.22);
+  --house-roof: transparent;
+  --house-glow: var(--rb-sand);
+  --house-door: var(--rb-brick-dark);
+  --house-knob: var(--rb-sand);
+  --house-interior: transparent;
+  --house-loft: transparent;
+  --house-slab: var(--rb-sand);
+  --house-thread: var(--rb-brick);
+  --house-axis: rgb(247 242 234 / 0.4);
+}
+
+.line {
+  fill: none;
+  stroke: var(--house-line);
+}
+
+.mortar {
+  fill: none;
+  stroke: var(--house-mortar);
+}
+
+.wall {
+  fill: var(--house-wall);
+  stroke: var(--house-line);
+}
+
+.wallOpen {
+  fill: var(--house-wall);
+  fill-opacity: 0.55;
+  stroke: var(--house-line);
+}
+
+.roof {
+  fill: var(--house-roof);
+  stroke: var(--house-line);
+}
+
+.glow {
+  fill: var(--house-glow);
+  stroke: var(--house-line);
+}
+
+.bar {
+  fill: none;
+  stroke: var(--house-line);
+}
+
+.door {
+  fill: var(--house-door);
+  stroke: var(--house-line);
+}
+
+.knob {
+  fill: var(--house-knob);
+}
+
+.interior {
+  fill: var(--house-interior);
+  stroke: var(--house-line);
+}
+
+.loft {
+  fill: var(--house-loft);
+}
+
+.slab {
+  fill: var(--house-slab);
+  stroke: var(--house-line);
+}
+
+.thread {
+  fill: none;
+  stroke: var(--house-thread);
+}
+
+.axis {
+  fill: none;
+  stroke: var(--house-axis);
+}
