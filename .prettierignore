@@ -1,0 +1,20 @@
+node_modules
+.next
+out
+coverage
+test-results
+playwright-report
+
+# Handoff source-of-truth files — never reformat
+acceptance/
+assets/
+brand/
+brief/
+data/
+design/
+prompts/
+technical/
+CLAUDE.md
+README-FIRST.md
+CLI-QUICKSTART-WINDOWS.md
+START-FABLE-PROMPT.txt

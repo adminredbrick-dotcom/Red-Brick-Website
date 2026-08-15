@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 530 130" role="img" aria-labelledby="title desc">
+  <title id="title">Red Brick Lettings logo</title>
+  <desc id="desc">House mark beside the words Red Brick Lettings.</desc>
+  <rect width="530" height="130" fill="#1D1B1A"/>
+  <rect x="10" y="15" width="100" height="100" rx="18" fill="#A63D2F"/>
+  <path d="M28 77 L58 49 L78 67 L78 51 L89 51 L89 84 L98 93" fill="none" stroke="#FFFFFF" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="140" y="62" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="1">RED BRICK</text>
+  <text x="140" y="101" fill="#FFFFFF" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="1">LETTINGS</text>
+</svg>

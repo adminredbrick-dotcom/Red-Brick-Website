@@ -1,0 +1,36 @@
+/*
+ * Red Brick Lettings — canonical runtime design tokens.
+ * Ported 1:1 from brand/red-brick-tokens.css (source of truth).
+ * CSS custom properties are the canonical token layer; Tailwind maps onto them.
+ */
+:root {
+  --rb-brick: #a63d2f;
+  --rb-brick-dark: #70291f;
+  --rb-ink: #1d1b1a;
+  --rb-cream: #f7f2ea;
+  --rb-white: #ffffff;
+  --rb-stone: #716b64;
+  --rb-stone-light: #ddd5cb;
+  --rb-sand: #e8d7c6;
+  --rb-attention: #c76b21;
+  --rb-success: #2f6a54;
+  --rb-error: #9a2f2f;
+
+  --rb-font-sans: var(--font-inter), Inter, "Segoe UI", Arial, sans-serif;
+  --rb-font-display: var(--font-roboto-condensed), "Roboto Condensed", "Arial Narrow", Arial,
+    sans-serif;
+
+  --rb-radius-sm: 8px;
+  --rb-radius-md: 12px;
+  --rb-radius-lg: 16px;
+
+  --rb-space-1: 8px;
+  --rb-space-2: 16px;
+  --rb-space-3: 24px;
+  --rb-space-4: 32px;
+  --rb-space-5: 48px;
+  --rb-space-6: 64px;
+  --rb-space-7: 80px;
+
+  --rb-shadow: 0 12px 32px rgb(29 27 26 / 12%);
+}
