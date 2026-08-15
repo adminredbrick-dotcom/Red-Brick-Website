@@ -1,0 +1,197 @@
+/*
+ * The hybrid house — colour scenes, the two static states and the single
+ * authored motion moment (the house settling into place while the story
+ * section is scrolled on desktop).
+ *
+ * Base state = the finished house with lit windows. Motion is layered on
+ * only when scroll-driven animation is supported, the viewport is desktop
+ * width AND the visitor has not asked for reduced motion. Everyone else sees
+ * the finished house throughout.
+ */
+
+.house {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+
+  /* Daylight, on cream (hero poster). */
+  --house-wall: #a63d2f;
+  --house-mortar: rgb(112 41 31 / 0.45);
+  --house-roof: #70291f;
+  --house-ridge: #1d1b1a;
+  --house-chimney: #70291f;
+  --house-trim: #1d1b1a;
+  --house-reveal: #f7f2ea;
+  --house-sill: #e8d7c6;
+  --house-glass: #ffffff;
+  --house-glass-dark: #ffffff;
+  --house-door: #1d1b1a;
+  --house-panel: #70291f;
+  --house-fanlight: #f7f2ea;
+  --house-brass: #e8d7c6;
+  --house-ground: #ddd5cb;
+  --house-step: #ddd5cb;
+}
+
+/* Dusk, on ink (the story stage): warm windows, cream trim, stone roof. */
+.house[data-scene="dusk"] {
+  --house-mortar: rgb(29 27 26 / 0.34);
+  --house-roof: #716b64;
+  --house-ridge: #f7f2ea;
+  --house-chimney: #70291f;
+  --house-trim: #f7f2ea;
+  --house-reveal: rgb(247 242 234 / 0.18);
+  --house-sill: #e8d7c6;
+  --house-glass: #e8d7c6;
+  --house-glass-dark: #4a2a24;
+  --house-door: #70291f;
+  --house-panel: #a63d2f;
+  --house-fanlight: #e8d7c6;
+  --house-brass: #f7f2ea;
+  --house-ground: #e8d7c6;
+  --house-step: rgb(247 242 234 / 0.35);
+}
+
+.glass {
+  fill: var(--house-glass);
+}
+
+.fanlight {
+  fill: var(--house-fanlight);
+}
+
+.ground,
+.walls,
+.roof,
+.windowsLeft,
+.windowsRight,
+.door {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ---- Parts: the house held apart (static still) ---- */
+
+.parts .roof {
+  transform: translateY(-40px);
+}
+
+.parts .walls {
+  transform: translateY(18px);
+  opacity: 0.7;
+}
+
+.parts .windowsLeft {
+  transform: translateX(-30px);
+}
+
+.parts .windowsRight {
+  transform: translateX(30px);
+}
+
+.parts .door {
+  transform: translateY(28px);
+}
+
+.parts .glass {
+  fill: var(--house-glass-dark);
+}
+
+/* ---- Journey: settles into place while the story section is scrolled ---- */
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) and (width >= 64rem) {
+    .journey .walls {
+      animation: hdb-settle-walls linear both;
+      animation-timeline: --hdb-story;
+      animation-range: contain 0% contain 24%;
+    }
+
+    .journey .roof {
+      animation: hdb-settle-roof linear both;
+      animation-timeline: --hdb-story;
+      animation-range: contain 10% contain 36%;
+    }
+
+    .journey .windowsLeft {
+      animation: hdb-settle-left linear both;
+      animation-timeline: --hdb-story;
+      animation-range: contain 30% contain 54%;
+    }
+
+    .journey .windowsRight {
+      animation: hdb-settle-right linear both;
+      animation-timeline: --hdb-story;
+      animation-range: contain 30% contain 54%;
+    }
+
+    .journey .door {
+      animation: hdb-settle-door linear both;
+      animation-timeline: --hdb-story;
+      animation-range: contain 40% contain 62%;
+    }
+
+    .journey .glass {
+      animation: hdb-light-windows linear both;
+      animation-timeline: --hdb-story;
+      animation-range: contain 68% contain 92%;
+    }
+  }
+}
+
+@keyframes hdb-settle-walls {
+  from {
+    transform: translateY(34px);
+    opacity: 0.55;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes hdb-settle-roof {
+  from {
+    transform: translateY(-72px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes hdb-settle-left {
+  from {
+    transform: translateX(-48px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes hdb-settle-right {
+  from {
+    transform: translateX(48px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes hdb-settle-door {
+  from {
+    transform: translateY(44px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes hdb-light-windows {
+  from {
+    fill: var(--house-glass-dark);
+  }
+  to {
+    fill: var(--house-glass);
+  }
+}
