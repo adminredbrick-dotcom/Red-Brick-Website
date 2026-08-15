@@ -1,0 +1,17 @@
+Blind-map commitment — Red Brick landing experiment
+
+The allocation of round-one candidates 01–05 to blind Options A–E is stored
+OUTSIDE the repository at:
+  D:\4. Website\Red-Brick-Landing-Experiments\BLIND-MAP.txt
+
+Only its SHA-256 is committed here so the allocation can be verified later
+without being revealed now.
+
+SHA-256 (of the file bytes, UTF-8, LF line endings):
+  8f5a804f2868fdd1aaaaaeafae16d89e819de3da1271aff491499936bf426305
+
+Verify (PowerShell):
+  Get-FileHash -Algorithm SHA256 -LiteralPath 'D:\4. Website\Red-Brick-Landing-Experiments\BLIND-MAP.txt'
+
+Reviewers: do not open BLIND-MAP.txt, the branch list or the alias source
+files until scoring is complete.
