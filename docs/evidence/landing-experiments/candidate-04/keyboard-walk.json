@@ -1,0 +1,209 @@
+[
+  {
+    "i": 1,
+    "tag": "A",
+    "region": "other",
+    "label": "Skip to main content",
+    "href": "#main-content",
+    "focusVisible": true,
+    "size": "174×29"
+  },
+  {
+    "i": 2,
+    "tag": "A",
+    "region": "header",
+    "label": "Red Brick Lettings — home",
+    "href": "/",
+    "focusVisible": true,
+    "size": "179×44"
+  },
+  {
+    "i": 3,
+    "tag": "A",
+    "region": "header",
+    "label": "Properties",
+    "href": "/properties",
+    "focusVisible": true,
+    "size": "116×44"
+  },
+  {
+    "i": 4,
+    "tag": "A",
+    "region": "header",
+    "label": "Landlords",
+    "href": "/landlords",
+    "focusVisible": true,
+    "size": "111×44"
+  },
+  {
+    "i": 5,
+    "tag": "A",
+    "region": "header",
+    "label": "Tenants",
+    "href": "/tenants",
+    "focusVisible": true,
+    "size": "95×44"
+  },
+  {
+    "i": 6,
+    "tag": "A",
+    "region": "header",
+    "label": "Maintenance",
+    "href": "/maintenance",
+    "focusVisible": true,
+    "size": "139×44"
+  },
+  {
+    "i": 7,
+    "tag": "A",
+    "region": "header",
+    "label": "Insights",
+    "href": "/insights",
+    "focusVisible": true,
+    "size": "94×44"
+  },
+  {
+    "i": 8,
+    "tag": "A",
+    "region": "header",
+    "label": "About",
+    "href": "/about",
+    "focusVisible": true,
+    "size": "78×44"
+  },
+  {
+    "i": 9,
+    "tag": "A",
+    "region": "header",
+    "label": "WhatsApp",
+    "href": "https://wa.me/447300856675",
+    "focusVisible": true,
+    "size": "151×48"
+  },
+  {
+    "i": 10,
+    "tag": "A",
+    "region": "header",
+    "label": "Contact",
+    "href": "/contact",
+    "focusVisible": true,
+    "size": "94×44"
+  },
+  {
+    "i": 11,
+    "tag": "A",
+    "region": "main",
+    "label": "I’m a landlord",
+    "href": "/landlords",
+    "focusVisible": true,
+    "size": "153×48"
+  },
+  {
+    "i": 12,
+    "tag": "A",
+    "region": "main",
+    "label": "I’m looking for a home",
+    "href": "/properties",
+    "focusVisible": true,
+    "size": "225×48"
+  },
+  {
+    "i": 13,
+    "tag": "A",
+    "region": "main",
+    "label": "View properties",
+    "href": "/properties",
+    "focusVisible": true,
+    "size": "174×48"
+  },
+  {
+    "i": 14,
+    "tag": "A",
+    "region": "main",
+    "label": "Already rent with us? Report a repair.",
+    "href": "/maintenance",
+    "focusVisible": true,
+    "size": "325×40"
+  },
+  {
+    "i": 15,
+    "tag": "A",
+    "region": "main",
+    "label": "Request a rental appraisal",
+    "href": "/rental-appraisal",
+    "focusVisible": true,
+    "size": "257×48"
+  },
+  {
+    "i": 16,
+    "tag": "A",
+    "region": "main",
+    "label": "I’m a landlord→",
+    "href": "/landlords",
+    "focusVisible": true,
+    "size": "142×40"
+  },
+  {
+    "i": 17,
+    "tag": "A",
+    "region": "main",
+    "label": "View properties",
+    "href": "/properties",
+    "focusVisible": true,
+    "size": "174×48"
+  },
+  {
+    "i": 18,
+    "tag": "A",
+    "region": "main",
+    "label": "I’m looking for a home→",
+    "href": "/properties",
+    "focusVisible": true,
+    "size": "218×40"
+  },
+  {
+    "i": 19,
+    "tag": "A",
+    "region": "main",
+    "label": "Already rent with us? Report a repair.",
+    "href": "/maintenance",
+    "focusVisible": true,
+    "size": "325×40"
+  },
+  {
+    "i": 20,
+    "tag": "A",
+    "region": "main",
+    "label": "Message us on WhatsApp",
+    "href": "https://wa.me/447300856675",
+    "focusVisible": true,
+    "size": "259×48"
+  },
+  {
+    "i": 21,
+    "tag": "A",
+    "region": "footer",
+    "label": "Message us on WhatsApp",
+    "href": "https://wa.me/447300856675",
+    "focusVisible": true,
+    "size": "272×48"
+  },
+  {
+    "i": 22,
+    "tag": "A",
+    "region": "footer",
+    "label": "Properties",
+    "href": "/properties",
+    "focusVisible": true,
+    "size": "88×36"
+  },
+  {
+    "i": 23,
+    "tag": "A",
+    "region": "footer",
+    "label": "Landlords",
+    "href": "/landlords",
+    "focusVisible": true,
+    "size": "84×36"
+  }
+]
