@@ -1,0 +1,224 @@
+[
+  {
+    "width": 320,
+    "height": 800,
+    "overflow": 0,
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "overflow": 0,
+    "errors": []
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "overflow": 0,
+    "errors": []
+  },
+  {
+    "width": 1024,
+    "height": 768,
+    "overflow": 0,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "height": 900,
+    "overflow": 0,
+    "errors": []
+  },
+  {
+    "reducedMotion": true,
+    "runningAnimations": 0
+  },
+  {
+    "keyboardWalk": [
+      {
+        "tag": "a",
+        "text": "Skip to main content",
+        "href": "#main-content",
+        "inMain": false,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "Red Brick Lettings — home",
+        "href": "/",
+        "inMain": false,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "Properties",
+        "href": "/properties",
+        "inMain": false,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "Landlords",
+        "href": "/landlords",
+        "inMain": false,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "Tenants",
+        "href": "/tenants",
+        "inMain": false,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "Maintenance",
+        "href": "/maintenance",
+        "inMain": false,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "Insights",
+        "href": "/insights",
+        "inMain": false,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "About",
+        "href": "/about",
+        "inMain": false,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "WhatsApp",
+        "href": "https://wa.me/447300856675",
+        "inMain": false,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "Contact",
+        "href": "/contact",
+        "inMain": false,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "I’m a landlord",
+        "href": "/landlords",
+        "inMain": true,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "I’m looking for a home",
+        "href": "/properties",
+        "inMain": true,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "View properties",
+        "href": "/properties",
+        "inMain": true,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "Already rent with us? Report a repair.",
+        "href": "/maintenance",
+        "inMain": true,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "Request a rental appraisal",
+        "href": "/rental-appraisal",
+        "inMain": true,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "I’m a landlord",
+        "href": "/landlords",
+        "inMain": true,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "View properties",
+        "href": "/properties",
+        "inMain": true,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "I’m looking for a home",
+        "href": "/properties",
+        "inMain": true,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "Request a rental appraisal",
+        "href": "/rental-appraisal",
+        "inMain": true,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "View properties",
+        "href": "/properties",
+        "inMain": true,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "Already rent with us? Report a repair.",
+        "href": "/maintenance",
+        "inMain": true,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "Message us on WhatsApp",
+        "href": "https://wa.me/447300856675",
+        "inMain": true,
+        "inFooter": false,
+        "focusVisible": true
+      },
+      {
+        "tag": "a",
+        "text": "Message us on WhatsApp",
+        "href": "https://wa.me/447300856675",
+        "inMain": false,
+        "inFooter": true,
+        "focusVisible": true
+      }
+    ]
+  }
+]
