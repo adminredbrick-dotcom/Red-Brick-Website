@@ -1,0 +1,1007 @@
+/*
+ * Candidate 01 — landing page styles.
+ * Plain CSS on top of the canonical --rb-* tokens (src/styles/tokens.css).
+ * Design tokens local to this candidate are declared on .page and documented
+ * in docs/evidence/landing-experiments/candidate-01/DESIGN-RATIONALE.md.
+ */
+
+.page {
+  /* type scale */
+  --c1-h1: clamp(2.25rem, 2.4vw + 1.6rem, 4.25rem);
+  --c1-h2: clamp(1.875rem, 1.4vw + 1.35rem, 2.75rem);
+  --c1-h3: 1.375rem;
+  --c1-lead: clamp(1.125rem, 0.4vw + 1rem, 1.3125rem);
+  --c1-body: 1.125rem;
+  --c1-label: 1rem;
+  --c1-leading: 1.6;
+
+  /* rhythm */
+  --c1-chapter-y: clamp(3.5rem, 7vw, 6.5rem);
+  --c1-gap: clamp(1.5rem, 3vw, 3rem);
+  --c1-measure: 62ch;
+  --c1-container: 75rem;
+  --c1-gutter: 1rem;
+
+  /* shape */
+  --c1-radius: var(--rb-radius-lg);
+  --c1-radius-sm: var(--rb-radius-sm);
+  --c1-line: var(--rb-stone-light);
+  --c1-shadow: 0 10px 28px rgb(29 27 26 / 10%);
+  --c1-shadow-hover: 0 16px 36px rgb(29 27 26 / 14%);
+
+  /* motion (CSS transitions only; the global reduced-motion rule zeroes them) */
+  --c1-ease: 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  color: var(--rb-ink);
+  font-size: var(--c1-body);
+  line-height: var(--c1-leading);
+}
+
+@media (width >= 48rem) {
+  .page {
+    --c1-gutter: 2rem;
+  }
+}
+
+@media (width >= 80rem) {
+  .page {
+    --c1-gutter: 3rem;
+  }
+}
+
+/* ---------- shared layout ---------- */
+
+.container {
+  width: 100%;
+  max-width: var(--c1-container);
+  margin-inline: auto;
+  padding-inline: var(--c1-gutter);
+}
+
+.chapter {
+  padding-block: var(--c1-chapter-y);
+}
+
+.onCream {
+  background: var(--rb-cream);
+}
+
+.onWhite {
+  background: var(--rb-white);
+  border-block: 1px solid var(--c1-line);
+}
+
+.onSand {
+  background: var(--rb-sand);
+}
+
+.onDeep {
+  background: var(--rb-brick-dark);
+  color: var(--rb-cream);
+}
+
+.chapterHead {
+  max-width: 44rem;
+}
+
+.chapterLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0;
+  color: var(--rb-brick);
+  font-family: var(--rb-font-display);
+  font-size: var(--c1-label);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.onSand .chapterLabel {
+  color: var(--rb-brick-dark);
+}
+
+.onDeep .chapterLabel {
+  color: var(--rb-sand);
+}
+
+.chapterNumber {
+  font-variant-numeric: tabular-nums;
+}
+
+.courseMark {
+  width: 1.75rem;
+  height: 0.66rem;
+  flex: none;
+}
+
+.h2 {
+  margin: 0.875rem 0 0;
+  font-size: var(--c1-h2);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.h3 {
+  margin: 0;
+  font-size: var(--c1-h3);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.lead {
+  max-width: var(--c1-measure);
+  margin: 1.25rem 0 0;
+  font-size: var(--c1-lead);
+  line-height: 1.55;
+}
+
+.body {
+  max-width: var(--c1-measure);
+  margin: 1rem 0 0;
+  color: var(--rb-stone);
+}
+
+.onSand .body,
+.onDeep .body {
+  color: inherit;
+}
+
+.onSand .body {
+  color: var(--rb-ink);
+}
+
+.onDeep .body {
+  color: rgb(247 242 234 / 88%);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- buttons and links ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.375rem;
+  border-radius: var(--c1-radius-sm);
+  border: 2px solid var(--rb-brick);
+  background: var(--rb-brick);
+  color: var(--rb-white);
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color var(--c1-ease),
+    border-color var(--c1-ease),
+    transform var(--c1-ease);
+}
+
+.btn:hover {
+  background: var(--rb-brick-dark);
+  border-color: var(--rb-brick-dark);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btnQuiet {
+  background: transparent;
+  border-color: var(--rb-ink);
+  color: var(--rb-ink);
+}
+
+.btnQuiet:hover {
+  background: var(--rb-sand);
+  border-color: var(--rb-ink);
+}
+
+.btnLight {
+  background: var(--rb-white);
+  border-color: var(--rb-white);
+  color: var(--rb-ink);
+  min-height: 3.5rem;
+  padding-inline: 1.75rem;
+  font-size: 1.125rem;
+}
+
+.btnLight:hover {
+  background: var(--rb-sand);
+  border-color: var(--rb-sand);
+}
+
+.btnIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: none;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  gap: 0.375rem;
+  color: var(--rb-brick);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+  border-radius: 4px;
+  transition: color var(--c1-ease);
+}
+
+.textLink:hover {
+  color: var(--rb-brick-dark);
+}
+
+.onDeep .textLink {
+  color: var(--rb-cream);
+}
+
+/* ---------- 1. hero ---------- */
+
+.hero {
+  padding-block: clamp(2.5rem, 6vw, 5.5rem) 0;
+  overflow: hidden;
+}
+
+.heroGrid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: end;
+}
+
+@media (width >= 64rem) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    column-gap: clamp(2rem, 4vw, 4rem);
+  }
+}
+
+.heroCopy {
+  padding-bottom: 0;
+}
+
+@media (width >= 64rem) {
+  .heroCopy {
+    padding-bottom: clamp(2rem, 4vw, 3.5rem);
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 0;
+  color: var(--rb-brick);
+  font-family: var(--rb-font-display);
+  font-size: var(--c1-label);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.h1 {
+  margin: 1rem 0 0;
+  max-width: 14ch;
+  font-size: var(--c1-h1);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.h1 em {
+  font-style: normal;
+  color: var(--rb-brick);
+}
+
+.heroSupporting {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: var(--c1-lead);
+  line-height: 1.55;
+  color: var(--rb-stone);
+}
+
+.choicePrompt {
+  margin: 2rem 0 0;
+  font-weight: 700;
+}
+
+.choices {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (width >= 40rem) {
+  .choices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding: 1.125rem 1.25rem 1.25rem;
+  background: var(--rb-white);
+  border: 1px solid var(--c1-line);
+  border-radius: var(--c1-radius);
+  box-shadow: 0 1px 0 rgb(29 27 26 / 4%);
+  transition:
+    transform var(--c1-ease),
+    box-shadow var(--c1-ease),
+    border-color var(--c1-ease);
+}
+
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0.375rem;
+  border-radius: var(--c1-radius) 0 0 var(--c1-radius);
+  background: var(--rb-brick);
+}
+
+.tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--rb-brick);
+  box-shadow: var(--c1-shadow-hover);
+}
+
+.tile:has(.tileLink:focus-visible) {
+  border-color: var(--rb-ink);
+}
+
+.tileLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  color: var(--rb-ink);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+/* Whole tile is the hit area; the accessible name stays the exact label. */
+.tileLink::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.tileLink:focus-visible {
+  outline-offset: 5px;
+}
+
+.tileArrow {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex: none;
+  color: var(--rb-brick);
+  transition: transform var(--c1-ease);
+}
+
+.tile:hover .tileArrow {
+  transform: translateX(3px);
+}
+
+.tileNote {
+  margin: 0;
+  color: var(--rb-stone);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.quickLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.125rem 1.75rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quickLinks li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.heroArt {
+  position: relative;
+  margin: 0 auto;
+  width: min(100%, 22rem);
+  line-height: 0;
+}
+
+@media (width >= 64rem) {
+  .heroArt {
+    width: 100%;
+    max-width: 30rem;
+    justify-self: end;
+  }
+}
+
+.heroHouse {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.heroBase {
+  height: 0.75rem;
+  background: var(--rb-sand);
+  border-top: 3px solid var(--rb-stone-light);
+}
+
+/* ---------- 2. introduction ---------- */
+
+.introGrid {
+  display: grid;
+  gap: var(--c1-gap);
+}
+
+@media (width >= 64rem) {
+  .introGrid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+  }
+
+  .introGrid .lead {
+    margin-top: 0;
+  }
+}
+
+.introFacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.introFacts li {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.25rem 0.875rem;
+  border: 1px solid var(--c1-line);
+  border-radius: 999px;
+  background: var(--rb-cream);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* ---------- 3. story placeholder ---------- */
+
+.storyFigure {
+  margin: 2rem 0 0;
+}
+
+.storyFrame {
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 3rem) 0;
+  border-radius: var(--c1-radius);
+  background: var(--rb-sand);
+  overflow: hidden;
+}
+
+.storyStage {
+  position: relative;
+  margin: 0 auto;
+  width: min(100%, 34rem);
+  line-height: 0;
+}
+
+.storyHouse {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.storyGround {
+  height: 0.75rem;
+  margin: 0 calc(-1 * clamp(1rem, 4vw, 3rem));
+  background: var(--rb-stone-light);
+}
+
+.stageTrack {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1rem;
+  margin: 0;
+  padding: 1.5rem 0 1.75rem;
+  list-style: none;
+  counter-reset: stage;
+  background: var(--rb-sand);
+}
+
+@media (width >= 40rem) {
+  .stageTrack {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.stageStop {
+  counter-increment: stage;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-weight: 700;
+}
+
+.stageStop::before {
+  content: counter(stage, decimal-leading-zero);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+  border-radius: 50%;
+  border: 2px solid var(--rb-brick-dark);
+  color: var(--rb-brick-dark);
+  font-family: var(--rb-font-display);
+  font-size: 0.9375rem;
+  letter-spacing: 0.02em;
+}
+
+.storyCaption {
+  margin: 1rem 0 0;
+  color: var(--rb-stone);
+  font-size: 1rem;
+}
+
+/* ---------- 4. paths ---------- */
+
+.pathGrid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+@media (width >= 48rem) {
+  .pathGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+.pathCard {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid var(--c1-line);
+  border-top: 4px solid var(--rb-brick);
+  border-radius: var(--c1-radius);
+  background: var(--rb-cream);
+}
+
+.pathCard .chapterLabel {
+  color: var(--rb-brick);
+}
+
+.pathCard .h3 {
+  margin-top: 0.75rem;
+  font-size: clamp(1.375rem, 1vw + 1rem, 1.625rem);
+}
+
+.pathCard .body {
+  margin-top: 0.875rem;
+}
+
+.stages {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem 0.25rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--rb-font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rb-brick-dark);
+}
+
+.stages li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.stages li + li::before {
+  content: "→";
+  margin: 0 0.5rem;
+  color: var(--rb-stone);
+  font-family: var(--rb-font-sans);
+}
+
+.pathAction {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+/* ---------- 5. let, manage, care ---------- */
+
+.journeyGrid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2.25rem;
+}
+
+@media (width >= 48rem) {
+  .journeyGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.journeyItem {
+  padding-top: 1.25rem;
+  border-top: 4px solid var(--rb-brick);
+}
+
+.journeyGlyph {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: var(--c1-radius-sm);
+  background: var(--rb-white);
+  color: var(--rb-brick);
+}
+
+.journeyGlyph svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.journeyName {
+  display: block;
+  margin: 1rem 0 0;
+  color: var(--rb-brick);
+  font-family: var(--rb-font-display);
+  font-size: var(--c1-label);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.journeyItem .h3 {
+  margin-top: 0.375rem;
+}
+
+.journeyItem .body {
+  margin-top: 0.625rem;
+}
+
+/* ---------- 6. house journey ---------- */
+
+.moments {
+  position: relative;
+  display: grid;
+  gap: 1.75rem;
+  margin: 2.25rem 0 0;
+  padding: 0 0 0 4rem;
+  list-style: none;
+  counter-reset: moment;
+}
+
+.moments::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  left: 1.5rem;
+  width: 2px;
+  background: var(--c1-line);
+}
+
+.moment {
+  position: relative;
+  counter-increment: moment;
+}
+
+.momentGlyph {
+  position: absolute;
+  top: -0.25rem;
+  left: -4rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 2px solid var(--rb-brick);
+  background: var(--rb-white);
+  color: var(--rb-brick);
+}
+
+.momentGlyph svg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.momentIndex {
+  display: block;
+  color: var(--rb-brick);
+  font-family: var(--rb-font-display);
+  font-size: var(--c1-label);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.moment .h3 {
+  margin-top: 0.25rem;
+  font-size: 1.25rem;
+}
+
+.moment .body {
+  margin-top: 0.5rem;
+  font-size: 1.0625rem;
+}
+
+@media (width >= 64rem) {
+  .moments {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.5rem;
+    padding: 4.25rem 0 0;
+  }
+
+  .moments::before {
+    top: 1.5rem;
+    bottom: auto;
+    left: 1.5rem;
+    right: 1.5rem;
+    width: auto;
+    height: 2px;
+  }
+
+  .momentGlyph {
+    top: -4.25rem;
+    left: 0;
+  }
+}
+
+/* ---------- 7. local ---------- */
+
+.local {
+  padding-bottom: 0;
+}
+
+.localGrid {
+  display: grid;
+  gap: var(--c1-gap);
+}
+
+@media (width >= 64rem) {
+  .localGrid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: start;
+  }
+}
+
+.localPoints {
+  display: grid;
+  gap: 0.875rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (width >= 64rem) {
+  .localPoints {
+    margin-top: 3.25rem;
+  }
+}
+
+.localPoints li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-weight: 700;
+}
+
+.localPoints .courseMark {
+  margin-top: 0.55rem;
+  color: var(--rb-brick-dark);
+}
+
+.terrace {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  line-height: 0;
+}
+
+.terraceSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 20rem;
+}
+
+/* ---------- 8. maintenance ---------- */
+
+.steps {
+  display: grid;
+  gap: 1rem;
+  margin: 2.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+@media (width >= 40rem) {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 64rem) {
+  .steps {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.step {
+  counter-increment: step;
+  padding: 1.25rem 1.25rem 1.375rem;
+  border-radius: var(--c1-radius);
+  background: var(--rb-cream);
+}
+
+.stepNumber {
+  display: block;
+  color: var(--rb-brick);
+  font-family: var(--rb-font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.stepNumber::before {
+  content: counter(step, decimal-leading-zero);
+}
+
+.step .h3 {
+  margin-top: 0.625rem;
+  font-size: 1.25rem;
+}
+
+.step .body {
+  margin-top: 0.375rem;
+  font-size: 1rem;
+}
+
+.maintenanceAction {
+  margin-top: 2rem;
+}
+
+/* ---------- 9. trust ---------- */
+
+.trustList {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2.25rem 0 0;
+}
+
+@media (width >= 48rem) {
+  .trustList {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+.trustItem {
+  padding: 1.5rem;
+  border: 1px solid var(--c1-line);
+  border-radius: var(--c1-radius);
+  background: var(--rb-white);
+}
+
+.trustItem dt {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.trustItem .courseMark {
+  color: var(--rb-brick);
+}
+
+.trustItem dd {
+  margin: 0.625rem 0 0;
+  color: var(--rb-stone);
+}
+
+.trustMeetings {
+  margin: 1.5rem 0 0;
+  font-weight: 700;
+}
+
+/* ---------- 10. closing ---------- */
+
+.closing {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+
+.closingGrid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (width >= 64rem) {
+  .closingGrid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: end;
+  }
+}
+
+.closing .h2 {
+  color: var(--rb-cream);
+}
+
+.closingActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+@media (width >= 64rem) {
+  .closingActions {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.closingNumber {
+  margin: 0;
+  color: rgb(247 242 234 / 88%);
+}
+
+.closingNumber strong {
+  color: var(--rb-cream);
+}
+
+.closingMeetings {
+  margin: 0;
+  color: rgb(247 242 234 / 78%);
+  font-size: 1rem;
+}
