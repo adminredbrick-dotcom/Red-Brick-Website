@@ -9,6 +9,8 @@ interface WhatsAppLinkProps {
   variant?: "button" | "icon" | "inline";
   /** Override the visible label for the button variant. */
   label?: string;
+  /** Optional prefilled message (e.g. a listing reference). */
+  message?: string;
   className?: string;
 }
 
@@ -16,8 +18,13 @@ interface WhatsAppLinkProps {
  * The confirmed primary contact. Always displays the UK number format while
  * linking with the international wa.me format (DoD: Navigation).
  */
-export function WhatsAppLink({ variant = "button", label, className }: WhatsAppLinkProps) {
-  const href = whatsappHref();
+export function WhatsAppLink({
+  variant = "button",
+  label,
+  message,
+  className,
+}: WhatsAppLinkProps) {
+  const href = whatsappHref(undefined, message);
 
   if (variant === "icon") {
     return (
