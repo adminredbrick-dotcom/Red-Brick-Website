@@ -31,7 +31,7 @@ Build an original, warm, cinematic and highly usable lettings website for Red Br
 - Next.js App Router, React and strict TypeScript
 - Tailwind CSS plus shadcn/ui and Radix primitives
 - React Three Fiber and Drei for one 3D house story
-- GSAP and ScrollTrigger as the only primary choreography engine
+- GSAP (with ScrollTrigger for progress only — never pinning or scroll hijack) as the only primary choreography engine
 - Sanity for editable pages, listings and articles
 - MapTiler SDK / MapLibre for the Peterborough map
 - Vitest and Playwright for important behaviours
@@ -67,14 +67,38 @@ No separate area directory at launch. Peterborough insight belongs in search, pr
 
 ## Experience rules
 
-- Hero: fast orientation, audience choice and direct actions
-- 3D house: later on the homepage, never a barrier
-- Landlord story: Prepare → Let → Manage → Care
-- Tenant story: Find → Understand → Move → Live
+- Concept: “Igloo’s memorable house-building story outside; Resider’s clear letting journeys inside.”
+- Homepage order: cinematic hero → audience choice → local introduction with a scroll-led media story → personalised 3D house journey → properties/map preview → landlord appraisal and tenant cost tools → maintenance → insights → final WhatsApp action
+- Hero: fast orientation, audience choice and direct actions; poster first, one short film that plays once and holds its last frame — never loops
+- Audience choice: “I’m a landlord” / “I’m looking for a home” personalise the homepage story and keep the visitor on the page; “View properties” may go straight to `/properties`; separate labelled links reach the full Landlords and Tenants pages; a visible Switch story control; without JavaScript or a choice the complete neutral HTML story is served
+- 3D house: later on the homepage, one bounded chapter, never a barrier
+- Landlord story (chapter keys prepare · let · manage · care): Preparing the property → Finding a tenant → Managing the tenancy → Continuing property care
+- Tenant story (chapter keys find · understand · live · help): Finding a suitable home → Understanding the move → Living in the property → Getting maintenance help
 - Property search: practical list/map experience; 2D first, optional 3D
 - Rental result: “Indicative rental estimate”, never a guaranteed valuation
 - Maintenance: Report → Triage → Arrange → Update → Resolve
 - Blog: landlord, tenant, Peterborough, maintenance and property guidance
+- Story chapters and Let / Manage / Care are navigation and storytelling labels; they must not become detailed service claims. Use “Ask us about arranging a meeting” until meeting arrangements are confirmed
+
+## 3D chapter rules (binding)
+
+- One bounded homepage chapter; CSS sticky positioning only — no page hijack, no ScrollTrigger pinning
+- Server-rendered HTML and a static illustration render first and stay visible until the first successful canvas frame
+- Load R3F/GSAP only when the chapter approaches the viewport and the device is eligible; never download or initialise 3D for reduced-motion, Save-Data, missing WebGL or mobile/static-default visitors (mobile defaults to the static chapter sequence)
+- The canvas is decorative: `aria-hidden`, outside the tab order, no OrbitControls or pointer capture; all copy, progress, switching and actions stay HTML
+- Demand-rendered scene invalidated on scroll; error boundary, dynamic-import fallback and one-way WebGL context-loss fallback
+- Skip story is a real anchor that moves focus to the heading after the chapter
+- Chapter length starts at ~240–300 vh, capped at 320 vh unless testing proves otherwise
+- Previs: boxes, planes, flat materials, one light — no GLB, textures, decoders, shadows, HDRI, post-processing or final film
+- Budgets (3D chunk ≤ 350 KB gz etc.) are targets to measure, not facts
+
+## Media rights and labelling
+
+- Third-party reference captures (Igloo, Resider, Dribbble) stay local and untracked; never commit or publish them
+- Stock footage is “illustrative stock footage”; never describe it as Peterborough, a Red Brick-managed home, an available property or a real client outcome
+- Realistic generated media carries the public label: “Illustrative brand film created with AI — not an available property.”
+- One active video at a time; poster-only under reduced motion and Save-Data; mobile defaults to the poster
+- Every media asset (source, page, creator, licence, intended use, derivatives) is recorded in `docs/MEDIA-ASSET-REGISTER.md` before use; 4K originals are source masters and are never copied into `public/`
 
 ## Never invent or imply
 

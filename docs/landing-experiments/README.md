@@ -72,3 +72,12 @@ No new dependencies, no package.json changes, no global CSS/token/config changes
 existing routes, header, footer or business facts, no remote images, no live maps/WebGL/video/GSAP
 in round one, no remote configured, nothing pushed. The cancelled whole-site Phase 2 archive
 (`archive/phase2-whole-site`) is not inspected, copied or cherry-picked.
+
+## Planned contract change (recorded 17/08/2026 — not yet applied)
+
+The shared contract rejects `<canvas>` and `<video>` and the hybrid spec asserts a section
+count. During the 3D previs phase an *enhanced-media* option will be introduced **for the hybrid
+only** (video with poster / muted / no loop; a decorative canvas that never exists under reduced
+motion), Candidates 01–05 keep the strict default, and section-count expectations are replaced
+with required-landmark expectations. Details and the reduced-motion proof list:
+`docs/REFERENCE-REPORT.md` §7. No test is changed until that phase is approved.

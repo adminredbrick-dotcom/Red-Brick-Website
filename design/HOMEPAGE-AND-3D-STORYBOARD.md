@@ -1,268 +1,247 @@
-# Homepage and 3D house storyboard
+# Homepage and 3D house storyboard — v3 (17/08/2026)
 
-This is the starting creative direction. Refine it in low-detail browser prototypes before producing an expensive final video or 3D model.
+Supersedes v2 (same day) and v1 (kept as `HOMEPAGE-AND-3D-STORYBOARD-v1-superseded.md`).
+Incorporates the owner's conditional approval of the reference report and the approval of the
+Pexels stock-footage sequence. Companion documents: `docs/REFERENCE-REPORT.md`,
+`docs/MEDIA-ASSET-REGISTER.md`, `docs/OWNER-DECISIONS.md`, `CLAUDE.md`.
+
+Still the rule: refine in low-detail browser prototypes before any final model or master
+transcode. All headings and lines below are **prototype copy / storyboard labels** until the
+owner approves them; only `brief/BUSINESS-FACTS-AND-COPY.md` is approved copy.
+
+## Concept statement
+
+**Cinematic hero → audience choice → local introduction with a scroll-led media story →
+personalised 3D house journey → properties/map preview → landlord appraisal and tenant cost
+tools → maintenance → insights → final WhatsApp action.**
+
+This preserves the original concept: *"Igloo's memorable house-building story outside;
+Resider's clear letting journeys inside."*
 
 ## Overall rhythm
 
 ```text
-Clear choice
-    ↓
-Local credibility
-    ↓
-Memorable house-building story
-    ↓
-Useful Peterborough map/property experience
-    ↓
-Practical landlord/tenant tools
-    ↓
-Maintenance proof
-    ↓
-Helpful insight
-    ↓
-One clear next action
+1  Cinematic hero                 cream + film   poster first; one film, plays once, holds; three live actions
+2  Audience choice                —              sets landlord/tenant story for this session; stays on the page
+3  Local introduction +
+   scroll-led media story         white/ink      approved intro copy + five illustrative stock clips, one active
+   (choice check)                 cream          only if nothing chosen; neutral story otherwise
+4  3D house journey               ink            one bounded chapter, four beats, Skip story
+5  Properties / map preview       white          list-first cards + static map poster (demo data, labelled)
+6  Appraisal + move-in costs      sand           "What could your property rent for?" · tenant cost preview
+7  Maintenance                    white          Report → Triage → Arrange → Update → Resolve
+8  Insights                       cream          latest landlord / tenant / Peterborough articles
+9  Final contact action           deep brick     WhatsApp
 ```
 
-The beginning should feel confident and spacious. The 3D chapter creates the emotional high point. The second half becomes calmer and increasingly practical.
-
-## Hero film
-
-### Composition
-
-- Full-width media with warm cream/dark overlays only where needed for text contrast
-- Logo/header remain crisp HTML
-- Text block sits within the central safe width, not hard against an edge
-- Audience actions appear as two substantial choices, not tiny pills
-- Current-tenant repair route is immediately visible but subordinate
-
-### Suggested 12–18 second master film
-
-The film should feel observational, local and lived-in—not luxury stock footage.
-
-Possible shots:
-
-1. Soft morning light across real brick or a Peterborough residential street
-2. A clean property exterior with no readable house number or vehicle plate
-3. Curtains/window light changing in a cared-for room
-4. A maintenance professional completing a non-sensitive repair detail
-5. A clear, tidy living space with natural wear rather than staged luxury
-6. A final warm exterior/window-light moment
-
-Do not show documents, keys/security information, private possessions, tenants or staff without written permission. The film must work silently.
-
-### Scroll behaviour
-
-- First screen is immediately readable before media loads
-- The film advances or transitions gently over roughly 120–180vh
-- Do not pin the hero so long that the visitor cannot reach the site
-- At the end, the image softens into cream and introduces the trust section
-- Reduced motion uses one approved poster
-- Mobile uses a separately framed, shorter source
-
-## 3D house art direction
-
-### Look
-
-- Original stylised British residential house, not a mansion
-- Three-quarter/isometric camera, warm and architectural
-- Brick `#A63D2F`, cream interior planes, ink/dark structural details and sand accents
-- Soft daylight, restrained shadows and lightly rounded geometry
-- A cutaway/dollhouse logic without toy-like people
-- No house number, branded vehicle, keys, documents or security detail
-- No glossy photorealism, chrome, neon, purple or gaming effects
-
-### Model layers
-
-Create the model so these groups can animate independently:
-
-- Foundation/base
-- Exterior brick walls
-- Roof sections
-- Front door and windows
-- Interior floor/wall planes
-- Kitchen/living/bedroom suggestion pieces
-- Warm window/interior lights
-- Small maintenance/care details
-- Map/locality ground plane
-
-Keep the asset modular and low-detail enough for mobile fallback renders.
-
-## Section layout
-
-Desktop:
-
-- Scene occupies roughly 52–58% of the viewport
-- Story copy occupies the remaining readable column
-- Copy remains ordinary document content; the scene can be sticky for a limited chapter
-- A small progress label states the current chapter
-- “Skip the story” and “Switch view” remain available
-
-Mobile:
-
-- Static/short-loop house image above each chapter, or a lightweight sticky image taking no more than 40–45% of the viewport
-- Ordinary vertical copy and controls
-- No long pinning
-
-## Entry state — the moving parts
-
-The house arrives as several calm exploded layers. It should not look broken or distressed. The message is that property management contains many connected responsibilities.
-
-Copy direction:
-
-**A property has a lot of moving parts.**  
-We bring the important ones into one clearer journey.
-
-The selected Landlord or Tenant route determines the next four beats.
-
-## Landlord story
-
-### 1. Prepare
-
-Visual:
-
-- Foundation and primary walls align
-- Camera settles from a slightly wider view
-- A subtle outline travels around the structure to suggest readiness
-
-Copy:
-
-**Start with a clear picture.**  
-Understand the property, its condition and the next steps before it reaches the market.
-
-### 2. Let
-
-Visual:
-
-- Door, windows and outer brick finish move into place
-- The exterior becomes presentable and warmly lit
-- One restrained listing-card shape appears outside the scene, in HTML
-
-Copy:
-
-**Present the home clearly.**  
-Give prospective tenants the information they need to make an informed enquiry.
-
-### 3. Manage
-
-Visual:
-
-- Interior planes align in an orderly sequence
-- A simple line connects the rooms, representing communication and coordination
-- Avoid literal dashboards floating inside the 3D canvas
-
-Copy:
-
-**Keep the tenancy connected.**  
-Good management depends on clear administration, communication and follow-through.
-
-### 4. Care
-
-Visual:
-
-- One small component is removed, restored and returned
-- Warm light passes through the house as the final structure settles
-
-Copy:
-
-**Look after what happens next.**  
-Maintenance coordination and ongoing attention help keep a property working as it should.
-
-### 5. Confidence
-
-Visual:
-
-- Complete house on a warm Peterborough ground plane
-- Camera pulls back slightly; movement ends
-
-Copy:
-
-**Your property is in good hands.**
-
-CTA: **Request a rental appraisal**
-
-## Tenant story
-
-### 1. Find
-
-Visual:
-
-- A simple Peterborough ground plane and a few location markers appear
-- The house resolves from one of the markers
-
-Copy:
-
-**Find the right next step.**  
-Search clearly and understand what is actually available.
-
-### 2. Understand
-
-Visual:
-
-- House opens as a calm cutaway
-- Key rooms become visible
-- Cost/feature information appears in nearby HTML cards
-
-Copy:
-
-**Know the home before you commit.**  
-See the important features, costs and practical information in one place.
-
-### 3. Move
-
-Visual:
-
-- Front door opens and a few simple neutral boxes settle inside
-- Avoid literal people or personal details
-
-Copy:
-
-**Make the move clearer.**  
-Understand the steps and what will be needed along the way.
-
-### 4. Live
-
-Visual:
-
-- Interior lights turn on room by room
-- One simple care/repair pathway animates without signalling an emergency
-
-Copy:
-
-**Know how to reach us.**  
-Clear maintenance and communication routes should continue after move-in.
-
-### 5. At ease
-
-Visual:
-
-- Complete warm home; all movement settles
-
-Copy:
-
-**A good property should feel easy to live in.**
-
-CTA: **View available properties**
-
-## Shared/no-selection story
-
-If a visitor has not chosen a route, use four neutral chapters:
-
-1. Property
-2. People
-3. Communication
-4. Care
-
-End with both audience actions. Do not force a choice before content is available.
-
-## Motion parameters
-
-- Four or five meaningful states, not dozens of decorative animations
-- Scene progress follows a bounded chapter timeline
-- Transitions ease smoothly; no bouncing or elastic movement
-- Camera travel stays modest to avoid motion sickness
-- Text changes at stable chapter thresholds, not every scroll pixel
-- Reduced-motion state displays all chapter copy in a normal vertical sequence with one static house render
+The beginning is confident and spacious; the media story and 3D chapter are the emotional
+high point; the second half is calm, practical HTML — the D+B hybrid rhythm extended with the
+Resider-inspired previews from the original concept.
+
+---
+
+## 1. Cinematic hero
+
+**Purpose:** orientation in one screen. Film is a presentation layer; it never delays or
+obscures the actions.
+
+Approved film behaviour
+- **One ~10-second exterior property film, one uninterrupted slow camera movement.** Source:
+  Pexels 12217554 (hero/context clip, trimmed to a single move; see the register). Label:
+  *illustrative stock footage*.
+- Poster displayed first (the LCP element is the poster or the H1, never a canvas).
+- Video may autoplay **muted** after the usable shell has loaded (`preload="none"`,
+  `muted playsinline`, no controls, no sound).
+- **Plays once and holds the final frame. Never loops.**
+- Reduced motion and Save-Data receive the poster only.
+- Mobile defaults to the poster; a separately approved, separately cropped mobile clip is
+  optional and only on fast connections.
+- The earlier AI clip `Using_the_approved_Red_Brick_V (1).mp4` (in `C:\Users\moeen\Downloads`)
+  is a **prototype motion reference only** — its two-door architecture, 720p resolution and
+  visible platform mark rule it out as a final master or as a 3D reference. Any future
+  AI-generated hero must use the corrected one-home reference still and carry the public label
+  *"Illustrative brand film created with AI — not an available property."*
+
+Composition — desktop (≥ 64 rem)
+- Text column left within the safe width: eyebrow, tagline (split-colour), approved supporting
+  sentence, "Where would you like to start?", then the three actions as large HTML links:
+  **I'm a landlord** · **I'm looking for a home** · **View properties**. Beneath, smaller and
+  clearly labelled: *Landlords page* · *Tenants page* · *Request a rental appraisal* ·
+  *Already rent with us? Report a repair.*
+- Film right (~55 % width) in a rounded frame (16–24 px). At ≥ 90 rem the film may sit
+  full-bleed behind a cream text panel; text contrast never depends on frame content.
+- Header/logo remain crisp HTML above.
+
+Composition — mobile (< 64 rem)
+- DOM and visual order: text and the three actions first, poster below. Actions ≥ 44 px.
+
+## 2. Audience choice
+
+- **I'm a landlord** sets the *landlord* homepage story; **I'm looking for a home** sets the
+  *tenant* homepage story. Both keep the visitor **on the homepage** and scroll them into the
+  story; the selected 3D journey follows.
+- **View properties** may navigate straight to `/properties`.
+- Separate, clearly labelled links lead to the complete `/landlords` and `/tenants` pages.
+- A visible **Switch story** control stays available in the media story, before the 3D chapter
+  and inside it.
+- Storage: only the explicit landlord/tenant preference, for the current session
+  (`sessionStorage`; optionally mirrored as `?story=landlord|tenant` for sharing). Not connected
+  to analytics, advertising, CRM profiling or any persistent identifier.
+- Without JavaScript or without a selection: the complete **neutral HTML story** is served
+  (all four neutral beats and both audience actions), so the page reads fully with no script.
+
+## 3. Local introduction and scroll-led media story
+
+- Opens with the approved company introduction and the three verifiable facts as quiet chips
+  (since 2012 · Peterborough · *Ask us about arranging a meeting*).
+- Then five stock clips in a scroll-led sequence, one section per clip, each with a short HTML
+  caption/heading beside it. **One active video at a time**: a clip starts (muted, plays once,
+  holds) only when its section is mostly in view and the previous clip has been paused; posters
+  otherwise. Every clip is captioned *illustrative stock footage* and never described as
+  Peterborough, a Red Brick-managed home, an available property or a client outcome.
+
+| Beat | Clip (Pexels ID) | Storyboard role | Copy direction (prototype) |
+|---|---|---|---|
+| a | 14807040 | Doorway transition — crossing the threshold | *Every letting starts at the front door.* |
+| b | 14807010 (alt 14806961) | Lounge / home — what a cared-for home feels like | *A good home should feel easy to live in.* |
+| c | 14806944 (alt 14806923) | Preparation / kitchen — getting a property ready | *Preparation shows in the details.* |
+| d | 14807056 | Readiness / bathroom — the practical checks | *Ready for the next tenancy.* |
+| e | 14806975 | Warm conclusion — hand-off into the 3D chapter | *Now let's follow one house through the journey.* |
+
+Excluded from the main narrative: the cat clip, the mirrored-bedroom clip and the blue-bedroom
+clip (recorded in the register as not used).
+
+Behaviour: desktop — rounded frame ~55 % width, sticky within its own beat only, poster →
+play once → hold; mobile — poster only by default (optional approved mobile clip on fast
+connections); reduced motion / Save-Data — posters only, no crops. Choice check at the end of
+this section (only if no story chosen), then the surface turns to ink.
+
+## 4. Interactive 3D-house chapter
+
+### Look (reaffirmed)
+Original stylised **British** red-brick house — terrace/semi, not a mansion; warm and
+architectural; not futuristic, glossy, cartoonish or a development advert. Brick `#A63D2F`,
+cream interior planes, ink structure, sand accents; soft daylight → warm dusk window light;
+lightly rounded geometry; cutaway logic without toy people; no house number, vehicle, keys,
+documents or security detail; no chrome, neon, purple or gaming effects. Reference boards
+(AI or photographic) are visual reference only and are logged in the register.
+
+### Model layers (animate independently, later phase)
+Foundation/base · exterior brick walls · roof sections · front door and windows · interior
+planes · room suggestion pieces · warm lights · small care details · ground plane.
+
+### Layout
+Desktop: scene ~52–58 % of the viewport, **CSS sticky** within the chapter only; copy in the
+remaining column as ordinary document text; a small HTML progress label ("Chapter 2 of 4 —
+Finding a tenant"); **Skip story** and **Switch story** always visible in HTML.
+Mobile: **static chapter sequence by default** (one image per beat above stacked copy);
+a simplified scene only if a later device check proves it worthwhile. No long pinning.
+
+### Entry state — the moving parts
+The house arrives as calm exploded layers (never broken or distressed).
+Copy: **A property has a lot of moving parts.** / We bring the important ones into one clearer
+journey.
+
+### Landlord story (chapter keys prepare · let · manage · care)
+Preparing the property → Finding a tenant → Managing the tenancy → Continuing property care
+
+| Beat | Chapter name | Visual | Copy (prototype) |
+|---|---|---|---|
+| 1 | **Preparing the property** | Foundation and walls align; a subtle outline travels round the structure | *Start with a clear picture.* Understand the property, its condition and the next steps before it reaches the market. |
+| 2 | **Finding a tenant** | Door, windows and outer brick move into place; the exterior becomes presentable and lit; one restrained listing-card shape appears in HTML beside the scene | *Present the home clearly.* Give prospective tenants the information they need to make an informed enquiry. |
+| 3 | **Managing the tenancy** | Interior planes align in order; a simple line links the rooms (communication and coordination); no dashboards in the canvas | *Keep the tenancy connected.* Good management depends on clear administration, communication and follow-through. |
+| 4 | **Continuing property care** | One small component is removed, restored and returned; warm light passes through as the structure settles | *Look after what happens next.* Maintenance coordination and ongoing attention help keep a property working as it should. |
+| Close | — | Complete house on a warm ground plane; camera pulls back slightly; motion ends | *Your property is in good hands.* → **Request a rental appraisal** |
+
+### Tenant story (chapter keys find · understand · live · help)
+Finding a suitable home → Understanding the move → Living in the property → Getting maintenance help
+
+| Beat | Chapter name | Visual | Copy (prototype) |
+|---|---|---|---|
+| 1 | **Finding a suitable home** | Simple Peterborough ground plane with a few markers; the house resolves from one | *Find the right next step.* Search clearly and understand what is actually available. |
+| 2 | **Understanding the move** | House opens as a calm cutaway; key rooms visible; costs/features in HTML cards beside it | *Know the home before you commit.* See the important features, costs and practical information in one place. |
+| 3 | **Living in the property** | Front door opens; a few neutral boxes settle inside; interior lights come on room by room | *Make the move clearer.* Understand the steps and what will be needed along the way. |
+| 4 | **Getting maintenance help** | One simple care/repair pathway animates without signalling an emergency | *Know how to reach us.* Clear maintenance and communication routes should continue after move-in. |
+| Close | — | Complete warm home; all movement settles | *A good property should feel easy to live in.* → **View properties** |
+
+### Neutral story (no choice made or no JavaScript)
+Four neutral beats — Property · People · Communication · Care — ending with both audience
+actions. This is the complete server-rendered default.
+
+These are navigation and storytelling concepts. No guarantees, service claims, response times
+or operational details may be introduced through them; Let / Manage / Care stay labels.
+
+### Motion parameters
+Four or five meaningful states; progress follows the chapter's own scroll range; text changes at
+stable thresholds; smooth easing, no bounce; modest camera travel; no scroll-jack.
+
+### 3D previs rules (binding, from `CLAUDE.md`)
+- One bounded homepage chapter only; **CSS sticky**; no page hijack, no ScrollTrigger pinning.
+- Server-rendered HTML and a static illustration appear first and remain visible until the
+  first successful canvas frame.
+- Load R3F/GSAP only when the chapter approaches the viewport and the device is eligible; do
+  not download or initialise 3D for reduced-motion, Save-Data, missing WebGL or
+  mobile/static-default visitors.
+- Canvas is decorative: `aria-hidden`, outside the tab order, no OrbitControls or pointer
+  capture. All copy, progress, switching and actions remain HTML.
+- Scroll updates invalidate the demand-rendered scene; error boundary, dynamic-import fallback
+  and one-way WebGL context-loss fallback.
+- Skip story is a real anchor that moves focus to the heading after the chapter.
+- Start at ~240–300 vh; cap at 320 vh unless testing proves more is beneficial.
+- Previs uses boxes, planes, flat materials and one light only — no GLB, textures, decoders,
+  shadows, HDRI, post-processing or final film.
+- Budgets (3D chunk ≤ 350 KB gz, model ≤ 1.5 MB, textures ≤ 2 MB, LCP ≤ 2.5 s never on the
+  canvas) are **targets to measure**, not achieved facts.
+
+## 5. Properties / map preview
+
+Lightweight, conventional HTML: three or four sample property cards (photo placeholder, rent,
+approximate area, beds, availability) each carrying **"Demonstration listing — not a real
+property"**, a list-first layout with a **static map poster / lightweight placeholder** for the
+Peterborough map (no map WebGL canvas on the landing page; a live map is never active while the
+3D canvas is), and one action **View properties** → `/properties`.
+
+## 6. Landlord appraisal and tenant move-in-cost tools (previews)
+
+- **"What could your property rent for?"** — one sentence, "Indicative rental estimate — not a
+  valuation", action **Request a rental appraisal** → `/rental-appraisal`.
+- **Move-in costs explained** — a short HTML explanation (rent in advance, deposit cap, first
+  payment) with demonstration figures clearly labelled, or a static preview of the future
+  calculator; no live calculation in this phase; action → `/tenants`.
+
+## 7. Maintenance
+
+Report → Triage → Arrange → Update → Resolve; one repair action; no time promises.
+
+## 8. Insights preview
+
+Latest landlord, tenant and Peterborough insights as three plain article cards → `/insights`
+(honest empty state until articles exist).
+
+## 9. Final contact action
+
+Deep-brick band; one WhatsApp action and the display number from `business.ts`; footer as
+built in Phase 1.
+
+---
+
+## Media the register governs
+
+| Asset | Used for | Notes |
+|---|---|---|
+| Pexels 12217554 (hero/context) | Section 1 | ~10 s single-move trim; poster; plays once, holds |
+| Pexels 14807040 · 14807010/14806961 · 14806944/14806923 · 14807056 · 14806975 | Section 3 | one active at a time; posters for reduced motion/mobile |
+| Static fallback sequence for the 3D chapter (per path, day + dusk) | Section 4 | illustration or AI stills with the AI label if realistic |
+| 3D reference boards | Section 4 modelling | reference only |
+| Demonstration property images | Section 5 | never real listings; labelled |
+
+4K originals are **source masters** kept outside `public/`; derivatives (trims, 1080p/720p
+encodes, posters) are produced only after approval and logged in
+`docs/MEDIA-ASSET-REGISTER.md`.
 
 ## Prototype requirement
 
-Before commissioning/finalising a GLB, create a low-detail browser previs using boxes/planes or a simple placeholder model. Validate chapter pacing, copy length, responsive behaviour, WebGL failure and performance on a mid-range phone.
-
+Before any final model or master transcode: a low-detail browser previs (boxes/planes) inside
+the hybrid page validating chapter pacing, copy length, choice persistence, responsive
+behaviour, WebGL failure, reduced-motion output and performance on a mid-range phone against
+the budgets — **only after the owner approves this storyboard and the asset plan.**

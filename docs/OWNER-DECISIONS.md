@@ -75,3 +75,23 @@ Status key: **Open** (owner input needed) · **Assumed** (recommended default ad
 | A5 | Fonts | Inter + Roboto Condensed via `next/font/google`, self-hosted at build time |
 | A6 | Pre-launch indexing | `robots: noindex` site-wide until domain + launch approval |
 | A7 | Dynamic routes | `/properties/[slug]` and `/insights/[slug]` return an honest branded 404 until real records exist (Phases 4/6) |
+
+## Added 17/08/2026 — media, story and rights (after `docs/REFERENCE-REPORT.md` and the owner's conditional approval)
+
+| # | Item | Where it surfaces | Status | Notes |
+|---|---|---|---|---|
+| 33 | Hero film — Pexels 12217554 trimmed to one ~10 s single camera move; poster first; muted autoplay after the shell; plays once and holds; never loops; poster-only for reduced motion, Save-Data and mobile by default | Homepage §1 | **Approved (direction)** — trim/poster derivatives pending approval | Storyboard v3 §1; register row A1. The AI clip `Using_the_approved_Red_Brick_V (1).mp4` is a prototype motion reference only (two doors, 720p, platform mark) |
+| 34 | Optional separately approved mobile hero clip | Homepage §1 (mobile) | Open | Only if approved; otherwise poster |
+| 35 | Scroll-led media story clips — 14807040, 14807010 (alt 14806961), 14806944 (alt 14806923), 14807056, 14806975; cat / mirrored-bedroom / blue-bedroom clips excluded | Homepage §3 | **Approved (selection)** — derivatives pending | Register rows A2–A11; one active video at a time; captions "illustrative stock footage" |
+| 36 | 3D chapter names — landlord: Preparing the property → Finding a tenant → Managing the tenancy → Continuing property care; tenant: Finding a suitable home → Understanding the move → Living in the property → Getting maintenance help | Homepage §4, `CLAUDE.md` | **Assumed** | Navigation/storytelling labels only; final service-journey and story copy approval is row 45 |
+| 37 | Audience-choice behaviour — landlord/tenant choice personalises the homepage story and keeps the visitor on the page; "View properties" may go to `/properties`; separate labelled links to full Landlords/Tenants pages; Switch story control; session-only preference, no analytics/CRM/persistent identifier; complete neutral HTML story without JavaScript or choice | Homepage §2, later tests | **Assumed (owner-directed)** | Later tests must reflect this product intent rather than the earlier route-only behaviour |
+| 38 | AI platform and commercial-use rights per generated asset (platform name, plan, terms) | Register §B | Open | Record before any generated asset is published |
+| 39 | Input/reference rights for generated media (what was fed in, whether it may be used) | Register §B | Open | |
+| 40 | Property, location and identifiable-person permissions for any footage/stills showing a real place or person | All media | Open | Stock clips used only within the Pexels License; no Peterborough / managed-home claims |
+| 41 | 3D model, texture and HDRI licences | Register §C | Open | None needed for the boxes/planes previs |
+| 42 | Required provenance marks on generated media (e.g. C2PA / watermark policy) | Generated media | Open | |
+| 43 | Public AI disclosure wording and placement | Site-wide / legal | Open | Default label until decided: "Illustrative brand film created with AI — not an available property." |
+| 44 | Asset provenance register as the standing control (`docs/MEDIA-ASSET-REGISTER.md`) | Build gate | **Assumed** | Every asset logged before use; 4K originals stay outside `public/` |
+| 45 | Final service-journey and story-copy approval (all chapter copy, media captions, Let / Manage / Care wording, "Ask us about arranging a meeting" until meetings are confirmed) | Homepage copy | Open | Everything remains prototype copy until this is confirmed |
+| 46 | Performance budgets for video, 3D chunk, model and textures | Build gate before final assets | **Assumed** | Targets to measure in the previs, not achieved facts (REFERENCE-REPORT §6) |
+| 47 | Restored practical previews on the homepage — properties/static map poster, appraisal entry, move-in-cost explanation, maintenance, insights — with demonstration data labelled | Homepage §5–§8 | **Assumed (owner-directed)** | Landing-page previews only; no live map canvas while the 3D canvas exists |
