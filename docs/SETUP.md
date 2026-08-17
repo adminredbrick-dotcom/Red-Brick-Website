@@ -13,7 +13,7 @@ npm install
 npm run dev
 ```
 
-The site runs at http://localhost:3000.
+The site runs at http://localhost:3000. Playwright serves the production build on its own port per branch (`playwright.config.ts`: 3111 for the hybrid/3D work, **3112 for `experiment/phase2-new-flow`**) so worktrees never collide.
 
 ## Commands
 

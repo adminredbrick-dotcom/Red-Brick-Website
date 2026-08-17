@@ -95,3 +95,15 @@ Status key: **Open** (owner input needed) · **Assumed** (recommended default ad
 | 45 | Final service-journey and story-copy approval (all chapter copy, media captions, Let / Manage / Care wording, "Ask us about arranging a meeting" until meetings are confirmed) | Homepage copy | Open | Everything remains prototype copy until this is confirmed |
 | 46 | Performance budgets for video, 3D chunk, model and textures | Build gate before final assets | **Assumed** | Targets to measure in the previs, not achieved facts (REFERENCE-REPORT §6) |
 | 47 | Restored practical previews on the homepage — properties/static map poster, appraisal entry, move-in-cost explanation, maintenance, insights — with demonstration data labelled | Homepage §5–§8 | **Assumed (owner-directed)** | Landing-page previews only; no live map canvas while the 3D canvas exists |
+
+## Added 17/08/2026 — Phase 2 property journeys (`experiment/phase2-new-flow`)
+
+| # | Item | Where it surfaces | Status | Notes |
+|---|---|---|---|---|
+| 48 | Peterborough area list for search and appraisal (12 neighbourhoods, PE1–PE4/PE7) | `/properties`, `/rental-appraisal` | **Assumed** | `src/lib/listings/areas.ts`; confirm names, add/remove areas |
+| 49 | Which listing facts are published and their verification source (deposit, holding deposit, council-tax band, EPC — shown only when verified against a document) | Property detail | **Assumed** | `VerifiedFact` in the listing contract; confirm the rule and the acceptable sources |
+| 50 | Live listing feed / CMS or PMS adapter, real photographs and the person who updates availability | Properties | Open | Demo repository in place; nothing real is shown until this is decided |
+| 51 | Rental-estimate data provider (licensed comparables + Red Brick achieved rents), model review and sign-off | `/rental-appraisal` | Open | Demo adapter only; the report never claims a valuation; crime/forecast content stays off until sourced and approved |
+| 52 | Enquiry, viewing and appraisal form delivery (destination, spam protection, privacy notice) | Property detail, appraisal | Open | Forms are honest inert states; WhatsApp is the only live route |
+| 53 | Move-in-cost explainer wording (Tenant Fees Act 2019 caps) and whether a live calculator is offered | Tenants preview | **Assumed** | Worked example labelled demonstration; wording to be reviewed |
+| 54 | Demonstration listing copy and the eight fictional records | Properties | **Assumed** | Fictional, labelled; replace or remove before launch |
