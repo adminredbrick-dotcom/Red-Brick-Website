@@ -12,7 +12,7 @@ Build an original, warm, cinematic and highly usable lettings website for Red Br
 - Always write as “we”, “our” and “us”
 - Tagline: “Property cared for. People looked after.”
 - Primary contact: WhatsApp 07300 856675
-- Meetings may be offered by appointment
+- Meetings: arrangements unconfirmed — public wording is “Ask us about arranging a meeting.”
 - Domain, permanent email, opening hours and regulatory details are unconfirmed
 - The future PMS is a separate product and must not be marketed here
 
@@ -143,4 +143,3 @@ Use an honest unavailable state or an obvious placeholder in admin/configuration
 - After every phase, run relevant tests and inspect desktop, mobile, keyboard and reduced-motion states
 - Ground completion claims in test/browser evidence
 - Report completed work, assumptions, tests and next review points
-

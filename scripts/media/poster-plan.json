@@ -1,0 +1,130 @@
+{
+  "generatedOn": "2026-08-17",
+  "note": "Masters are Pexels stock (Pexels License). Source filenames stay separate from public Pexels IDs. Posters are the only web derivatives possible on this machine (no encoder installed).",
+  "masters": [
+    {
+      "file": "12204524-hd_1080_1920_60fps.mp4",
+      "pexelsId": "12204524"
+    },
+    {
+      "file": "12217554_3840_2160_30fps.mp4",
+      "pexelsId": "12217554"
+    },
+    {
+      "file": "12816094_1080_1920_60fps.mp4",
+      "pexelsId": "12816094"
+    },
+    {
+      "file": "14806923_3840_2160_25fps.mp4",
+      "pexelsId": "14806923"
+    },
+    {
+      "file": "14806941_3840_2160_25fps.mp4",
+      "pexelsId": "14806941"
+    },
+    {
+      "file": "14806944_3840_2160_50fps.mp4",
+      "pexelsId": "14806944"
+    },
+    {
+      "file": "14806950_3840_2160_25fps.mp4",
+      "pexelsId": "14806950"
+    },
+    {
+      "file": "14806961_3840_2160_50fps.mp4",
+      "pexelsId": "14806961"
+    },
+    {
+      "file": "14806962_3840_2160_50fps.mp4",
+      "pexelsId": "14806962"
+    },
+    {
+      "file": "14806975_3840_2160_25fps.mp4",
+      "pexelsId": "14806975"
+    },
+    {
+      "file": "14806992_3840_2160_50fps.mp4",
+      "pexelsId": "14806992"
+    },
+    {
+      "file": "14806998_3840_2160_25fps.mp4",
+      "pexelsId": "14806998"
+    },
+    {
+      "file": "14807010_3840_2160_25fps.mp4",
+      "pexelsId": "14807010"
+    },
+    {
+      "file": "14807040_3840_2160_50fps.mp4",
+      "pexelsId": "14807040"
+    },
+    {
+      "file": "14807056_3840_2160_25fps.mp4",
+      "pexelsId": "14807056"
+    },
+    {
+      "file": "18018628-uhd_3840_2160_24fps.mp4",
+      "pexelsId": "18018628"
+    }
+  ],
+  "posters": [
+    {
+      "file": "12217554_3840_2160_30fps.mp4",
+      "time": 4,
+      "width": 1440,
+      "aspect": 1.7777778,
+      "maxBytes": 200000,
+      "output": "hero-12217554.webp",
+      "quality": 0.7
+    },
+    {
+      "file": "12217554_3840_2160_30fps.mp4",
+      "time": 4,
+      "width": 720,
+      "aspect": 0.8,
+      "maxBytes": 100000,
+      "output": "hero-12217554-mobile.webp",
+      "quality": 0.7
+    },
+    {
+      "file": "14807040_3840_2160_50fps.mp4",
+      "time": 2,
+      "width": 1400,
+      "aspect": 1.7777778,
+      "maxBytes": 110000,
+      "output": "story-14807040.webp"
+    },
+    {
+      "file": "14807010_3840_2160_25fps.mp4",
+      "time": 3,
+      "width": 1400,
+      "aspect": 1.7777778,
+      "maxBytes": 110000,
+      "output": "story-14807010.webp"
+    },
+    {
+      "file": "14806944_3840_2160_50fps.mp4",
+      "time": 2,
+      "width": 1400,
+      "aspect": 1.7777778,
+      "maxBytes": 110000,
+      "output": "story-14806944.webp"
+    },
+    {
+      "file": "14807056_3840_2160_25fps.mp4",
+      "time": 3,
+      "width": 1400,
+      "aspect": 1.7777778,
+      "maxBytes": 110000,
+      "output": "story-14807056.webp"
+    },
+    {
+      "file": "14806975_3840_2160_25fps.mp4",
+      "time": 3,
+      "width": 1400,
+      "aspect": 1.7777778,
+      "maxBytes": 110000,
+      "output": "story-14806975.webp"
+    }
+  ]
+}

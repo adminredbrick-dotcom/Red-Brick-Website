@@ -86,7 +86,7 @@ export const routes = {
     label: "Contact",
     title: "Talk to Red Brick",
     description:
-      "Message Red Brick Lettings on WhatsApp. Meetings are available by appointment.",
+      "Message Red Brick Lettings on WhatsApp. Ask us about arranging a meeting.",
   },
   privacy: {
     path: "/privacy",

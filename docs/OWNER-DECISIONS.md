@@ -107,3 +107,15 @@ Status key: **Open** (owner input needed) · **Assumed** (recommended default ad
 | 52 | Enquiry, viewing and appraisal form delivery (destination, spam protection, privacy notice) | Property detail, appraisal | Open | Forms are honest inert states; WhatsApp is the only live route |
 | 53 | Move-in-cost explainer wording (Tenant Fees Act 2019 caps) and whether a live calculator is offered | Tenants preview | **Assumed** | Worked example labelled demonstration; wording to be reviewed |
 | 54 | Demonstration listing copy and the eight fictional records | Properties | **Assumed** | Fictional, labelled; replace or remove before launch |
+
+## Added 17/08/2026 — Phase 3 production homepage and 3D house (`feature/homepage-production`)
+
+| # | Item | Where it surfaces | Status | Notes |
+|---|---|---|---|---|
+| 55 | Approval of the 3D house look and the three chapter choreographies (landlord / tenant / neutral) | Homepage §4 | **Assumed (built)** | Original programmatic model, `src/lib/house/build-house.ts`; static renders in `public/media/house/`; adjust colours/proportions/beats on review |
+| 56 | Homepage copy marked PROTOTYPE in `src/content/home.ts` and `src/lib/house/story.ts` (prompt, chapter names/lines, insights empty-state text) | Homepage | Open | Approved sentences are used verbatim; everything else awaits row 45 sign-off |
+| 57 | Video derivatives (hero 0–10 s trim; five story clips) once a trusted encoder is available | Homepage §1 and §3 | Open | Components are wired (`src/content/home-media.ts` → `sources`); posters ship meanwhile; masters never in `public/` |
+| 58 | Managed masters folder `D:\4. Website\media-masters\pexels\` (copy, verify SHA-256, keep originals) | Media register | Open | Not created yet — confirm the location |
+| 59 | Pexels creator names for the 16 masters | Media register | Open | Pages sat behind a bot check; fill from the download pages |
+| 60 | Hero poster size (222 KB at 1440 px for the dense aerial vs the 120 KB target) | Homepage §1 (LCP) | **Assumed** | Kept for image quality; alternative is a smaller/softer crop |
+| 61 | Static-render refresh policy — re-run `scripts/house/render-chapters.mjs` whenever the model or choreography changes | Build gate | **Assumed** | 18 JPEGs, ~745 KB |

@@ -1,0 +1,102 @@
+{
+  "sourceDir": "C:\\Users\\moeen\\Downloads",
+  "generatedOn": "2026-08-17",
+  "masters": [
+    {
+      "file": "12204524-hd_1080_1920_60fps.mp4",
+      "pexelsId": "12204524",
+      "bytes": 14883284,
+      "sha256": "e3fc0fd84f5c0a7fcc97c9f10abfcf8d4c0a70b5a611cdc2c6aad85b4a1fa1ed"
+    },
+    {
+      "file": "12217554_3840_2160_30fps.mp4",
+      "pexelsId": "12217554",
+      "bytes": 175087331,
+      "sha256": "62ee32e2150022a1b14685edecbeaf6c967a20bea15b01b694018e5fbcc96aed"
+    },
+    {
+      "file": "12816094_1080_1920_60fps.mp4",
+      "pexelsId": "12816094",
+      "bytes": 19238145,
+      "sha256": "7f6f516d8de109d30c47b4eebc22946c14aef7739d3a00f2495eba3b928dee44"
+    },
+    {
+      "file": "14806923_3840_2160_25fps.mp4",
+      "pexelsId": "14806923",
+      "bytes": 19035412,
+      "sha256": "fcb8d5d0cd80f15382a50df2d6a50ce866d3134a9038caf8b84c055c42bf7b19"
+    },
+    {
+      "file": "14806941_3840_2160_25fps.mp4",
+      "pexelsId": "14806941",
+      "bytes": 34987117,
+      "sha256": "81203d5c5c9f40fc760675fdbc678605cea42e17bbd64719abdc0aa28bb6a185"
+    },
+    {
+      "file": "14806944_3840_2160_50fps.mp4",
+      "pexelsId": "14806944",
+      "bytes": 9974603,
+      "sha256": "777ec5819878e12434fef27f7a849e2d9dbc0798eeffb2ab6f2f7474dd0f7e20"
+    },
+    {
+      "file": "14806950_3840_2160_25fps.mp4",
+      "pexelsId": "14806950",
+      "bytes": 31163566,
+      "sha256": "5904e1e328914ba2f82f4c24af50db25c38b53baa66983e2778e8b0d2cbbe488"
+    },
+    {
+      "file": "14806961_3840_2160_50fps.mp4",
+      "pexelsId": "14806961",
+      "bytes": 28317388,
+      "sha256": "17ee19ad4631d9546ac23235fd84a97ba2727e18aa3a03ef5aad0df2d525d823"
+    },
+    {
+      "file": "14806962_3840_2160_50fps.mp4",
+      "pexelsId": "14806962",
+      "bytes": 28451537,
+      "sha256": "abb4488a5f4d293f654e35dbce0789a9965b8c685f3fcb418eec11c48f25b019"
+    },
+    {
+      "file": "14806975_3840_2160_25fps.mp4",
+      "pexelsId": "14806975",
+      "bytes": 36369174,
+      "sha256": "0094c934f98bb1817f2e42b98af55f3cdeda300c3b2d93192b8b1db25ba81c9e"
+    },
+    {
+      "file": "14806992_3840_2160_50fps.mp4",
+      "pexelsId": "14806992",
+      "bytes": 31715256,
+      "sha256": "2207d88762a05247ab687470ed93e9e16d730bec63c8f4d2202f03ea4f0c86aa"
+    },
+    {
+      "file": "14806998_3840_2160_25fps.mp4",
+      "pexelsId": "14806998",
+      "bytes": 37632681,
+      "sha256": "76923dffcf5252ab2d9274e9f74bdd1da40919ae2ce535f0cc960c18a3cf833c"
+    },
+    {
+      "file": "14807010_3840_2160_25fps.mp4",
+      "pexelsId": "14807010",
+      "bytes": 40258708,
+      "sha256": "c89d62fbc8ce33fcbbd00b18088dad11891cc6311494d44be486093d10c6f455"
+    },
+    {
+      "file": "14807040_3840_2160_50fps.mp4",
+      "pexelsId": "14807040",
+      "bytes": 9715069,
+      "sha256": "41cee3ea4731866192904a75b41cac0a888f0ae299abcfc20ec713df32d63fd6"
+    },
+    {
+      "file": "14807056_3840_2160_25fps.mp4",
+      "pexelsId": "14807056",
+      "bytes": 42638914,
+      "sha256": "5b293368a73e4cffa44a7423a54c86af8dca839f385dcbd9855bd24f2aa5eec1"
+    },
+    {
+      "file": "18018628-uhd_3840_2160_24fps.mp4",
+      "pexelsId": "18018628",
+      "bytes": 74972737,
+      "sha256": "e811ecb1f32ee71c44d4cd38f0f07706dcf0e07d959e93972b828e666b49bcd6"
+    }
+  ]
+}

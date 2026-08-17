@@ -24,6 +24,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-GB" className={`${inter.variable} ${robotoCondensed.variable}`}>
       <body className="flex min-h-screen flex-col">
+        {/* JS-only controls (e.g. Switch story) hide for visitors without JavaScript. */}
+        <noscript>
+          <style>{`[data-needs-js]{display:none !important}`}</style>
+        </noscript>
         <SkipLink />
         <Header />
         <main id="main-content" className="flex-1">

@@ -1,0 +1,13 @@
+{
+  "measuredOn": "2026-08-17T16:29:24.223Z",
+  "viewport": "1440x900 reduced motion (static)",
+  "html": 18927,
+  "js": 173456,
+  "css": 7761,
+  "images": 829009,
+  "video": 0,
+  "models": 0,
+  "fonts": 94512,
+  "other": 43649,
+  "requests": 57
+}

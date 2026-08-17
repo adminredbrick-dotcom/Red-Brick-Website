@@ -1,0 +1,14 @@
+{
+  "measuredOn": "2026-08-17T16:29:44.658Z",
+  "viewport": "1440x900 live 3D",
+  "html": 18927,
+  "js": 457749,
+  "css": 7761,
+  "images": 828189,
+  "video": 0,
+  "models": 0,
+  "fonts": 94512,
+  "other": 34047,
+  "requests": 50,
+  "jsBefore3D": 173456
+}

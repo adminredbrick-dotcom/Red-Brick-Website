@@ -54,7 +54,7 @@ export async function PropertyPreview({
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-eyebrow text-brick">Available properties</p>
-          <Heading id={headingId} className="text-section mt-2">
+          <Heading id={headingId} tabIndex={-1} className="text-section mt-2">
             Homes to rent across Peterborough
           </Heading>
           <p className="measure-body mt-3 text-stone">

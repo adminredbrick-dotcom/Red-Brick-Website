@@ -5,7 +5,7 @@ import {
   parseAppraisalRequest,
   rentalReportAdapter,
 } from "@/lib/appraisal/demo-adapter";
-import { calculateMoveInCosts } from "@/lib/appraisal/move-in-costs";
+import { calculateMoveInCosts, moveInCostGuidance } from "@/lib/appraisal/move-in-costs";
 
 describe("parseAppraisalRequest", () => {
   it("requires type, bedrooms and status; area is optional", () => {
@@ -83,8 +83,14 @@ describe("calculateMoveInCosts", () => {
     expect(c.depositCapWeeks).toBe(5);
     expect(c.tenancyDepositCap).toBeCloseTo(1153.85, 2);
     expect(c.holdingDepositCap).toBeCloseTo(230.77, 2);
+    expect(c.rentInAdvanceCap).toBe(1000);
     expect(c.illustrativeTotal).toBeCloseTo(2153.85, 2);
     expect(calculateMoveInCosts(4200).depositCapWeeks).toBe(6);
     expect(() => calculateMoveInCosts(0)).toThrow(RangeError);
+  });
+  it("records a GOV.UK review date and sources for the explainer wording", () => {
+    expect(moveInCostGuidance.reviewedOn).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(moveInCostGuidance.sources.length).toBeGreaterThanOrEqual(2);
+    for (const s of moveInCostGuidance.sources) expect(s.href).toMatch(/^https:\/\/www\.gov\.uk\//);
   });
 });

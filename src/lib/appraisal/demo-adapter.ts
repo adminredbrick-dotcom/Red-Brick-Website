@@ -89,7 +89,7 @@ export class DemoRentalReportAdapter implements RentalReportAdapter {
     const assumptions: string[] = [
       `Assumes a ${propertyTypeLabels[request.propertyType].toLowerCase()} with ${request.bedrooms === 5 ? "five or more" : request.bedrooms} bedroom${request.bedrooms === 1 ? "" : "s"} in ${areaName ? `${areaName}, Peterborough` : "Peterborough (no area chosen, so the city-wide table is used)"}.`,
       "Assumes an unfurnished let in good, clean condition with a valid gas safety record, EICR and EPC — condition, presentation and any furnishing move a real figure up or down.",
-      "Assumes a single household on a standard assured shorthold tenancy; houses in multiple occupation, room lets and short lets are priced differently and are not covered.",
+      "Assumes a single household on an assured periodic tenancy under the current rules; houses in multiple occupation, room lets and short lets are priced differently and are not covered.",
       "The range is a demonstration produced from an invented table. It is not derived from Red Brick achieved rents, portal listings or any licensed data set, and it must not be relied on.",
     ];
     if (request.currentStatus === "tenanted") {

@@ -1,5 +1,9 @@
 # Phase 2 → homepage integration guide
 
+> **Status 17/08/2026:** integrated on `feature/homepage-production` — `src/app/page.tsx` imports
+> `PropertyPreview`, `AppraisalPreview` and `MoveInCostPreview` (sections 5–6). The hybrid
+> experiment route stays as the reviewed prototype. The guidance below remains valid for hosts.
+
 Phase 2 (`experiment/phase2-new-flow`) built the practical, Resider-inspired journeys that
 follow the cinematic homepage. The homepage and its 3D narrative stay owned by the
 `experiment/hybrid-db` work; **this branch does not touch `src/components/experiments/hybrid-db`

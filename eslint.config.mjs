@@ -10,6 +10,8 @@ const eslintConfig = [
       "coverage/**",
       "test-results/**",
       "playwright-report/**",
+      // Project-local reference skills (Git-excluded) are read, never linted or run
+      ".claude/**",
       // Handoff source-of-truth files are not project source
       "brand/**",
       "design/**",

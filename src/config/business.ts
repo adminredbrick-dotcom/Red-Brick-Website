@@ -23,7 +23,7 @@ export interface BusinessConfig {
     /** International format used to build wa.me links. */
     readonly e164: string;
   };
-  /** Approved appointment wording. */
+  /** Public meeting wording — arrangements are not yet confirmed (owner-decision register). */
   readonly meetings: string;
   readonly social: {
     readonly facebook: string;
@@ -56,7 +56,7 @@ export const business: BusinessConfig = {
     displayNumber: "07300 856675",
     e164: "+447300856675",
   },
-  meetings: "Meetings are available by appointment.",
+  meetings: "Ask us about arranging a meeting.",
   social: {
     facebook: "https://www.facebook.com/RedBrickPeterborough/",
     instagram: "https://www.instagram.com/red_brick_lettings/",

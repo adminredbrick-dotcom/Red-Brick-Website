@@ -1,0 +1,68 @@
+{
+  "generatedOn": "2026-08-17",
+  "posters": [
+    {
+      "output": "hero-12217554.webp",
+      "source": "12217554_3840_2160_30fps.mp4",
+      "time": 4,
+      "width": 1600,
+      "height": 900,
+      "bytes": 310610,
+      "quality": 0.34
+    },
+    {
+      "output": "hero-12217554-mobile.webp",
+      "source": "12217554_3840_2160_30fps.mp4",
+      "time": 4,
+      "width": 900,
+      "height": 1125,
+      "bytes": 207436,
+      "quality": 0.34
+    },
+    {
+      "output": "story-14807040.webp",
+      "source": "14807040_3840_2160_50fps.mp4",
+      "time": 2,
+      "width": 1400,
+      "height": 788,
+      "bytes": 48760,
+      "quality": 0.82
+    },
+    {
+      "output": "story-14807010.webp",
+      "source": "14807010_3840_2160_25fps.mp4",
+      "time": 3,
+      "width": 1400,
+      "height": 788,
+      "bytes": 89194,
+      "quality": 0.74
+    },
+    {
+      "output": "story-14806944.webp",
+      "source": "14806944_3840_2160_50fps.mp4",
+      "time": 2,
+      "width": 1400,
+      "height": 788,
+      "bytes": 65302,
+      "quality": 0.82
+    },
+    {
+      "output": "story-14807056.webp",
+      "source": "14807056_3840_2160_25fps.mp4",
+      "time": 3,
+      "width": 1400,
+      "height": 788,
+      "bytes": 97960,
+      "quality": 0.74
+    },
+    {
+      "output": "story-14806975.webp",
+      "source": "14806975_3840_2160_25fps.mp4",
+      "time": 3,
+      "width": 1400,
+      "height": 788,
+      "bytes": 106918,
+      "quality": 0.82
+    }
+  ]
+}
