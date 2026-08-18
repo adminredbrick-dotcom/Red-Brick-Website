@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { business } from "@/config/business";
 import { demoLabels } from "@/content/demo-labels";
-import { currentStatusLabels, type RentalReport } from "@/lib/appraisal/types";
+import { currentStatusLabels, type AppraisalRequest, type RentalReport, type RentalReportOutcome } from "@/lib/appraisal/types";
 import { formatGbp, formatUkDate } from "@/lib/format";
 import { getArea } from "@/lib/listings/areas";
 import { propertyTypeLabels } from "@/lib/listings/types";
@@ -80,16 +80,48 @@ export function ReportPanel({ report }: { report: RentalReport }) {
 }
 
 /**
+ * Honest non-result states: the adapter had too little evidence to publish a
+ * range, or the data source was unavailable. Nothing is guessed; the visitor is
+ * told why and routed to a human-confirmed appraisal.
+ */
+export function OutcomePanel({ outcome }: { outcome: Exclude<RentalReportOutcome, { status: "ok" }> }) {
+  const insufficient = outcome.status === "insufficient-evidence";
+  return (
+    <div
+      className="rounded-lg border-2 border-dashed border-stone-light bg-cream/60 p-6 md:p-8"
+      role="status"
+      data-appraisal-outcome={outcome.status}
+    >
+      <p className="text-eyebrow text-stone">{insufficient ? "Not enough evidence" : "Estimate unavailable"}</p>
+      <h2 className="mt-2 text-2xl">{insufficient ? "We would rather not guess" : "The estimate is unavailable right now"}</h2>
+      <p className="measure-body mt-3 text-ink">{outcome.reason}</p>
+      {insufficient ? (
+        <p className="measure-body mt-2 text-stone">
+          Comparable properties found: {outcome.comparableCount}. A range is only shown when the evidence
+          behind it is strong enough to be useful.
+        </p>
+      ) : (
+        <p className="measure-body mt-2 text-stone">Please try again shortly, or ask us directly.</p>
+      )}
+      <p className="measure-body mt-4 text-ink">
+        A verified rental appraisal does not depend on this tool: send us the property details and we
+        will confirm a recommendation after reviewing the property properly.
+      </p>
+    </div>
+  );
+}
+
+/**
  * Step 2 — "Send us the details". Collected separately from the estimate
  * step so nothing personal ever enters a URL. Form delivery is not yet
  * configured (owner-decision register), so the form is shown in its honest
  * disabled state with the WhatsApp route beside it; the pre-filled message
  * carries only the property characteristics, never the visitor's details.
  */
-export function ContactStep({ report }: { report: RentalReport | null }) {
-  const message = report
-    ? `Hello Red Brick, I'd like a rental appraisal for a ${report.request.bedrooms === 5 ? "5+" : report.request.bedrooms}-bedroom ${propertyTypeLabels[report.request.propertyType].toLowerCase()}${report.request.area ? ` in ${getArea(report.request.area)?.name}` : ""}, Peterborough.`
-    : "Hello Red Brick, I'd like to ask about a rental appraisal.";
+export function ContactStep({ request }: { request: AppraisalRequest | null }) {
+  const message = request
+    ? `Hello Red Brick, I'd like a verified rental appraisal for a ${request.bedrooms === 5 ? "5+" : request.bedrooms}-bedroom ${propertyTypeLabels[request.propertyType].toLowerCase()}${request.area ? ` in ${getArea(request.area)?.name}` : ""}, Peterborough.`
+    : "Hello Red Brick, I'd like to ask about a verified rental appraisal.";
   const labelClass = "block text-base font-bold text-ink";
   return (
     <section aria-labelledby="contact-step-heading" className="rounded-lg bg-white p-6 shadow-soft md:p-8">
@@ -102,7 +134,7 @@ export function ContactStep({ report }: { report: RentalReport | null }) {
       </p>
       <div className="mt-5 flex flex-wrap items-center gap-4">
         <Button asChild size="lg">
-          <a href={whatsappHref(business.whatsapp.e164, message)}>Request an appraisal on WhatsApp</a>
+          <a href={whatsappHref(business.whatsapp.e164, message)}>Request a verified rental appraisal</a>
         </Button>
         <span className="text-stone">WhatsApp {business.whatsapp.displayNumber}</span>
       </div>

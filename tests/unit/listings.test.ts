@@ -75,18 +75,28 @@ describe("portfolio listings (public-safe)", () => {
     expect(portfolioListings.length).toBeGreaterThanOrEqual(40);
     const slugs = new Set(portfolioListings.map((l) => l.slug));
     expect(slugs.size).toBe(portfolioListings.length);
+    // Every page title is distinct (same-street homes carry their reference).
+    expect(new Set(portfolioListings.map((l) => l.title)).size).toBe(portfolioListings.length);
+    expect(portfolioListings.some((l) => /^A apartment/.test(l.summary))).toBe(false);
     for (const l of portfolioListings) {
       const json = JSON.stringify(l);
       expect(l.demoOnly).toBe(false);
       expect(l.media.cover.kind).toBe("placeholder");
       expect(isAreaKey(l.location.area)).toBe(true);
       expect(l.location.outwardPostcode).toMatch(/^PE\d$/);
-      expect(json).not.toMatch(/PE\d\s?\d[A-Z]{2}/); // no full postcode
-      expect(l.title).not.toMatch(/\d/); // no house numbers in titles
+      expect(json).not.toMatch(/\bPE\d\s?\d[A-Z]{2}\b/); // no full postcode
+      expect(l.title).not.toMatch(/^\d|\b\d{1,4}[A-Za-z]?\s+[A-Z][a-z]/); // no house numbers in titles (district + ref are allowed)
       expect(l.slug).not.toMatch(/^\d/);
       expect(json).not.toMatch(/tenant name|landlord|owner:/i);
-      // Rent is only published for available homes; occupied homes never show a rent.
-      if (l.status === "let") expect(l.pricing.rentPcm).toBeNull();
+      // Rent is only published for available homes; occupied homes never show a rent — nor the
+      // EPC-register facts (floor area, dwelling type, rating) that could single out one house.
+      if (l.status === "let") {
+        expect(l.pricing.rentPcm).toBeNull();
+        expect(l.epcRating).toBeNull();
+        expect(l.property.sizeSqM).toBeNull();
+        expect(l.features.join(" ")).not.toMatch(/EPC|m²/);
+      }
+      expect(l.pricing.billsIncluded).toBeNull();
       // Nothing is guessed: unknown bedrooms/bathrooms stay null.
       expect(l.property.bedrooms === null || l.property.bedrooms > 0).toBe(true);
       if (l.epcRating) {

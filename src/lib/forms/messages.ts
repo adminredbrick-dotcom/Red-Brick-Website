@@ -106,7 +106,7 @@ export const repairFormSpec: FormSpec = {
     },
   ],
   privacyNote:
-    "Nothing you type here is stored or sent by this website. Your report is turned into a WhatsApp message that you send to Red Brick yourself, so you can review it first. Do not include alarm codes, key-safe numbers or bank details.",
+    "Your answers are checked by this website and turned into a WhatsApp message that you send to Red Brick yourself, so you can review it first; nothing is stored or forwarded. Do not include alarm codes, key-safe numbers or bank details.",
 };
 
 export const landlordMaintenanceFormSpec: FormSpec = {
@@ -121,7 +121,7 @@ export const landlordMaintenanceFormSpec: FormSpec = {
     { name: "description", label: "What would you like to raise?", kind: "textarea", required: true, maxLength: 1500, requiredMessage: "Please tell us what you would like to raise." },
   ],
   privacyNote:
-    "Nothing you type here is stored or sent by this website. Your message opens in WhatsApp for you to review and send.",
+    "Your message is checked by this website and opens in WhatsApp for you to review and send; nothing is stored or forwarded.",
 };
 
 export const contactFormSpec: FormSpec = {
@@ -135,7 +135,7 @@ export const contactFormSpec: FormSpec = {
     { name: "message", label: "Your message", kind: "textarea", required: true, maxLength: 1500, requiredMessage: "Please enter your message." },
   ],
   privacyNote:
-    "Nothing you type here is stored or sent by this website. Your message opens in WhatsApp for you to review and send.",
+    "Your message is checked by this website and opens in WhatsApp for you to review and send; nothing is stored or forwarded.",
 };
 
 export const formSpecs: Record<FormKind, FormSpec> = {

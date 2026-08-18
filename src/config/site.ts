@@ -98,7 +98,7 @@ export const routes = {
     path: "/cookies",
     label: "Cookies",
     title: "Cookie policy",
-    description: "How this website uses cookies.",
+    description: "How the Red Brick Lettings website uses cookies, and what it does not track.",
   },
   terms: {
     path: "/terms",

@@ -41,3 +41,14 @@ export const socialDefaults = {
   type: "website" as const,
   imagePath: "/opengraph-image",
 };
+
+/**
+ * Launch switch for indexing. Pre-launch (default) every page is `noindex` and robots.txt disallows
+ * everything. Set `NEXT_PUBLIC_SITE_INDEXING=on` in the production environment at launch (owner register AS-10,
+ * with the confirmed domain in NEXT_PUBLIC_SITE_URL) and REDEPLOY to allow indexing of the public routes.
+ */
+export function indexingEnabled(): boolean {
+  // NEXT_PUBLIC_ variables are inlined at build time, so static and dynamic routes always agree
+  // (a runtime-only variable would leave prerendered pages on the old value).
+  return process.env.NEXT_PUBLIC_SITE_INDEXING === "on";
+}

@@ -60,8 +60,8 @@ kept separate from the public ID; no readable house numbers, plates or people):
 
 | File | Source master | Frame | Size (px) | Bytes | Encoding |
 |---|---|---|---|---|---|
-| `public/media/posters/hero-12217554.webp` | 12217554_3840_2160_30fps.mp4 | t=4 s | 1600×900 | 303 KB | WebP q≈0.34 |
-| `public/media/posters/hero-12217554-mobile.webp` | 12217554_3840_2160_30fps.mp4 | t=4 s | 900×1125 | 203 KB | WebP q≈0.34 |
+| `public/media/posters/hero-12217554.webp` | 12217554_3840_2160_30fps.mp4 | t=4 s | 1440×810 | 222 KB | WebP q≈0.22 |
+| `public/media/posters/hero-12217554-mobile.webp` | 12217554_3840_2160_30fps.mp4 | t=4 s | 640×800 | 92 KB | WebP q≈0.14 (re-cut 18/08/2026 for mobile LCP; visually checked) |
 | `public/media/posters/story-14807040.webp` | 14807040_3840_2160_50fps.mp4 | t=2 s | 1400×788 | 48 KB | WebP q≈0.82 |
 | `public/media/posters/story-14807010.webp` | 14807010_3840_2160_25fps.mp4 | t=3 s | 1400×788 | 87 KB | WebP q≈0.74 |
 | `public/media/posters/story-14806944.webp` | 14806944_3840_2160_50fps.mp4 | t=2 s | 1400×788 | 64 KB | WebP q≈0.82 |
@@ -69,8 +69,8 @@ kept separate from the public ID; no readable house numbers, plates or people):
 | `public/media/posters/story-14806975.webp` | 14806975_3840_2160_25fps.mp4 | t=3 s | 1400×788 | 104 KB | WebP q≈0.82 |
 
 Poster budget: story posters ≤ 110 KB met; hero poster 1440 px is 222 KB (dense aerial detail —
-above the 120 KB target; kept for image quality at q≈0.22 and served only ≥ 64 rem; the 720 px
-mobile crop is 126 KB). Recorded as a measured result, not an achieved target.
+above the 120 KB target; kept for image quality at q≈0.22 and served only ≥ 48 rem; the 640 px
+mobile crop is 92 KB, re-cut 18/08/2026 from 126 KB). Recorded as a measured result, not an achieved target.
 
 Planned (blocked until an encoder is available): hero trim 0–10 s at 1080p/720p ≤ 4 MB
 (H.264 + AV1/WebM); story clips 1080p ≤ 3 MB each; separately approved mobile hero clip.

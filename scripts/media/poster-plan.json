@@ -80,11 +80,11 @@
     {
       "file": "12217554_3840_2160_30fps.mp4",
       "time": 4,
-      "width": 720,
+      "width": 640,
       "aspect": 0.8,
-      "maxBytes": 100000,
+      "maxBytes": 60000,
       "output": "hero-12217554-mobile.webp",
-      "quality": 0.7
+      "quality": 0.62
     },
     {
       "file": "14807040_3840_2160_50fps.mp4",

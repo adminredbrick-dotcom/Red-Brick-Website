@@ -16,6 +16,9 @@ interface ArticlePageProps {
   params: Promise<{ slug: string }>;
 }
 
+/** Only known slugs exist; anything else is the static 404 (rendered fully on the server, no JS needed). */
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const all = await contentRepository.articles();
   return all.map((a) => ({ slug: a.slug }));

@@ -104,7 +104,8 @@ export interface Listing {
     /** Tenancy deposit — shown only when verified against tenancy terms. */
     readonly deposit: VerifiedFact<number> | null;
     readonly holdingDeposit: VerifiedFact<number> | null;
-    readonly billsIncluded: boolean;
+    /** null = not stated in any document (row omitted), never assumed. */
+    readonly billsIncluded: boolean | null;
   };
 
   /** Shown only when verified (see VerifiedFact). */

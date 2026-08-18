@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import { InsufficientEvidenceError, assessRentalReport } from "@/lib/appraisal/types";
 import {
   DemoRentalReportAdapter,
   parseAppraisalRequest,
@@ -68,6 +69,17 @@ describe("DemoRentalReportAdapter", () => {
     expect(hampton.assumptions.some((s) => /currently let/i.test(s))).toBe(true);
     const buying = await adapter.estimate({ area: null, propertyType: "apartment", bedrooms: 2, currentStatus: "buying" });
     expect(buying.assumptions.some((s) => /not investment advice/i.test(s))).toBe(true);
+  });
+
+  it("suppresses the range for areas without evidence, and assessRentalReport classifies outcomes", async () => {
+    await expect(adapter.estimate({ area: "millfield", propertyType: "apartment", bedrooms: 2, currentStatus: "vacant" })).rejects.toBeInstanceOf(InsufficientEvidenceError);
+    const weak = await assessRentalReport(adapter, { area: "millfield", propertyType: "apartment", bedrooms: 2, currentStatus: "vacant" });
+    expect(weak.status).toBe("insufficient-evidence");
+    const ok = await assessRentalReport(adapter, { area: "fletton", propertyType: "apartment", bedrooms: 2, currentStatus: "vacant" });
+    expect(ok.status).toBe("ok");
+    const broken = { estimate: async () => { throw new Error("upstream down"); } };
+    const down = await assessRentalReport(broken, { area: null, propertyType: "apartment", bedrooms: 2, currentStatus: "vacant" });
+    expect(down.status).toBe("unavailable");
   });
 
   it("is the bound default adapter", async () => {

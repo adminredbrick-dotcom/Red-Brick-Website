@@ -116,12 +116,12 @@ test.describe("landlords and tenants", () => {
     expect(errors).toEqual([]);
   });
 
-  test("FAQ accordion is keyboard operable and exposes FAQPage structured data", async ({ page }) => {
+  test("FAQ (native details/summary) is keyboard operable without JavaScript and exposes FAQPage structured data", async ({ page }) => {
     await page.goto("/tenants");
-    const trigger = page.getByRole("button", { name: "How do I arrange a viewing?" });
-    await trigger.focus();
+    const item = page.locator("details#tenant-how-to-view");
+    await item.locator("summary").focus();
     await page.keyboard.press("Enter");
-    await expect(trigger).toHaveAttribute("aria-expanded", "true");
+    await expect(item).toHaveAttribute("open", "");
     await expect(page.getByText(/Message us on WhatsApp with the property you are interested in/)).toBeVisible();
     const jsonLd = await page.locator("script[type='application/ld+json']").allTextContents();
     expect(jsonLd.some((s) => s.includes('"FAQPage"'))).toBe(true);

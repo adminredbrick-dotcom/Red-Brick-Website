@@ -4,6 +4,7 @@ import { propertyTypeLabels, propertyTypes, type PropertyType } from "@/lib/list
 import {
   currentStatusOptions,
   bedroomChoices,
+  InsufficientEvidenceError,
   type AppraisalRequest,
   type CurrentStatus,
   type RentalReport,
@@ -80,6 +81,15 @@ export function parseAppraisalRequest(raw: Record<string, string | string[] | un
 export class DemoRentalReportAdapter implements RentalReportAdapter {
   async estimate(request: AppraisalRequest): Promise<RentalReport> {
     const base = demoBase[request.propertyType][request.bedrooms] ?? 0;
+    // Areas the demonstration table does not cover exercise the honest weak-evidence path: no range
+    // is guessed, the visitor is told why and routed to a human appraisal.
+    if (request.area && demoAreaFactor[request.area] === undefined) {
+      const areaName = getArea(request.area)?.name ?? "that area";
+      throw new InsufficientEvidenceError(
+        `There is not enough evidence in the demonstration table for ${areaName} to give an illustrative range for this property type, so no figure is shown.`,
+        0,
+      );
+    }
     const factor = request.area ? (demoAreaFactor[request.area] ?? 1) : 1;
     const central = roundTo5(base * factor);
     const low = roundTo5(central * 0.93);

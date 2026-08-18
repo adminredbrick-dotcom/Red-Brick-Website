@@ -59,6 +59,18 @@ test.describe("rental appraisal", () => {
     expect(errors).toEqual([]);
   });
 
+  test("weak evidence: no range is guessed — an honest state explains why and routes to a verified appraisal", async ({ page }) => {
+    // Millfield is not in the demonstration table, so the adapter refuses to publish a range.
+    await page.goto("/rental-appraisal?area=millfield&type=terraced-house&beds=2&status=vacant");
+    const panel = page.locator("[data-appraisal-outcome='insufficient-evidence']");
+    await expect(panel).toBeVisible();
+    await expect(panel).toContainText("We would rather not guess");
+    await expect(panel).toContainText("Comparable properties found: 0");
+    await expect(page.getByRole("heading", { name: "Illustrative monthly range" })).toHaveCount(0);
+    await expect(page.locator("main")).not.toContainText(/£\d/);
+    await expect(page.getByRole("link", { name: "Request a verified rental appraisal" })).toBeVisible();
+  });
+
   test("invalid or partial input shows a clear message instead of a range", async ({ page }) => {
     await page.goto("/rental-appraisal?type=castle&beds=2");
     await expect(page.getByRole("alert").filter({ hasText: "Please choose" })).toContainText("Please choose a property type");
@@ -71,7 +83,7 @@ test.describe("rental appraisal", () => {
     await expect(page.getByLabel("Property address")).toBeDisabled();
     await expect(page.getByLabel("Your name")).toBeDisabled();
     await expect(page.getByRole("button", { name: "Send details (not yet active)" })).toBeDisabled();
-    const link = page.getByRole("link", { name: "Request an appraisal on WhatsApp" });
+    const link = page.getByRole("link", { name: "Request a verified rental appraisal" });
     const href = await link.getAttribute("href");
     expect(href).toMatch(/^https:\/\/wa\.me\/447300856675\?text=/);
     expect(decodeURIComponent(href ?? "")).toContain("2-bedroom apartment");

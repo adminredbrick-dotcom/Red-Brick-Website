@@ -90,8 +90,8 @@ export default async function LandlordsPage() {
             <li key={item.id} className="rounded-lg bg-white p-5 shadow-soft">
               <p className="text-lg font-bold text-ink">{item.title}</p>
               <p className="mt-2 text-stone">{item.text}</p>
-              <p className="mt-3 text-sm">
-                <a href={item.source.href} rel="noopener noreferrer" className="font-bold text-brick underline underline-offset-4">
+              <p className="mt-2 text-sm">
+                <a href={item.source.href} rel="noopener noreferrer" className="inline-flex min-h-11 items-center font-bold text-brick underline underline-offset-4">
                   {item.source.label}
                 </a>
               </p>
@@ -104,7 +104,7 @@ export default async function LandlordsPage() {
       </section>
 
       {faqs ? (
-        <section className="bg-white">
+        <section className="cv-auto bg-white">
           <div className="container-rb py-14 md:py-20">
             <FaqList group={faqs} />
           </div>
@@ -135,7 +135,7 @@ export default async function LandlordsPage() {
       <section aria-labelledby="landlord-cta-heading" className="bg-ink text-cream" data-surface="dark">
         <div className="container-rb py-14 md:py-20">
           <h2 id="landlord-cta-heading" className="text-section max-w-2xl text-cream">
-            What could your property rent for?
+            Ready to find out?
           </h2>
           <p className="measure-body mt-4 text-lg text-cream/85">
             Start with an indicative rental estimate, then let us confirm our recommendation after

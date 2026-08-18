@@ -87,6 +87,21 @@ function jitter(seed: string, salt: number): number {
 const generatedOn: string = portfolio.generatedOn;
 const SOURCE = `EPC register (GOV.UK certificate) and Red Brick occupancy records, checked ${generatedOn.split("-").reverse().join("/")}`;
 
+/** "an apartment", "a terraced house". */
+function withArticle(label: string): string {
+  return `${/^[aeiou]/i.test(label) ? "an" : "a"} ${label.toLowerCase()}`;
+}
+
+/** Streets that appear more than once (with the same district) — their titles carry the reference so every page is distinct. */
+const DUPLICATE_KEYS = (() => {
+  const counts = new Map<string, number>();
+  for (const r of portfolio.properties as PortfolioRecord[]) {
+    const k = `${r.propertyType}|${r.street}|${r.outwardPostcode}`;
+    counts.set(k, (counts.get(k) ?? 0) + 1);
+  }
+  return new Set([...counts.entries()].filter(([, n]) => n > 1).map(([k]) => k));
+})();
+
 function toListing(r: PortfolioRecord): Listing {
   const outward = r.outwardPostcode ?? "PE";
   const areaKey = STREET_AREAS[`${r.street}|${outward}`] ?? DISTRICT_FALLBACK[outward] ?? "central";
@@ -94,18 +109,23 @@ function toListing(r: PortfolioRecord): Listing {
   const type: PropertyType = (propertyTypes as readonly string[]).includes(r.propertyType ?? "") ? (r.propertyType as PropertyType) : "terraced-house";
   const status: ListingStatus = r.status === "available" ? "available" : "let";
   const typeLabel = propertyTypeLabels[type];
-  const title = `${typeLabel} on ${r.street}`;
-  const epcValid = r.epcRating && r.epcValidUntil && r.epcValidUntil >= generatedOn;
+  const duplicate = DUPLICATE_KEYS.has(`${r.propertyType}|${r.street}|${r.outwardPostcode}`);
+  const title = duplicate ? `${typeLabel} on ${r.street}, ${outward} (ref ${r.id})` : `${typeLabel} on ${r.street}, ${outward}`;
+  const epcValid = Boolean(r.epcRating && r.epcValidUntil && r.epcValidUntil >= generatedOn);
+  // Occupied homes: street, district and property type only. Floor area, EPC dwelling type and EPC
+  // rating are precise enough to pick out one house on the public register, so they are published
+  // only for homes being marketed (where the EPC rating is required in the advertisement anyway).
+  const marketed = status === "available";
   const features = [
-    r.floorAreaSqM ? `About ${r.floorAreaSqM} m² floor area (EPC)` : null,
-    epcValid ? `EPC rating ${r.epcRating}` : null,
-    r.epcPropertyType ? `${r.epcPropertyType} (EPC register)` : null,
+    marketed && r.floorAreaSqM ? `About ${r.floorAreaSqM} m² floor area (EPC)` : null,
+    marketed && epcValid ? `EPC rating ${r.epcRating}` : null,
+    marketed && r.epcPropertyType ? `${r.epcPropertyType} (EPC register)` : null,
     "Managed by Red Brick Lettings",
   ].filter((f): f is string => Boolean(f));
   const summary =
     status === "available"
-      ? `A ${typeLabel.toLowerCase()} on ${r.street} in ${area.name}, Peterborough (${outward}), available to rent through Red Brick Lettings.`
-      : `A ${typeLabel.toLowerCase()} on ${r.street} in ${area.name}, Peterborough (${outward}), part of the Red Brick Lettings managed portfolio and currently let.`;
+      ? `${withArticle(typeLabel)} on ${r.street} in ${area.name}, Peterborough (${outward}), available to rent through Red Brick Lettings.`.replace(/^a/, "A")
+      : `${withArticle(typeLabel)} on ${r.street} in ${area.name}, Peterborough (${outward}), part of the Red Brick Lettings managed portfolio and currently let.`.replace(/^a/, "A");
   const description =
     status === "available"
       ? `This home is available now. Ask us about a viewing and we will confirm the rent, deposit, bedrooms and what is included before you commit to anything. Photographs and full details follow once approved.`
@@ -132,18 +152,18 @@ function toListing(r: PortfolioRecord): Listing {
       bathrooms: null,
       receptionRooms: null,
       furnishing: null,
-      sizeSqM: r.floorAreaSqM,
+      sizeSqM: marketed ? r.floorAreaSqM : null,
     },
     pricing: {
       rentPcm: status === "available" ? r.rentPcm : null,
       deposit: null,
       holdingDeposit: null,
-      billsIncluded: false,
+      billsIncluded: null,
     },
     councilTaxBand: null,
-    epcRating: epcValid ? { value: r.epcRating!, verifiedOn: generatedOn, source: "EPC register (GOV.UK certificate)" } : null,
+    epcRating: marketed && epcValid ? { value: r.epcRating!, verifiedOn: generatedOn, source: "EPC register (GOV.UK certificate)" } : null,
     features,
-    media: { cover: { kind: "placeholder", alt: `Placeholder illustration for a ${typeLabel.toLowerCase()} — photographs to follow` } },
+    media: { cover: { kind: "placeholder", alt: `Placeholder illustration for ${withArticle(typeLabel)} — photographs to follow` } },
   };
 }
 

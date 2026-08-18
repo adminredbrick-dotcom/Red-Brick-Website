@@ -1,13 +1,13 @@
 {
-  "measuredOn": "2026-08-18T14:05:30.440Z",
+  "measuredOn": "2026-08-18T16:19:48.621Z",
   "viewport": "1440x900 reduced motion (static)",
-  "html": 20385,
-  "js": 190008,
-  "css": 7958,
+  "html": 20464,
+  "js": 177267,
+  "css": 8087,
   "images": 1005641,
   "video": 0,
   "models": 0,
   "fonts": 94512,
-  "other": 54026,
-  "requests": 63
+  "other": 50869,
+  "requests": 61
 }

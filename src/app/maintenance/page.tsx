@@ -200,7 +200,7 @@ export default async function MaintenancePage() {
       </section>
 
       {faqs ? (
-        <div className="container-rb py-14 md:py-20">
+        <div className="cv-auto container-rb py-14 md:py-20">
           <FaqList group={faqs} />
         </div>
       ) : null}

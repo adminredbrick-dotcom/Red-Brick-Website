@@ -67,7 +67,43 @@ export interface RentalReport {
   readonly generatedOn: string;
 }
 
-/** Adapter boundary — a licensed comparable provider or Red Brick's own achieved rents plug in here later. */
+/**
+ * Adapter boundary — a licensed comparable provider or Red Brick's own achieved rents plug in here later.
+ * `estimate` returns a report or throws (`InsufficientEvidenceError` when the evidence is too weak
+ * to publish a range; any other error = the data source is unavailable). `assessRentalReport`
+ * turns that into the three honest states the page shows.
+ */
 export interface RentalReportAdapter {
   estimate(request: AppraisalRequest): Promise<RentalReport>;
+}
+
+/** Thrown by an adapter when a range must be suppressed rather than guessed (Phase 5 rule: honest weak-evidence state). */
+export class InsufficientEvidenceError extends Error {
+  constructor(
+    message: string,
+    /** How many comparables were found (for the honest explanation). */
+    readonly comparableCount = 0,
+  ) {
+    super(message);
+    this.name = "InsufficientEvidenceError";
+  }
+}
+
+export type RentalReportOutcome =
+  | { readonly status: "ok"; readonly report: RentalReport }
+  | { readonly status: "insufficient-evidence"; readonly request: AppraisalRequest; readonly reason: string; readonly comparableCount: number }
+  | { readonly status: "unavailable"; readonly request: AppraisalRequest; readonly reason: string };
+
+/** Run the adapter and classify the result; never lets an adapter error surface as a page error. */
+export async function assessRentalReport(adapter: RentalReportAdapter, request: AppraisalRequest): Promise<RentalReportOutcome> {
+  try {
+    const report = await adapter.estimate(request);
+    return { status: "ok", report };
+  } catch (error) {
+    if (error instanceof InsufficientEvidenceError) {
+      return { status: "insufficient-evidence", request, reason: error.message, comparableCount: error.comparableCount };
+    }
+    // Deliberately not logged with the request (nothing personal is in it, but keep the rule simple).
+    return { status: "unavailable", request, reason: "The estimate data source did not respond." };
+  }
 }

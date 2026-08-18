@@ -25,6 +25,9 @@ interface PropertyDetailPageProps {
 }
 
 /** Pre-render every published slug; unknown slugs still fall through to the honest 404. */
+/** Only known slugs exist; anything else is the static 404 (rendered fully on the server, no JS needed). */
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const all = await listingsRepository.all();
   return all.map((l) => ({ slug: l.slug }));

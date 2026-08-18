@@ -79,8 +79,10 @@ function verifiedNote(fact: VerifiedFact<unknown>): string {
 export function CostsTable({ listing }: { listing: Listing }) {
   const rows: { label: string; value: string; note?: string }[] = [
     { label: "Rent", value: formatRentPcm(listing.pricing.rentPcm) },
-    { label: "Bills", value: listing.pricing.billsIncluded ? "Some bills included — see description" : "Not included" },
   ];
+  if (listing.pricing.billsIncluded !== null) {
+    rows.push({ label: "Bills", value: listing.pricing.billsIncluded ? "Some bills included — see description" : "Not included" });
+  }
   if (listing.pricing.deposit) {
     rows.push({ label: "Tenancy deposit", value: formatGbp(listing.pricing.deposit.value), note: verifiedNote(listing.pricing.deposit) });
   }
@@ -152,7 +154,7 @@ export function EnquirePanel({ listing }: { listing: Listing }) {
   const message = enquiryMessage(listing);
   return (
     <div className="rounded-lg bg-ink p-6 text-cream" data-surface="dark">
-      <p className="text-eyebrow text-sand">Enquire or book a viewing</p>
+      <p className="text-eyebrow text-sand">{listing.status === "let" ? "Ask about similar homes" : "Enquire or book a viewing"}</p>
       <p className="mt-2 text-2xl font-bold">{formatRentPcm(listing.pricing.rentPcm)}</p>
       <p className="mt-1 text-cream/80">
         {listing.property.bedrooms !== null ? pluralise(listing.property.bedrooms, "bedroom") : "Bedrooms to be confirmed"} ·{" "}
@@ -160,7 +162,7 @@ export function EnquirePanel({ listing }: { listing: Listing }) {
       </p>
       <div className="mt-5 flex flex-col gap-3">
         <Button asChild size="lg" className="bg-white text-ink hover:bg-sand">
-          <a href={whatsappHref(business.whatsapp.e164, message)}>Ask about this property on WhatsApp</a>
+          <a href={whatsappHref(business.whatsapp.e164, message)}>{listing.status === "let" ? "Ask about similar homes on WhatsApp" : "Ask about this property on WhatsApp"}</a>
         </Button>
         <p className="text-center text-base text-cream/80">WhatsApp {business.whatsapp.displayNumber}</p>
       </div>

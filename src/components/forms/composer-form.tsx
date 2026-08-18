@@ -144,7 +144,7 @@ function Field({ field, id, value, error }: { field: FieldDef; id: string; value
 
   if (field.kind === "radio") {
     return (
-      <fieldset aria-describedby={describedBy} aria-invalid={error ? true : undefined}>
+      <fieldset>
         <legend className={labelClass}>
           {field.label}
           {field.required ? <span className="text-stone"> (required)</span> : null}
@@ -154,7 +154,7 @@ function Field({ field, id, value, error }: { field: FieldDef; id: string; value
             {field.hint}
           </p>
         ) : null}
-        <div className="mt-2 flex flex-col gap-2" id={id}>
+        <div className="mt-2 flex flex-col gap-2" id={id} role="radiogroup" aria-describedby={describedBy} aria-invalid={error ? true : undefined} aria-required={field.required || undefined}>
           {field.options?.map((o) => (
             <label key={o.value} className="flex cursor-pointer items-start gap-3 rounded-md border border-stone-light bg-white px-3 py-2 has-[:checked]:border-brick">
               <input

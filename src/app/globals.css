@@ -110,6 +110,14 @@
 }
 
 /* Readable measure for body copy (55–75 characters). */
+/* FAQ blocks (plain text + native <details>, no links) skip layout/paint until they approach the
+   viewport (phase-7 mobile TBT). Not used on sections with links: axe/Lighthouse cannot measure
+   contrast or target size inside skipped content. */
+@utility cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 40rem;
+}
+
 @utility measure-body {
   max-width: 65ch;
 }

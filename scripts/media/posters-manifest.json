@@ -5,19 +5,19 @@
       "output": "hero-12217554.webp",
       "source": "12217554_3840_2160_30fps.mp4",
       "time": 4,
-      "width": 1600,
-      "height": 900,
-      "bytes": 310610,
-      "quality": 0.34
+      "width": 1440,
+      "height": 810,
+      "bytes": 227374,
+      "quality": 0.22
     },
     {
       "output": "hero-12217554-mobile.webp",
       "source": "12217554_3840_2160_30fps.mp4",
       "time": 4,
-      "width": 900,
-      "height": 1125,
-      "bytes": 207436,
-      "quality": 0.34
+      "width": 640,
+      "height": 800,
+      "bytes": 94488,
+      "quality": 0.14
     },
     {
       "output": "story-14807040.webp",

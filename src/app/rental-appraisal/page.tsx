@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 
 import { AppraisalForm } from "@/components/appraisal/appraisal-form";
-import { ContactStep, ReportPanel } from "@/components/appraisal/report";
+import { ContactStep, OutcomePanel, ReportPanel } from "@/components/appraisal/report";
 import { PageIntro } from "@/components/shared/page-intro";
 import { routes } from "@/config/site";
 import { parseAppraisalRequest, rentalReportAdapter } from "@/lib/appraisal/demo-adapter";
-import type { RentalReport } from "@/lib/appraisal/types";
+import { assessRentalReport, type RentalReport } from "@/lib/appraisal/types";
 
 export const metadata: Metadata = {
   title: routes.rentalAppraisal.title,
@@ -26,7 +26,8 @@ export default async function RentalAppraisalPage({ searchParams }: RentalApprai
   const raw = await searchParams;
   const attempted = Object.keys(raw).length > 0;
   const request = parseAppraisalRequest(raw);
-  const report: RentalReport | null = request ? await rentalReportAdapter.estimate(request) : null;
+  const outcome = request ? await assessRentalReport(rentalReportAdapter, request) : null;
+  const report: RentalReport | null = outcome?.status === "ok" ? outcome.report : null;
 
   return (
     <>
@@ -40,11 +41,13 @@ export default async function RentalAppraisalPage({ searchParams }: RentalApprai
         <div className="container-rb grid gap-8 py-10 md:py-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-12">
           <div className="flex flex-col gap-8">
             <AppraisalForm request={request} invalid={attempted && !request} />
-            <ContactStep report={report} />
+            <ContactStep request={request} />
           </div>
           <div id="result" className="min-w-0 scroll-mt-6">
             {report ? (
               <ReportPanel report={report} />
+            ) : outcome && outcome.status !== "ok" ? (
+              <OutcomePanel outcome={outcome} />
             ) : (
               <div className="rounded-lg border-2 border-dashed border-stone-light bg-cream/60 p-6 md:p-8">
                 <p className="text-eyebrow text-stone">Your range appears here</p>

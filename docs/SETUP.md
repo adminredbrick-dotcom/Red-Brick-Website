@@ -13,7 +13,7 @@ npm install
 npm run dev
 ```
 
-The site runs at http://localhost:3000. Playwright serves the production build on its own port per branch (`playwright.config.ts`: 3111 for the hybrid/3D work, **3112 for `experiment/phase2-new-flow`**) so worktrees never collide.
+The site runs at http://localhost:3000. Playwright serves the production build on its own port per branch (`playwright.config.ts`: 3111 for the hybrid/3D work, 3112 for `experiment/phase2-new-flow`, **3113 for `feature/homepage-production`**) so worktrees never collide.
 
 ## Commands
 
@@ -37,7 +37,29 @@ npx playwright install chromium
 ## Environment variables
 
 Copy `.env.example` to `.env.local` and fill values as they become available. Never commit
-`.env.local`. All keys are optional in Phase 1 — the site runs with none set.
+`.env.local`. Every key is optional — the site runs with none set. Two matter at launch:
+
+| Variable | Purpose |
+|---|---|
+| `NEXT_PUBLIC_SITE_URL` | Canonical origin for metadata, sitemap and JSON-LD (falls back to the Vercel host, then localhost) |
+| `NEXT_PUBLIC_SITE_INDEXING` | Leave unset pre-launch (every page `noindex`, robots disallow-all). Set to `on` at launch and redeploy to allow indexing (experiments stay disallowed); inlined at build time so static and dynamic routes agree |
+
+## Deployment (Vercel)
+
+The GitHub repository `adminredbrick-dotcom/Red-Brick-Website` (`origin`) is connected to the
+Vercel project `red-brick-website`. Every push builds a deployment; the production domain
+follows the branch set as **Production Branch** in Vercel → Settings → Git (currently expected to
+be `feature/homepage-production` until `main` is merged) — or promote a specific deployment.
+Build command `npm run build`, output default, Node 20+. Add the environment variables above in
+Vercel → Settings → Environment Variables. After changing `SITE_INDEXING` or `NEXT_PUBLIC_SITE_URL`
+redeploy (both are inlined at build time).
+
+## Audits
+
+`node scripts/audit/run-lighthouse.mjs http://localhost:3113` — Lighthouse (installed Chrome) over the
+key pages, mobile + desktop, writing `docs/evidence/phase-7/lighthouse/summary.md`. Run it against a
+launch-mode build (`NEXT_PUBLIC_SITE_INDEXING=on NEXT_PUBLIC_SITE_URL=http://localhost:3113 npm run build`,
+then `npx next start -p 3113`) so the SEO category reflects launch, not the pre-launch noindex.
 
 ## Pinned versions
 
