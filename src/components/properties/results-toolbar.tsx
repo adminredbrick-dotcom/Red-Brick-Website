@@ -27,7 +27,7 @@ export function ResultsToolbar({ filters, shown, total, activeCount }: ResultsTo
         <span className="font-bold">
           {shown} of {total}
         </span>{" "}
-        demonstration {total === 1 ? "listing" : "listings"}
+        {total === 1 ? "home" : "homes"}
         {activeCount > 0 ? (
           <>
             {" "}

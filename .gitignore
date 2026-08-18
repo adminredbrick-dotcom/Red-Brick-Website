@@ -24,3 +24,6 @@ blob-report/
 .DS_Store
 Thumbs.db
 scripts/media/scratch/
+
+# Office-only audit produced by scripts/listings/extract-portfolio.py (source file names); the shipped data is src/lib/listings/portfolio.json
+scripts/listings/portfolio-audit.json

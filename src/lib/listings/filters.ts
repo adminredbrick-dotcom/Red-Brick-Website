@@ -9,7 +9,7 @@ import { propertyTypes, type Listing, type PropertyType } from "./types";
  * is a plain GET form.
  */
 
-export const availabilityOptions = ["any", "now", "soon", "let-agreed"] as const;
+export const availabilityOptions = ["any", "now", "soon", "let-agreed", "let"] as const;
 export type AvailabilityFilter = (typeof availabilityOptions)[number];
 
 export const availabilityLabels: Record<AvailabilityFilter, string> = {
@@ -17,6 +17,7 @@ export const availabilityLabels: Record<AvailabilityFilter, string> = {
   now: "Available now",
   soon: "Coming soon",
   "let-agreed": "Let agreed",
+  let: "Currently let",
 };
 
 export const bedroomOptions = [1, 2, 3, 4] as const;
@@ -135,9 +136,10 @@ export function countActiveFilters(filters: ListingFilters): number {
 
 export function matchesFilters(listing: Listing, filters: ListingFilters): boolean {
   if (filters.area && listing.location.area !== filters.area) return false;
-  if (filters.minRent !== null && listing.pricing.rentPcm < filters.minRent) return false;
-  if (filters.maxRent !== null && listing.pricing.rentPcm > filters.maxRent) return false;
-  if (filters.bedrooms !== null && listing.property.bedrooms < filters.bedrooms) return false;
+  // Unknown rent / bedrooms never satisfy a rent or bedroom filter (nothing is guessed).
+  if (filters.minRent !== null && (listing.pricing.rentPcm === null || listing.pricing.rentPcm < filters.minRent)) return false;
+  if (filters.maxRent !== null && (listing.pricing.rentPcm === null || listing.pricing.rentPcm > filters.maxRent)) return false;
+  if (filters.bedrooms !== null && (listing.property.bedrooms === null || listing.property.bedrooms < filters.bedrooms)) return false;
   if (filters.type && listing.property.type !== filters.type) return false;
   switch (filters.availability) {
     case "now":
@@ -149,6 +151,9 @@ export function matchesFilters(listing: Listing, filters: ListingFilters): boole
     case "let-agreed":
       if (listing.status !== "let-agreed") return false;
       break;
+    case "let":
+      if (listing.status !== "let") return false;
+      break;
     default:
       break;
   }
@@ -157,8 +162,13 @@ export function matchesFilters(listing: Listing, filters: ListingFilters): boole
 
 /** Filter, then order: available first, then coming soon, then let agreed; within a group by rent ascending. */
 export function applyFilters(listings: readonly Listing[], filters: ListingFilters): Listing[] {
-  const rank: Record<Listing["status"], number> = { available: 0, "coming-soon": 1, "let-agreed": 2 };
+  const rank: Record<Listing["status"], number> = { available: 0, "coming-soon": 1, "let-agreed": 2, let: 3 };
   return listings
     .filter((l) => matchesFilters(l, filters))
-    .sort((a, b) => rank[a.status] - rank[b.status] || a.pricing.rentPcm - b.pricing.rentPcm);
+    .sort(
+      (a, b) =>
+        rank[a.status] - rank[b.status] ||
+        (a.pricing.rentPcm ?? Number.POSITIVE_INFINITY) - (b.pricing.rentPcm ?? Number.POSITIVE_INFINITY) ||
+        a.title.localeCompare(b.title),
+    );
 }

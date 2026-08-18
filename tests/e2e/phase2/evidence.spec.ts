@@ -20,10 +20,10 @@ const BREAKPOINTS = [
 
 const PAGES = [
   { route: "/properties", slug: "properties" },
-  { route: "/properties?area=werrington&beds=3", slug: "properties-filtered" },
+  { route: "/properties?area=bretton&type=terraced-house", slug: "properties-filtered" },
   { route: "/properties?view=map", slug: "properties-map" },
   { route: "/properties?area=hampton&max=500", slug: "properties-empty" },
-  { route: "/properties/demo-three-bedroom-semi-werrington", slug: "property-detail" },
+  { route: "/properties/lincoln-road-pe1-345", slug: "property-detail" },
   { route: "/rental-appraisal", slug: "appraisal-form" },
   { route: "/rental-appraisal?area=werrington&type=semi-detached-house&beds=3&status=vacant", slug: "appraisal-report" },
   { route: "/experiments/phase2-previews", slug: "phase2-previews" },

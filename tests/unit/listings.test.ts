@@ -4,6 +4,7 @@ import { demoLabels } from "@/content/demo-labels";
 import { areas, isAreaKey } from "@/lib/listings/areas";
 import { demoListings } from "@/lib/listings/demo-listings";
 import { emptyFilters } from "@/lib/listings/filters";
+import { portfolioListings } from "@/lib/listings/portfolio-listings";
 import { DemoListingsRepository, listingsRepository } from "@/lib/listings/repository";
 
 describe("demonstration listings", () => {
@@ -58,12 +59,50 @@ describe("DemoListingsRepository", () => {
     expect(featured.every((l) => l.status === "available")).toBe(true);
   });
 
-  it("is the bound default repository", async () => {
-    expect((await listingsRepository.all()).length).toBe(demoListings.length);
+  it("the bound default repository serves the portfolio, not the demonstration set", async () => {
+    expect((await listingsRepository.all()).length).toBe(portfolioListings.length);
+    expect((await listingsRepository.all()).every((l) => !l.demoOnly)).toBe(true);
   });
 
   it("labels are the exact mandated wording", () => {
     expect(demoLabels.listing).toBe("Demonstration listing — not a real property.");
     expect(demoLabels.estimate).toBe("Illustrative estimate — not a valuation.");
+  });
+});
+
+describe("portfolio listings (public-safe)", () => {
+  it("carry street + district only — never a house number, flat letter, full postcode, owner or tenant", () => {
+    expect(portfolioListings.length).toBeGreaterThanOrEqual(40);
+    const slugs = new Set(portfolioListings.map((l) => l.slug));
+    expect(slugs.size).toBe(portfolioListings.length);
+    for (const l of portfolioListings) {
+      const json = JSON.stringify(l);
+      expect(l.demoOnly).toBe(false);
+      expect(l.media.cover.kind).toBe("placeholder");
+      expect(isAreaKey(l.location.area)).toBe(true);
+      expect(l.location.outwardPostcode).toMatch(/^PE\d$/);
+      expect(json).not.toMatch(/PE\d\s?\d[A-Z]{2}/); // no full postcode
+      expect(l.title).not.toMatch(/\d/); // no house numbers in titles
+      expect(l.slug).not.toMatch(/^\d/);
+      expect(json).not.toMatch(/tenant name|landlord|owner:/i);
+      // Rent is only published for available homes; occupied homes never show a rent.
+      if (l.status === "let") expect(l.pricing.rentPcm).toBeNull();
+      // Nothing is guessed: unknown bedrooms/bathrooms stay null.
+      expect(l.property.bedrooms === null || l.property.bedrooms > 0).toBe(true);
+      if (l.epcRating) {
+        expect(l.epcRating.value).toMatch(/^[A-G]$/);
+        expect(l.epcRating.source).toContain("EPC register");
+      }
+    }
+  });
+
+  it("orders available homes first and features them", async () => {
+    const { results } = await listingsRepository.search(emptyFilters);
+    const firstLet = results.findIndex((l) => l.status === "let");
+    const lastAvailable = results.map((l) => l.status).lastIndexOf("available");
+    if (firstLet >= 0 && lastAvailable >= 0) expect(lastAvailable).toBeLessThan(firstLet);
+    const featured = await listingsRepository.featured(3);
+    expect(featured.length).toBe(3);
+    expect(featured[0]!.status).toBe("available");
   });
 });

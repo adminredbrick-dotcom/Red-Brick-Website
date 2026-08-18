@@ -15,12 +15,17 @@ export interface Area {
 
 export const areas: readonly Area[] = [
   { key: "central", name: "Central Peterborough", outwardPostcode: "PE1", approximateLatitude: 52.573, approximateLongitude: -0.243 },
+  { key: "millfield", name: "Millfield", outwardPostcode: "PE1", approximateLatitude: 52.585, approximateLongitude: -0.25 },
+  { key: "newengland", name: "New England", outwardPostcode: "PE1", approximateLatitude: 52.593, approximateLongitude: -0.252 },
+  { key: "eastfield", name: "Eastfield", outwardPostcode: "PE1", approximateLatitude: 52.582, approximateLongitude: -0.225 },
   { key: "dogsthorpe", name: "Dogsthorpe", outwardPostcode: "PE1", approximateLatitude: 52.59, approximateLongitude: -0.225 },
   { key: "fletton", name: "Fletton", outwardPostcode: "PE2", approximateLatitude: 52.56, approximateLongitude: -0.24 },
   { key: "woodston", name: "Woodston", outwardPostcode: "PE2", approximateLatitude: 52.563, approximateLongitude: -0.262 },
   { key: "stanground", name: "Stanground", outwardPostcode: "PE2", approximateLatitude: 52.56, approximateLongitude: -0.215 },
   { key: "orton", name: "Orton", outwardPostcode: "PE2", approximateLatitude: 52.553, approximateLongitude: -0.3 },
   { key: "bretton", name: "Bretton", outwardPostcode: "PE3", approximateLatitude: 52.59, approximateLongitude: -0.29 },
+  { key: "westtown", name: "West Town", outwardPostcode: "PE3", approximateLatitude: 52.575, approximateLongitude: -0.262 },
+  { key: "netherton", name: "Netherton", outwardPostcode: "PE3", approximateLatitude: 52.58, approximateLongitude: -0.278 },
   { key: "longthorpe", name: "Longthorpe", outwardPostcode: "PE3", approximateLatitude: 52.575, approximateLongitude: -0.29 },
   { key: "werrington", name: "Werrington", outwardPostcode: "PE4", approximateLatitude: 52.61, approximateLongitude: -0.265 },
   { key: "paston", name: "Paston", outwardPostcode: "PE4", approximateLatitude: 52.605, approximateLongitude: -0.235 },

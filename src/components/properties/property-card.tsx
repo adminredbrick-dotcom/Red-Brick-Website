@@ -18,15 +18,15 @@ interface PropertyCardProps {
 /**
  * Listing card: essentials only (Resider-inspired card discipline) —
  * image, status, title, area, rent, beds/baths/type/furnishing — plus the
- * mandatory demonstration label. The whole title is the link; the card is a
+ * demonstration label when (and only when) the record is fictional. The whole title is the link; the card is a
  * semantic <article>.
  */
 export function PropertyCard({ listing, headingLevel = "h3", className }: PropertyCardProps) {
   const Heading = headingLevel;
   const href = `/properties/${listing.slug}`;
   const facts = [
-    pluralise(listing.property.bedrooms, "bedroom"),
-    pluralise(listing.property.bathrooms, "bathroom"),
+    listing.property.bedrooms !== null ? pluralise(listing.property.bedrooms, "bedroom") : "Bedrooms to be confirmed",
+    listing.property.bathrooms !== null ? pluralise(listing.property.bathrooms, "bathroom") : null,
     propertyTypeLabels[listing.property.type],
     listing.property.furnishing ? furnishingLabels[listing.property.furnishing] : null,
   ].filter(Boolean) as string[];

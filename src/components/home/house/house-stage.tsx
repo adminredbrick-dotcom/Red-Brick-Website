@@ -9,7 +9,9 @@ import { SwitchStory } from "@/components/home/audience/switch-story";
 import { Button } from "@/components/ui/button";
 import { houseEligibility } from "@/lib/house/eligibility";
 import {
+  CHAPTER_COUNT,
   chapterIndexFor,
+  chapterRenderState,
   houseRenderSrc,
   houseStories,
   storyKeys,
@@ -43,8 +45,7 @@ class SceneBoundary extends React.Component<{ onError: () => void; children: Rea
   }
 }
 
-const chapterState = (i: number): HouseRenderState =>
-  (["chapter-1", "chapter-2", "chapter-3", "chapter-4", "complete"] as const)[Math.min(4, Math.max(0, i))]!;
+const chapterState = (i: number): HouseRenderState => chapterRenderState(i);
 
 /**
  * The bounded 3D-house chapter. Server-rendered HTML first: heading, Skip
@@ -127,9 +128,13 @@ export function HouseStage({ sectionId, skipTargetId }: HouseStageProps) {
   const onFirstFrame = React.useCallback(() => setSceneReady(true), []);
 
   const live = mode === "live" && Scene !== null;
-  const stageStill = houseRenderSrc(story, "complete");
+  // Live: the still is the exact first frame of the scene (complete house, daylight), so the
+  // hand-over is invisible. Static: the still follows the chapter in view.
+  const stageStill = houseRenderSrc(story, live || activeIndex === 0 ? "start" : chapterState(activeIndex));
   const label =
-    activeIndex >= 4 ? `Chapter 4 of 4 complete — ${active.close.heading}` : `Chapter ${activeIndex + 1} of 4 — ${active.chapters[activeIndex]!.name}`;
+    activeIndex >= CHAPTER_COUNT
+      ? `Chapter ${CHAPTER_COUNT} of ${CHAPTER_COUNT} complete — ${active.close.heading}`
+      : `Chapter ${activeIndex + 1} of ${CHAPTER_COUNT} — ${active.chapters[activeIndex]!.name}`;
 
   return (
     <section
@@ -163,19 +168,18 @@ export function HouseStage({ sectionId, skipTargetId }: HouseStageProps) {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-14">
+        <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] lg:gap-14 xl:-mx-8 2xl:-mx-24">
           {/* Stage: sticky within the chapter only (CSS), decorative canvas over a static still. */}
           <div className="lg:sticky lg:top-6 lg:self-start">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-[#2a2522]">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-[#2a2522]">
               {/* eslint-disable-next-line @next/next/no-img-element -- static render swapped by story; no optimisation needed */}
               <img
                 src={stageStill}
                 alt=""
                 aria-hidden="true"
-                width={1200}
+                width={1440}
                 height={900}
                 decoding="async"
-                loading="lazy"
                 className={cn(
                   "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
                   live && sceneReady ? "opacity-0" : "opacity-100",
@@ -218,7 +222,7 @@ export function HouseStage({ sectionId, skipTargetId }: HouseStageProps) {
                         data-chapter-index={i}
                         aria-current={shown && activeIndex === i ? "step" : undefined}
                         className={cn(
-                          "border-l-2 pl-6 transition-colors lg:flex lg:min-h-[58vh] lg:flex-col lg:justify-center lg:py-6",
+                          "border-l-2 pl-6 transition-colors lg:flex lg:min-h-[78vh] lg:flex-col lg:justify-center lg:py-6",
                           shown && activeIndex === i ? "border-sand" : "border-cream/25",
                         )}
                       >
@@ -232,7 +236,7 @@ export function HouseStage({ sectionId, skipTargetId }: HouseStageProps) {
                           <img
                             src={houseRenderSrc(key, chapterState(i))}
                             alt={`Illustration of the house at chapter ${i + 1}: ${chapter.name.toLowerCase()}`}
-                            width={1200}
+                            width={1440}
                             height={900}
                             loading="lazy"
                             decoding="async"
@@ -242,11 +246,11 @@ export function HouseStage({ sectionId, skipTargetId }: HouseStageProps) {
                       </li>
                     ))}
                     <li
-                      data-chapter-index={4}
-                      aria-current={shown && activeIndex === 4 ? "step" : undefined}
+                      data-chapter-index={CHAPTER_COUNT}
+                      aria-current={shown && activeIndex === CHAPTER_COUNT ? "step" : undefined}
                       className={cn(
-                        "border-l-2 pl-6 lg:flex lg:min-h-[40vh] lg:flex-col lg:justify-center lg:py-6",
-                        shown && activeIndex === 4 ? "border-sand" : "border-cream/25",
+                        "border-l-2 pl-6 lg:flex lg:min-h-[50vh] lg:flex-col lg:justify-center lg:py-6",
+                        shown && activeIndex === CHAPTER_COUNT ? "border-sand" : "border-cream/25",
                       )}
                     >
                       <p className="text-eyebrow text-sand">The complete house</p>

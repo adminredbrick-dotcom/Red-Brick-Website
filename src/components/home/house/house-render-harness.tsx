@@ -14,7 +14,7 @@ export function HouseRenderHarness() {
   const storyParam = params.get("story") ?? "neutral";
   const story: StoryKey = (storyKeys as readonly string[]).includes(storyParam) ? (storyParam as StoryKey) : "neutral";
   const progress = Math.min(1, Math.max(0, Number(params.get("progress") ?? "1")));
-  const width = Number(params.get("w") ?? "1200");
+  const width = Number(params.get("w") ?? "1440");
   const height = Number(params.get("h") ?? "900");
   const [ready, setReady] = React.useState(false);
 

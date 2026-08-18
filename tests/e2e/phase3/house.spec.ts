@@ -42,7 +42,7 @@ test.describe("3D house chapter — eligible desktop", () => {
     expect(canvasInfo.pointer).toBe("none");
     // Progress label follows scroll (chapter changed from 1 while scrolling to the end).
     const label = section.locator("[data-house-progress]");
-    await expect(label).toContainText(/Chapter 4 of 4|complete/);
+    await expect(label).toContainText(/Chapter 6 of 6|complete/);
     // 3D JS was fetched only after approach; no model, texture or video files.
     expect(totals.js).toBeGreaterThan(jsBefore + 200_000);
     expect(totals.models).toBe(0);
@@ -78,7 +78,7 @@ test.describe("3D house chapter — eligible desktop", () => {
     await page.getByRole("group", { name: "Switch story" }).getByRole("button", { name: "Tenant" }).click();
     await expect(page.locator("#house-story")).toHaveAttribute("data-story-active", "tenant");
     await expect(page.locator("#house-story canvas")).toHaveCount(1);
-    await expect(page.locator("[data-house-progress]")).toContainText(/Finding a suitable home|Understanding the move|Living in the property|Getting maintenance help|complete/);
+    await expect(page.locator("[data-house-progress]")).toContainText(/Spotting the home|Getting in touch|Through the door|Room by room|Making it yours|Settled in|complete/);
   });
 
   test("failed WebGL: no 3D download, static sequence stays", async ({ browser }) => {

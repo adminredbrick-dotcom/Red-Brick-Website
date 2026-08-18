@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import * as THREE from "three";
 
-import { CAMERA_HOME, CAMERA_TARGET, applyExploded, createHouseTimeline, resetRig, type HouseRig } from "@/lib/house/animation";
+import { CAMERA_FAR, CAMERA_HOME, CAMERA_TARGET, ORBIT_HOME, applyCamera, createHouseTimeline, resetRig, type HouseRig } from "@/lib/house/animation";
 import { buildHouse, type HouseModel } from "@/lib/house/build-house";
 import type { StoryKey } from "@/lib/house/story";
 
@@ -64,25 +64,22 @@ function HouseRigView({ story, trigger, onFirstFrame, onProgress, fixedProgress 
       const key = keyRef.current;
       const hemi = hemiRef.current;
       if (!key || !hemi) return;
-      const rig: HouseRig = { model, key, hemi, camera };
-      camera.position.set(...CAMERA_HOME);
-      camera.lookAt(...CAMERA_TARGET);
+      const rig: HouseRig = { model, key, hemi, camera, orbit: { ...ORBIT_HOME } };
       resetRig(rig);
-      applyExploded(model);
       const tl = createHouseTimeline(rig, story, () => {
-        camera.lookAt(...CAMERA_TARGET);
+        applyCamera(rig);
         invalidate();
       });
 
       if (typeof fixedProgress === "number") {
         tl.progress(fixedProgress);
-        camera.lookAt(...CAMERA_TARGET);
+        applyCamera(rig);
         invalidate();
         return;
       }
       if (!trigger) {
-        // Nothing to scroll against yet — show the complete house.
-        tl.progress(1);
+        // Nothing to scroll against yet — hold the start state (complete house, daylight).
+        tl.progress(0);
         invalidate();
         return;
       }
@@ -90,11 +87,13 @@ function HouseRigView({ story, trigger, onFirstFrame, onProgress, fixedProgress 
         trigger,
         start: "top 62%",
         end: "bottom 38%",
-        scrub: 0.6,
+        // A full second of scrub smoothing keeps the scene calm however fast the wheel moves.
+        scrub: 1.3,
         animation: tl,
         onUpdate: (self) => onProgress?.(self.progress),
         invalidateOnRefresh: true,
       });
+      applyCamera(rig);
       invalidate();
     },
     { dependencies: [story, trigger, fixedProgress], revertOnUpdate: true },
@@ -131,7 +130,7 @@ export function HouseScene(props: HouseSceneProps) {
         preserveDrawingBuffer: typeof fixedProgress === "number",
         failIfMajorPerformanceCaveat: false,
       }}
-      camera={{ position: CAMERA_HOME, fov: 34, near: 0.5, far: 90 }}
+      camera={{ position: CAMERA_HOME, fov: 34, near: 0.5, far: CAMERA_FAR }}
       onCreated={({ gl, camera }) => {
         camera.lookAt(...CAMERA_TARGET);
         gl.domElement.setAttribute("tabindex", "-1");

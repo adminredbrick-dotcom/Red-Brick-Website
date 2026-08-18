@@ -42,8 +42,8 @@ export function SectionNav() {
 /** Key facts strip: bedrooms, bathrooms, type, furnishing, size — text only. */
 export function KeyFacts({ listing }: { listing: Listing }) {
   const facts: { label: string; value: string }[] = [
-    { label: "Bedrooms", value: String(listing.property.bedrooms) },
-    { label: "Bathrooms", value: String(listing.property.bathrooms) },
+    { label: "Bedrooms", value: listing.property.bedrooms !== null ? String(listing.property.bedrooms) : "To be confirmed" },
+    { label: "Bathrooms", value: listing.property.bathrooms !== null ? String(listing.property.bathrooms) : "To be confirmed" },
     { label: "Type", value: propertyTypeLabels[listing.property.type] },
   ];
   if (listing.property.receptionRooms) {
@@ -134,7 +134,9 @@ export function CostsTable({ listing }: { listing: Listing }) {
           ? ""
           : listing.status === "let-agreed"
             ? " — a tenancy has been agreed for this home."
-            : " — the move-in date is not yet confirmed."}
+            : listing.status === "let"
+              ? " — this home is occupied and not available to view."
+              : " — the move-in date is not yet confirmed."}
       </p>
     </div>
   );
@@ -153,7 +155,8 @@ export function EnquirePanel({ listing }: { listing: Listing }) {
       <p className="text-eyebrow text-sand">Enquire or book a viewing</p>
       <p className="mt-2 text-2xl font-bold">{formatRentPcm(listing.pricing.rentPcm)}</p>
       <p className="mt-1 text-cream/80">
-        {pluralise(listing.property.bedrooms, "bedroom")} · {areaDisplayName(listing.location.area)}
+        {listing.property.bedrooms !== null ? pluralise(listing.property.bedrooms, "bedroom") : "Bedrooms to be confirmed"} ·{" "}
+        {areaDisplayName(listing.location.area)}
       </p>
       <div className="mt-5 flex flex-col gap-3">
         <Button asChild size="lg" className="bg-white text-ink hover:bg-sand">

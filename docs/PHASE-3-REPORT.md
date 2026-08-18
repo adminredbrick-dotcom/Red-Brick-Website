@@ -1,5 +1,9 @@
 # Phase 3 report — production homepage and 3D house
 
+> **Revision 2 (18/08/2026)** — see "Revision 2" at the end: the house is now the large detached
+> home from the owner's floor plan, the story is a six-chapter viewing with people, the pace is
+> slower, and `/properties` shows the real portfolio (street + district only).
+
 Branch `feature/homepage-production` (worktree `D:\4. Website\Red-Brick-Landing-Experiments\homepage-production`),
 created from `experiment/phase2-new-flow` @ `e422e74`. Built 17/08/2026. `main` is not merged.
 `/experiments/hybrid-db` and every experiment evidence file are unchanged (the full-suite run
@@ -147,3 +151,46 @@ Full JSON: `docs/evidence/phase-3/transfer-sizes-live-1440.json`,
 Approval of the 3D house look and chapter choreography; approval of the homepage copy marked
 PROTOTYPE; hero/story derivatives once an encoder is available; managed-masters folder
 confirmation; Pexels creator names; hero poster size trade-off; static-render refresh policy.
+
+
+## Revision 2 — 18/08/2026 (owner feedback on the animation; real properties)
+
+Owner asks answered: identical start for every story · smoother, immersive, no clipping ·
+camera moves less and looks at the **front** of the house when the lights come on · slower pace ·
+people who interact · take out two sides (front + right) for a Sims-style interior view · a bigger
+house built from the supplied floor plan · put the real properties up without house numbers,
+owners or legal details.
+
+### The house (v2.0.0, `src/lib/house/build-house.ts`)
+Large detached red-brick family home laid out from the floor plan: ground floor — drawing room
+(rear left, canted bay, fireplace, two sofas), family room (French doors, sofa, TV unit), kitchen
+(rear right, canted bay, units, island with hob, fridge), study + cloakroom (front left), entrance
+hall with a 13-tread stair, dining room (table + six chairs), utility (boiler, washing machine);
+first floor — bedrooms 1–4 with wardrobes, three en-suites, dressing room, landing. Exterior:
+gabled slate roof, two chimney stacks, five front sashes, porch canopy on posts, gutters and
+downpipes, 21 windows. **Real openings everywhere**: the front wall is three pieces around a real
+doorway; every partition is built from segments with door gaps; the people only ever walk through
+openings. Three stylised people (agent with clipboard, two applicants; shoulder-pivoted arms for
+gestures) and a To Let board. 141 named parts, ~14.2k triangles, GLB **1.13 MB** (≤ 1.5 MB).
+
+### The story (v4, `src/lib/house/animation.ts` + `story.ts`)
+Six chapters + close, 14 timeline units, **the same beats for every audience** (copy differs):
+1 board up, agent arrives · 2 applicants arrive, handshake, wave, nod, up the path, door opens ·
+3 through the door; roof lifts, façade slides left, right wall slides right, first floor lifts as a
+layer (exploded dollhouse) · 4 gesture, dining room, then via the family room to the kitchen
+island (landlord: boiler check in the utility); each room lights · 5 upstairs lights as the camera
+rises; the house closes around the people · 6/close: goodbye at the door (handshake, wave), agent
+walks off along the pavement, board down, tile checked, dusk. Camera: ≤ ~12° orbit per chapter,
+front-on for lit/dusk beats, home framing at start and end. Pace: chapter blocks 78 vh + close
+50 vh (≈ 520 vh), `scrub: 1.3`, beats spread through each chapter. Stage widened to 16:10.
+Renders: 24 JPEGs (3 stories × start, chapter 1–6, complete) at 1440 × 900, ≈ 1.0 MB.
+
+### Real portfolio
+See `docs/PORTFOLIO-LISTINGS.md` and OWNER-DECISIONS rows 64–69: 46 homes, street + district only,
+EPC/type/floor area from the public register, Available (2) / Currently let (44) from the office
+sheet; rent only for available homes; bedrooms, bathrooms and photographs "to be confirmed".
+
+### Verification (18/08/2026, port 3113, production build)
+`npm run lint` clean · `npm run typecheck` clean · Vitest **38 / 38** · Playwright phase 2 + 3
+**84 / 84** (properties spec rewritten for the portfolio; house/fallback specs updated for six
+chapters) · full suite re-run recorded in the commit message.

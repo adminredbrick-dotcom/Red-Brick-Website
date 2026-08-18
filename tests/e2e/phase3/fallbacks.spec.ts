@@ -28,8 +28,8 @@ test.describe("static fallbacks never download 3D or video", () => {
     expect(totals.models).toBe(0);
     // Static chapter sequence: still + one image per chapter, all copy visible.
     const neutral = section.locator("[data-story-variant='neutral']");
-    await expect(neutral.locator("[data-chapter-index]")).toHaveCount(5);
-    await expect(neutral.locator("img")).toHaveCount(4);
+    await expect(neutral.locator("[data-chapter-index]")).toHaveCount(7);
+    await expect(neutral.locator("img")).toHaveCount(6);
     for (const img of await neutral.locator("img").all()) await expect(img).toHaveAttribute("src", /\/media\/house\/neutral-chapter-\d\.jpg/);
     await expect(section.locator("[data-house-still]")).toBeVisible();
     // Controls stay keyboard accessible.
@@ -71,10 +71,10 @@ test.describe("static fallbacks never download 3D or video", () => {
     await expect(section.locator("[data-story-variant='neutral']")).toBeVisible();
     await expect(section.locator("[data-story-variant='landlord']")).toBeHidden();
     await expect(section.locator("[data-story-variant='tenant']")).toBeHidden();
-    for (const name of ["Property", "People", "Communication", "Care"]) {
+    for (const name of ["On the market", "The meeting", "Through the door", "Room by room", "Making it home", "Looked after"]) {
       await expect(section.locator("[data-story-variant='neutral']").getByText(new RegExp(`Chapter \\d · ${name}`))).toBeVisible();
     }
-    await expect(section.locator("[data-story-variant='neutral'] img")).toHaveCount(4);
+    await expect(section.locator("[data-story-variant='neutral'] img")).toHaveCount(6);
     await expect(page.locator("canvas")).toHaveCount(0);
     // JS-only Switch story control is hidden; the actions still work as anchors/links.
     await expect(page.getByRole("group", { name: "Switch story" })).toBeHidden();

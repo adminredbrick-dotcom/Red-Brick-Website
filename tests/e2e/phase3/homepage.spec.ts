@@ -87,8 +87,9 @@ test.describe("production homepage — structure and hero", () => {
   test("Phase 2 previews and practical sections are wired with demonstration labels", async ({ page }) => {
     await page.goto("/");
     await expect(page.getByRole("heading", { name: "Homes to rent across Peterborough" })).toBeVisible();
-    await expect(page.getByRole("list", { name: "Featured demonstration listings" }).locator("article")).toHaveCount(3);
-    await expect(page.getByText("Demonstration listing — not a real property.").first()).toBeVisible();
+    await expect(page.getByRole("list", { name: "Featured properties" }).locator("article")).toHaveCount(3);
+    // Portfolio records are real (street + district only): no fictional label anywhere on the page.
+    await expect(page.getByText("Demonstration listing — not a real property.")).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "What could your property rent for?" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Move-in costs explained" })).toBeVisible();
     await expect(page.getByText("Illustrative estimate — not a valuation.").first()).toBeVisible();
@@ -111,7 +112,7 @@ test.describe("production homepage — structure and hero", () => {
     await page.getByRole("link", { name: /I’m a landlord/ }).click();
     await expect(page).toHaveURL(/\/#house-story$/); // in-page anchor only, no query string
     await expect(section).toHaveAttribute("data-story-active", "landlord");
-    await expect(page.getByRole("heading", { name: "One house, four chapters — for landlords" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "One house, one let — six chapters for landlords" })).toBeVisible();
     await expect(section.locator("[data-story-variant='landlord']")).toBeVisible();
     await expect(section.locator("[data-story-variant='neutral']")).toBeHidden();
     const storage = await page.evaluate(() => ({ session: Object.fromEntries(Object.entries(sessionStorage)), local: Object.keys(localStorage), cookies: document.cookie }));

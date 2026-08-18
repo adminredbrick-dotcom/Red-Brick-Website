@@ -35,14 +35,19 @@ export const furnishingLabels: Record<Furnishing, string> = {
   unfurnished: "Unfurnished",
 };
 
-/** Publication status of a listing. */
-export const listingStatuses = ["available", "coming-soon", "let-agreed"] as const;
+/**
+ * Publication status of a listing. "let" is a home in the managed portfolio that is
+ * currently occupied — shown so visitors can see the kind of homes Red Brick lets and
+ * register interest, never as available.
+ */
+export const listingStatuses = ["available", "coming-soon", "let-agreed", "let"] as const;
 export type ListingStatus = (typeof listingStatuses)[number];
 
 export const listingStatusLabels: Record<ListingStatus, string> = {
   available: "Available",
   "coming-soon": "Coming soon",
   "let-agreed": "Let agreed",
+  let: "Currently let",
 };
 
 /**
@@ -65,8 +70,10 @@ export interface Listing {
   readonly title: string;
   readonly summary: string;
   readonly description: string;
-  /** Always true for demonstration records; a live adapter sets false. */
+  /** True only for fictional demonstration records; portfolio records set false. */
   readonly demoOnly: boolean;
+  /** Where the record came from, for the honesty line under the listing (e.g. "EPC register; agency records, 18/08/2026"). */
+  readonly source: string | null;
   readonly status: ListingStatus;
   /** ISO date; null when not yet known. */
   readonly availableFrom: string | null;
@@ -83,15 +90,17 @@ export interface Listing {
 
   readonly property: {
     readonly type: PropertyType;
-    readonly bedrooms: number;
-    readonly bathrooms: number;
+    /** null = not yet confirmed from a document — shown as "to be confirmed", never guessed. */
+    readonly bedrooms: number | null;
+    readonly bathrooms: number | null;
     readonly receptionRooms: number | null;
     readonly furnishing: Furnishing | null;
     readonly sizeSqM: number | null;
   };
 
   readonly pricing: {
-    readonly rentPcm: number;
+    /** null = rent on application (not published until confirmed). */
+    readonly rentPcm: number | null;
     /** Tenancy deposit — shown only when verified against tenancy terms. */
     readonly deposit: VerifiedFact<number> | null;
     readonly holdingDeposit: VerifiedFact<number> | null;

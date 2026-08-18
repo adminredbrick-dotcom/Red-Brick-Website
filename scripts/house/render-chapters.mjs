@@ -1,7 +1,7 @@
 /**
  * Captures the static chapter renders of the 3D house from the internal
  * harness route (/experiments/house-renders) — one JPEG per story per state:
- *   public/media/house/{neutral|landlord|tenant}-{exploded|chapter-1..4|complete}.jpg
+ *   public/media/house/{neutral|landlord|tenant}-{start|chapter-1..4|complete}.jpg
  *
  *   node scripts/house/render-chapters.mjs [baseUrl]   (default http://localhost:3113)
  *
@@ -20,8 +20,12 @@ const ROOT = path.resolve(__dirname, "..", "..");
 const OUT = path.join(ROOT, "public", "media", "house");
 const BASE = process.argv[2] ?? "http://localhost:3113";
 const STORIES = ["neutral", "landlord", "tenant"];
-const STATES = { exploded: 0, "chapter-1": 0.2, "chapter-2": 0.4, "chapter-3": 0.6, "chapter-4": 0.8, complete: 1 };
-const W = 1200;
+// Six chapters + close = 7 equal segments; each chapter still is captured at the END of its chapter (see src/lib/house/story.ts).
+const SEGMENTS = 7;
+const STATES = Object.fromEntries(
+  ["start", "chapter-1", "chapter-2", "chapter-3", "chapter-4", "chapter-5", "chapter-6", "complete"].map((k, i) => [k, k === "complete" ? 1 : i / SEGMENTS]),
+);
+const W = 1440;
 const H = 900;
 
 async function launch(channel) {

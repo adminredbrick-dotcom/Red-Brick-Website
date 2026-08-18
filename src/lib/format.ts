@@ -12,8 +12,8 @@ export function formatGbp(amount: number): string {
 }
 
 /** £1,150 pcm */
-export function formatRentPcm(amount: number): string {
-  return `${formatGbp(amount)} pcm`;
+export function formatRentPcm(amount: number | null): string {
+  return amount === null ? "Rent on application" : `${formatGbp(amount)} pcm`;
 }
 
 /** 3 September 2026 (input: ISO yyyy-mm-dd) — timezone-safe. */

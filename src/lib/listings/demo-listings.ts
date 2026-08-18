@@ -22,6 +22,7 @@ export const demoListings: readonly Listing[] = [
     description:
       "This is a demonstration record used to show how a real property page will read. Every fact here is invented for layout and testing and would be replaced only with approved information about a genuine home.",
     demoOnly: true,
+    source: null,
     status: "available",
     availableFrom: "2026-09-07",
     location: { area: "fletton", outwardPostcode: "PE2", approximateLatitude: 52.561, approximateLongitude: -0.242 },
@@ -45,6 +46,7 @@ export const demoListings: readonly Listing[] = [
     description:
       "A demonstration record for comparing property types and bedroom filters. The layout, costs and features are invented and carry no relation to any real Werrington home.",
     demoOnly: true,
+    source: null,
     status: "available",
     availableFrom: "2026-09-21",
     location: { area: "werrington", outwardPostcode: "PE4", approximateLatitude: 52.611, approximateLongitude: -0.263 },
@@ -68,6 +70,7 @@ export const demoListings: readonly Listing[] = [
     description:
       "A demonstration record for the apartment property type. Nothing here describes a real building or a real tenancy.",
     demoOnly: true,
+    source: null,
     status: "available",
     availableFrom: "2026-08-31",
     location: { area: "central", outwardPostcode: "PE1", approximateLatitude: 52.574, approximateLongitude: -0.245 },
@@ -91,6 +94,7 @@ export const demoListings: readonly Listing[] = [
     description:
       "A demonstration record for the bungalow property type and the 'coming soon' status. Every detail is invented.",
     demoOnly: true,
+    source: null,
     status: "coming-soon",
     availableFrom: "2026-11-02",
     location: { area: "bretton", outwardPostcode: "PE3", approximateLatitude: 52.591, approximateLongitude: -0.288 },
@@ -109,6 +113,7 @@ export const demoListings: readonly Listing[] = [
     description:
       "A demonstration record at the upper end of the rent range, used to test the maximum-rent filter. Invented throughout.",
     demoOnly: true,
+    source: null,
     status: "available",
     availableFrom: "2026-10-12",
     location: { area: "hampton", outwardPostcode: "PE7", approximateLatitude: 52.536, approximateLongitude: -0.252 },
@@ -132,6 +137,7 @@ export const demoListings: readonly Listing[] = [
     description:
       "A demonstration record for the furnished filter and the apartment type. Invented throughout.",
     demoOnly: true,
+    source: null,
     status: "available",
     availableFrom: "2026-09-14",
     location: { area: "woodston", outwardPostcode: "PE2", approximateLatitude: 52.564, approximateLongitude: -0.26 },
@@ -155,6 +161,7 @@ export const demoListings: readonly Listing[] = [
     description:
       "A demonstration record for the 'let agreed' status so the templates can show a home that is no longer available without deleting it. Invented throughout.",
     demoOnly: true,
+    source: null,
     status: "let-agreed",
     availableFrom: null,
     location: { area: "stanground", outwardPostcode: "PE2", approximateLatitude: 52.559, approximateLongitude: -0.214 },
@@ -173,6 +180,7 @@ export const demoListings: readonly Listing[] = [
     description:
       "A demonstration record used to test the area filter for PE4 alongside Werrington. Invented throughout.",
     demoOnly: true,
+    source: null,
     status: "available",
     availableFrom: "2026-10-05",
     location: { area: "paston", outwardPostcode: "PE4", approximateLatitude: 52.604, approximateLongitude: -0.236 },

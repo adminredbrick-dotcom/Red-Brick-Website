@@ -13,10 +13,10 @@ export function EmptyState({ filters }: EmptyStateProps) {
   const widened = propertiesHref({ ...filters, area: null, availability: "any" });
   return (
     <div className="rounded-lg border-2 border-dashed border-stone-light bg-white/70 p-6 md:p-8">
-      <h3 className="text-xl">No demonstration listings match those filters</h3>
+      <h3 className="text-xl">No homes match those filters</h3>
       <p className="measure-body mt-2 text-stone">
         Try widening the rent range, choosing more bedrooms, or clearing the area and availability
-        filters. Nothing is hidden: this list shows every published listing that matches.
+        filters. Nothing is hidden: this list shows every published home that matches.
       </p>
       <div className="mt-5 flex flex-wrap items-center gap-3">
         <Button asChild>

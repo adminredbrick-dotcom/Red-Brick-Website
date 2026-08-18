@@ -12,6 +12,7 @@ import { demoLabels } from "@/content/demo-labels";
 import { formatRentPcm } from "@/lib/format";
 import { areaDisplayName } from "@/lib/listings/areas";
 import { countActiveFilters, parseFilters, type RawSearchParams } from "@/lib/listings/filters";
+import { portfolioGeneratedOn } from "@/lib/listings/portfolio-listings";
 import { listingsRepository } from "@/lib/listings/repository";
 
 export const metadata: Metadata = {
@@ -26,8 +27,8 @@ interface PropertiesPageProps {
 /**
  * Properties search — list-first with an optional static map view. The URL
  * carries every filter (GET form), so results are server-rendered, shareable
- * and work without JavaScript. Every record shown here is a demonstration
- * listing carrying the mandatory label.
+ * and work without JavaScript. Records come from the portfolio dataset
+ * (public-safe facts only); any fictional record would carry the mandatory label.
  */
 export default async function PropertiesPage({ searchParams }: PropertiesPageProps) {
   const filters = parseFilters(await searchParams);
@@ -40,7 +41,7 @@ export default async function PropertiesPage({ searchParams }: PropertiesPagePro
     latitude: listing.location.approximateLatitude,
     longitude: listing.location.approximateLongitude,
     href: `/properties/${listing.slug}`,
-    emphasis: listing.status === "let-agreed" ? "muted" : "default",
+    emphasis: listing.status === "let-agreed" || listing.status === "let" ? "muted" : "default",
   }));
 
   return (
@@ -48,7 +49,7 @@ export default async function PropertiesPage({ searchParams }: PropertiesPagePro
       <PageIntro
         eyebrow="Properties"
         heading="Properties to rent in Peterborough"
-        lede="A practical search: filter by area, rent, bedrooms, type and availability, browse the list, or switch to the map. Every listing on this page is a demonstration record while the live property feed is connected."
+        lede="A practical search across the homes Red Brick Lettings manages in Peterborough: filter by area, rent, bedrooms, type and availability, browse the list, or switch to the map. Homes marked “Currently let” are occupied — they show the kind of property we manage."
       />
 
       <section aria-labelledby="results-heading" className="bg-white">
@@ -56,11 +57,18 @@ export default async function PropertiesPage({ searchParams }: PropertiesPagePro
           <h2 id="results-heading" className="sr-only">
             Search results
           </h2>
-          <p className="mb-6 rounded-md bg-sand px-4 py-3 text-base text-ink">
-            <strong>{demoLabels.listing}</strong> Every property below is fictional and exists only to
-            show how the search will work. Real, approved listings replace them when the property
-            feed is live.
-          </p>
+          {results.some((l) => l.demoOnly) ? (
+            <p className="mb-6 rounded-md bg-sand px-4 py-3 text-base text-ink">
+              <strong>{demoLabels.listing}</strong> Fictional records are labelled on every card.
+            </p>
+          ) : (
+            <p className="mb-6 rounded-md bg-sand px-4 py-3 text-base text-ink">
+              Street name and area only — never a house number. Rent, deposit and bedrooms are
+              published once confirmed; until then they read “to be confirmed” or “rent on
+              application”. Photographs follow when a home is being marketed. Portfolio facts checked{" "}
+              {portfolioGeneratedOn.split("-").reverse().join("/")}.
+            </p>
+          )}
 
           <div className="grid gap-8 lg:grid-cols-[18rem_minmax(0,1fr)] lg:gap-10">
             {/* Desktop filters */}
@@ -103,7 +111,7 @@ export default async function PropertiesPage({ searchParams }: PropertiesPagePro
                   <StaticMap
                     pins={pins}
                     highlightArea={filters.area}
-                    title="Schematic map of Peterborough showing the matching demonstration listings"
+                    title="Schematic map of Peterborough showing the matching homes by approximate area"
                   />
                   <div>
                     <h3 className="text-xl">Listings on this map</h3>

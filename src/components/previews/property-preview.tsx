@@ -3,7 +3,6 @@ import Link from "next/link";
 import { PropertyCard } from "@/components/properties/property-card";
 import { StaticMap, type MapPin } from "@/components/properties/static-map";
 import { Button } from "@/components/ui/button";
-import { demoLabels } from "@/content/demo-labels";
 import { formatRentPcm } from "@/lib/format";
 import { areaDisplayName } from "@/lib/listings/areas";
 import { listingsRepository, type ListingsRepository } from "@/lib/listings/repository";
@@ -24,7 +23,7 @@ interface PropertyPreviewProps {
 
 /**
  * Homepage integration contract — "Available properties" preview.
- * Server component (async): renders featured demonstration cards, a
+ * Server component (async): renders featured portfolio cards, a
  * list-first static map, and one "View properties" action. Contains no
  * <section> of its own so the host controls the landmark, surface and
  * spacing. Never renders a live map canvas (must not coexist with the 3D
@@ -53,13 +52,14 @@ export async function PropertyPreview({
     <div className={className}>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-eyebrow text-brick">Available properties</p>
+          <p className="text-eyebrow text-brick">Our properties</p>
           <Heading id={headingId} tabIndex={-1} className="text-section mt-2">
             Homes to rent across Peterborough
           </Heading>
           <p className="measure-body mt-3 text-stone">
-            Search by area, rent, bedrooms, type and availability — list first, with a map when you
-            want it. {demoLabels.listing.replace(/\.$/, "")} while the live feed is connected.
+            Homes we let and manage across Peterborough — street and area only, never a house
+            number. Search by area, rent, bedrooms, type and availability; list first, with a map
+            when you want it.
           </p>
         </div>
         <Button asChild size="lg">
@@ -67,7 +67,7 @@ export async function PropertyPreview({
         </Button>
       </div>
       <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2" aria-label="Featured demonstration listings">
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2" aria-label="Featured properties">
           {listings.map((listing) => (
             <li key={listing.id}>
               <PropertyCard listing={listing} headingLevel={CardHeading} />
@@ -78,7 +78,7 @@ export async function PropertyPreview({
           <StaticMap
             size="compact"
             pins={pins}
-            title="Schematic map of Peterborough showing the featured demonstration listings"
+            title="Schematic map of Peterborough showing the featured homes by approximate area"
           />
         ) : null}
       </div>

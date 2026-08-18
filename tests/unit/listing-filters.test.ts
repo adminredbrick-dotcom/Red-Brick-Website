@@ -68,13 +68,13 @@ describe("applyFilters", () => {
       "DEMO-RBL-001",
     ]);
     expect(
-      applyFilters(demoListings, { ...emptyFilters, maxRent: 1000 }).every((l) => l.pricing.rentPcm <= 1000),
+      applyFilters(demoListings, { ...emptyFilters, maxRent: 1000 }).every((l) => (l.pricing.rentPcm ?? Infinity) <= 1000),
     ).toBe(true);
     expect(applyFilters(demoListings, { ...emptyFilters, minRent: 1700 }).map((l) => l.id)).toEqual([
       "DEMO-RBL-005",
     ]);
     expect(
-      applyFilters(demoListings, { ...emptyFilters, bedrooms: 3 }).every((l) => l.property.bedrooms >= 3),
+      applyFilters(demoListings, { ...emptyFilters, bedrooms: 3 }).every((l) => (l.property.bedrooms ?? 0) >= 3),
     ).toBe(true);
     expect(applyFilters(demoListings, { ...emptyFilters, type: "bungalow" }).map((l) => l.id)).toEqual([
       "DEMO-RBL-004",
@@ -105,7 +105,7 @@ describe("applyFilters", () => {
     expect(firstSoon).toBeLessThan(firstLet);
     const availableRents = ordered
       .filter((l) => l.status === "available")
-      .map((l) => l.pricing.rentPcm);
+      .map((l) => l.pricing.rentPcm ?? 0);
     expect([...availableRents].sort((a, b) => a - b)).toEqual(availableRents);
   });
 

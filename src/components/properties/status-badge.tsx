@@ -11,7 +11,7 @@ interface StatusBadgeProps {
 export function StatusBadge({ listing, className }: StatusBadgeProps) {
   const label = listingStatusLabels[listing.status];
   const detail =
-    listing.status !== "let-agreed" && listing.availableFrom
+    listing.status !== "let-agreed" && listing.status !== "let" && listing.availableFrom
       ? ` from ${formatUkDate(listing.availableFrom)}`
       : "";
   return (
@@ -21,6 +21,7 @@ export function StatusBadge({ listing, className }: StatusBadgeProps) {
         listing.status === "available" && "bg-success/10 text-success",
         listing.status === "coming-soon" && "bg-sand text-ink",
         listing.status === "let-agreed" && "bg-stone-light text-ink",
+        listing.status === "let" && "bg-cream text-ink ring-1 ring-sand",
         className,
       )}
     >

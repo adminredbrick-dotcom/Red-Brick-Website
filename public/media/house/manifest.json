@@ -1,133 +1,175 @@
 {
-  "generatedOn": "2026-08-17",
-  "width": 1200,
+  "generatedOn": "2026-08-18",
+  "width": 1440,
   "height": 900,
   "renders": [
     {
       "story": "neutral",
-      "state": "exploded",
+      "state": "start",
       "progress": 0,
-      "file": "public/media/house/neutral-exploded.jpg",
-      "bytes": 53673
+      "file": "public/media/house/neutral-start.jpg",
+      "bytes": 40949
     },
     {
       "story": "neutral",
       "state": "chapter-1",
-      "progress": 0.2,
+      "progress": 0.14285714285714285,
       "file": "public/media/house/neutral-chapter-1.jpg",
-      "bytes": 43843
+      "bytes": 43046
     },
     {
       "story": "neutral",
       "state": "chapter-2",
-      "progress": 0.4,
+      "progress": 0.2857142857142857,
       "file": "public/media/house/neutral-chapter-2.jpg",
-      "bytes": 43013
+      "bytes": 45972
     },
     {
       "story": "neutral",
       "state": "chapter-3",
-      "progress": 0.6,
+      "progress": 0.42857142857142855,
       "file": "public/media/house/neutral-chapter-3.jpg",
-      "bytes": 38510
+      "bytes": 52513
     },
     {
       "story": "neutral",
       "state": "chapter-4",
-      "progress": 0.8,
+      "progress": 0.5714285714285714,
       "file": "public/media/house/neutral-chapter-4.jpg",
-      "bytes": 34371
+      "bytes": 52051
+    },
+    {
+      "story": "neutral",
+      "state": "chapter-5",
+      "progress": 0.7142857142857143,
+      "file": "public/media/house/neutral-chapter-5.jpg",
+      "bytes": 49482
+    },
+    {
+      "story": "neutral",
+      "state": "chapter-6",
+      "progress": 0.8571428571428571,
+      "file": "public/media/house/neutral-chapter-6.jpg",
+      "bytes": 46612
     },
     {
       "story": "neutral",
       "state": "complete",
       "progress": 1,
       "file": "public/media/house/neutral-complete.jpg",
-      "bytes": 32171
+      "bytes": 37915
     },
     {
       "story": "landlord",
-      "state": "exploded",
+      "state": "start",
       "progress": 0,
-      "file": "public/media/house/landlord-exploded.jpg",
-      "bytes": 53673
+      "file": "public/media/house/landlord-start.jpg",
+      "bytes": 40949
     },
     {
       "story": "landlord",
       "state": "chapter-1",
-      "progress": 0.2,
+      "progress": 0.14285714285714285,
       "file": "public/media/house/landlord-chapter-1.jpg",
-      "bytes": 49316
+      "bytes": 43046
     },
     {
       "story": "landlord",
       "state": "chapter-2",
-      "progress": 0.4,
+      "progress": 0.2857142857142857,
       "file": "public/media/house/landlord-chapter-2.jpg",
-      "bytes": 43465
+      "bytes": 45972
     },
     {
       "story": "landlord",
       "state": "chapter-3",
-      "progress": 0.6,
+      "progress": 0.42857142857142855,
       "file": "public/media/house/landlord-chapter-3.jpg",
-      "bytes": 38332
+      "bytes": 52513
     },
     {
       "story": "landlord",
       "state": "chapter-4",
-      "progress": 0.8,
+      "progress": 0.5714285714285714,
       "file": "public/media/house/landlord-chapter-4.jpg",
-      "bytes": 34371
+      "bytes": 52051
+    },
+    {
+      "story": "landlord",
+      "state": "chapter-5",
+      "progress": 0.7142857142857143,
+      "file": "public/media/house/landlord-chapter-5.jpg",
+      "bytes": 49555
+    },
+    {
+      "story": "landlord",
+      "state": "chapter-6",
+      "progress": 0.8571428571428571,
+      "file": "public/media/house/landlord-chapter-6.jpg",
+      "bytes": 46612
     },
     {
       "story": "landlord",
       "state": "complete",
       "progress": 1,
       "file": "public/media/house/landlord-complete.jpg",
-      "bytes": 32171
+      "bytes": 37915
     },
     {
       "story": "tenant",
-      "state": "exploded",
+      "state": "start",
       "progress": 0,
-      "file": "public/media/house/tenant-exploded.jpg",
-      "bytes": 53673
+      "file": "public/media/house/tenant-start.jpg",
+      "bytes": 40949
     },
     {
       "story": "tenant",
       "state": "chapter-1",
-      "progress": 0.2,
+      "progress": 0.14285714285714285,
       "file": "public/media/house/tenant-chapter-1.jpg",
-      "bytes": 43843
+      "bytes": 43046
     },
     {
       "story": "tenant",
       "state": "chapter-2",
-      "progress": 0.4,
+      "progress": 0.2857142857142857,
       "file": "public/media/house/tenant-chapter-2.jpg",
-      "bytes": 50844
+      "bytes": 45972
     },
     {
       "story": "tenant",
       "state": "chapter-3",
-      "progress": 0.6,
+      "progress": 0.42857142857142855,
       "file": "public/media/house/tenant-chapter-3.jpg",
-      "bytes": 50561
+      "bytes": 52513
     },
     {
       "story": "tenant",
       "state": "chapter-4",
-      "progress": 0.8,
+      "progress": 0.5714285714285714,
       "file": "public/media/house/tenant-chapter-4.jpg",
-      "bytes": 34922
+      "bytes": 52051
+    },
+    {
+      "story": "tenant",
+      "state": "chapter-5",
+      "progress": 0.7142857142857143,
+      "file": "public/media/house/tenant-chapter-5.jpg",
+      "bytes": 49482
+    },
+    {
+      "story": "tenant",
+      "state": "chapter-6",
+      "progress": 0.8571428571428571,
+      "file": "public/media/house/tenant-chapter-6.jpg",
+      "bytes": 46612
     },
     {
       "story": "tenant",
       "state": "complete",
       "progress": 1,
       "file": "public/media/house/tenant-complete.jpg",
-      "bytes": 32171
+      "bytes": 37915
     }
   ]
 }

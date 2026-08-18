@@ -1,5 +1,6 @@
 import { demoListings } from "./demo-listings";
 import { applyFilters, type ListingFilters } from "./filters";
+import { portfolioListings } from "./portfolio-listings";
 import type { Listing } from "./types";
 
 /**
@@ -18,9 +19,9 @@ export interface ListingsRepository {
   featured(limit?: number): Promise<Listing[]>;
 }
 
-/** In-memory demonstration repository — fictional, labelled records only. */
-export class DemoListingsRepository implements ListingsRepository {
-  constructor(private readonly source: readonly Listing[] = demoListings) {}
+/** In-memory repository over a fixed set of records (the portfolio dataset, or the labelled demonstration set). */
+export class InMemoryListingsRepository implements ListingsRepository {
+  constructor(private readonly source: readonly Listing[]) {}
 
   async all(): Promise<readonly Listing[]> {
     return this.source;
@@ -34,13 +35,23 @@ export class DemoListingsRepository implements ListingsRepository {
     return this.source.find((l) => l.slug === slug) ?? null;
   }
 
+  /** Available homes first, then the rest in display order, up to `limit`. */
   async featured(limit = 3): Promise<Listing[]> {
-    return this.source.filter((l) => l.status === "available").slice(0, limit);
+    const ordered = applyFilters(this.source, { area: null, minRent: null, maxRent: null, bedrooms: null, type: null, availability: "any", view: "list" });
+    return ordered.slice(0, limit);
+  }
+}
+
+/** Demonstration repository — fictional, labelled records only (kept for the Phase 2 experiment pages and tests). */
+export class DemoListingsRepository extends InMemoryListingsRepository {
+  constructor(source: readonly Listing[] = demoListings) {
+    super(source);
   }
 }
 
 /**
- * The repository the app uses. Replace this single binding when a live
- * adapter exists (e.g. `new SanityListingsRepository(client)`).
+ * The repository the app uses: the Red Brick portfolio dataset (public-safe facts only —
+ * see src/lib/listings/portfolio-listings.ts). Replace this single binding when a live
+ * property-management adapter exists.
  */
-export const listingsRepository: ListingsRepository = new DemoListingsRepository();
+export const listingsRepository: ListingsRepository = new InMemoryListingsRepository(portfolioListings);
