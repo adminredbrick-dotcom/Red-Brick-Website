@@ -49,3 +49,12 @@ for tests and the Phase 2 experiment pages only.
 - `tests/e2e/phase2/properties.spec.ts` — rewritten against the portfolio (46 homes, available
   first, filters, empty state, map, keyboard, axe, detail pages for an available and a let home,
   404 for unknown slugs).
+
+## Verification of the extraction (18/08/2026)
+- `scripts/listings/verify-portfolio.py` — an independently written re-check (street from the folder
+  name, outward code from any certificate under the folder, status by strict number + street match
+  on the plan): **46 records, 0 hard discrepancies**; 7 soft notes = the six no-plan-row homes
+  (OWNER-DECISIONS row 65) plus two flat-letter addresses the strict matcher skips (33A / 35A Lincoln
+  Road — confirmed by hand: 33A vacant at £600 pcm, 35A let).
+- Codex CLI second opinion: **not available** (usage limit until 20/08/2026 14:59); the independent
+  script above stands in, as the standing rule requires. Re-run Codex when the limit resets.
