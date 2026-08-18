@@ -133,3 +133,17 @@ Status key: **Open** (owner input needed) · **Assumed** (recommended default ad
 | 68 | Street → neighbourhood assignments (`STREET_AREAS` in `src/lib/listings/portfolio-listings.ts`; five areas added: Millfield, New England, Eastfield, West Town, Netherton) | Cards, filters, schematic map | **Assumed** | Best-effort local knowledge; the map pin is the area centre with a small offset, never the home |
 | 69 | Bedrooms, bathrooms and photographs for the portfolio (currently "to be confirmed" / placeholder illustration) | Property cards and detail | Open | Supply per property; the listing contract already carries the fields |
 | 70 | Static-render refresh — 24 JPEGs (3 stories × start, chapter 1–6, complete) at 1440 × 900 | Build gate | **Assumed** | `scripts/house/render-chapters.mjs`; re-run whenever the model or choreography changes |
+
+## Added 18/08/2026 — Phase 6: maintenance, service pages, insights, forms, social metadata (`feature/homepage-production`)
+
+| # | Item | Where it surfaces | Status | Notes |
+|---|---|---|---|---|
+| 71 | Forms (repair report, landlord maintenance question, contact) validate on the server and compose a WhatsApp message the visitor sends — no delivery endpoint or inbox exists yet | `/maintenance`, `/contact` | **Assumed** | Add the destination (`FORM_DELIVERY_*` in `.env.example`) and a delivery step in `src/lib/forms/actions.ts`; only then show a "sent" message |
+| 72 | Six Insights articles prepared from GOV.UK guidance and the site's approved copy, all marked "draft awaiting Red Brick review" (visible note; `noindex` until `reviewed`) | `/insights` | Open | Review each; set `reviewStatus: "reviewed"` in `src/lib/content/articles.ts`; add cover images only if approved and rights-cleared |
+| 73 | FAQ answers for landlords, tenants and maintenance (each with a stated basis; no fees, response times or guarantees) | Landlords, Tenants, Maintenance | **Assumed** | `src/lib/content/faqs.ts` |
+| 74 | Landlord compliance checklist wording (gas, EICR, alarms, EPC/MEES, deposit protection, right to rent, How to Rent, Peterborough selective licensing) with sources, checked 18/08/2026 | `/landlords`, article | **Assumed** | Guidance not advice; re-check when law changes (Renters' Rights Act commencement dates, MEES proposals) |
+| 75 | Move-in cost calculator offered on `/tenants` (visitor-entered rent → legal maximums, labelled illustrative) | `/tenants#move-in-costs` | **Assumed** | Resolves row 53 in the affirmative; wording reviewed 17/08/2026 |
+| 76 | Local content repository (`src/lib/content/`) until the Sanity project exists; the shapes match `data/CMS-AND-LISTING-MODELS.md` | Site-wide | **Assumed** | Row 28 still open; see docs/CONTENT-EDITING.md |
+| 77 | Organization structured data limited to confirmed facts (name, description, since 2012, Peterborough, socials); default and per-article social images generated as text on brand colours | Every page | **Assumed** | Add telephone/email/address to `business.ts` when confirmed — they flow through automatically |
+| 78 | `robots.txt` disallows everything and every page is `noindex` until launch; sitemap ready (static pages, portfolio, reviewed articles) | Site-wide | **Assumed** | Flip at launch with the domain (AS-10); set `NEXT_PUBLIC_SITE_URL` |
+| 79 | Landlord and tenant page copy beyond the approved sentences (journeys, "what happens after a viewing", "good to know") is prototype copy within the confirmed facts | `/landlords`, `/tenants` | Open | Approve or edit alongside row 45 |
